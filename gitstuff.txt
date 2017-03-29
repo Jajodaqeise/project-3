@@ -1,0 +1,6 @@
+create branch
+  git checkout -b dev
+
+switch to branch
+  git co <branch-name>
+  ex: git co master
