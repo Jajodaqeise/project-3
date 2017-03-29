@@ -1,9 +1,14 @@
 create branch
-  git checkout -b dev
+  git checkout -b <branch-name>
+  ex: git checkout -b dev
 
 when pushing
-  git push origin dev
+  git push origin <branch-name>
+  ex: git push origin dev
 
 switch to branch
   git co <branch-name>
   ex: git co master
+
+when creating a feature
+  create a branch for that feature
