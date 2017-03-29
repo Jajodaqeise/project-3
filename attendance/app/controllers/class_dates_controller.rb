@@ -1,0 +1,2 @@
+class ClassDatesController < ApplicationController
+end

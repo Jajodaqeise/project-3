@@ -1,0 +1,2 @@
+class AttendersController < ApplicationController
+end
