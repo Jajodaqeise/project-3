@@ -11,4 +11,4 @@ switch to branch
   ex: git co master
 
 when creating a feature
-  create a branch for that feature
+  create a branch for that feature  
