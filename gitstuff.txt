@@ -1,6 +1,9 @@
 create branch
   git checkout -b dev
 
+when pushing
+  git push origin dev
+
 switch to branch
   git co <branch-name>
   ex: git co master
