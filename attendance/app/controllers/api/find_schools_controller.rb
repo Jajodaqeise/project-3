@@ -1,22 +1,26 @@
 class Api::FindSchoolsController < ApplicationController
 
   def index
+  end
+
+  def create
     lat = params[:lat]
     lng = params[:lng]
-    location = "#{lat},#{lng}"
     search = params[:search]
 
-
-    headers ={
-      "key" => "AIzaSyClwYiKGAt5Ia23N0EK8trzEZ_L-8oYAgk"
-    }
+    # puts lat
+    # puts lng
+    # puts search
 
     response = HTTParty.get(
-          "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{location}&radius=50&type=school&keyword=#{search}&key=AIzaSyClwYiKGAt5Ia23N0EK8trzEZ_L-8oYAgk").parsed_response
+          "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&rankby=distance&type=school&keyword=#{search}&key=AIzaSyClwYiKGAt5Ia23N0EK8trzEZ_L-8oYAgk").parsed_response
 
     results = response["results"]
 
-    render :json => response
+    respond_to do |format|
+      format.json
+      format.js {render json: results, content_type: 'text/json'}
+    end
 
     # geometries = []
     # results.each do |result|

@@ -13,13 +13,14 @@ $(()=>{
   function findSchool(e, location){
     console.log("find", location);
     const data = {
-      search: $(e.target).val(),
-      lat: location.coords.latitude,
-      lng: location.coords.longitude
+      "search" : $(e.target).val(),
+      "lat" : location.coords.latitude,
+      "lng" : location.coords.longitude
     }
+    console.log(data);
     //ajax
     $.ajax({
-      method: "GET",
+      method: "POST",
       data: data,
       processData: false,
       contentType: false,
