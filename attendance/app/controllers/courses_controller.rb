@@ -13,6 +13,7 @@ class CoursesController < ApplicationController
     results = response["results"]
 
     results.each do |result|
+    end
   end
 
   def new
@@ -28,12 +29,12 @@ class CoursesController < ApplicationController
         flash[:alert] = "Make sure you fill in all fields"
         redirect_back fallback_location: new_course_path
     end
-end
+  end
 
 private
 
-def course_params
-    params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng)
-end
+  def course_params
+      params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng)
+  end
 
 end

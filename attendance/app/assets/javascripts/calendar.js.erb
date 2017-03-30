@@ -10,9 +10,7 @@ const calFactory = ()=>{
       this.createMonth(this.today.getMonth(), this.today.getFullYear());
 
       this.classDates = [];
-      <% @classes.each do |class| %>
-        classDates.push(new Date (<%= class.date %>));
-      <% end %>
+      console.log(<%= @classes %>);
 
       return this;
     },
@@ -37,7 +35,7 @@ const calFactory = ()=>{
       return this;
     },
     renderCal: function(){
-      if ($('#render-cal').length > 0){
+
         const $calContainer = $('#render-cal').empty();
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -77,7 +75,7 @@ const calFactory = ()=>{
             .text(day);
           })
         })
-      }
+      
 
       return this;
     }
@@ -86,5 +84,8 @@ const calFactory = ()=>{
 }
 
 $(()=>{
-  const cal = calFactory().init().renderCal();
+  let cal;
+  if ($('#render-cal').length > 0){
+    cal = calFactory().init().renderCal();
+  }
 })
