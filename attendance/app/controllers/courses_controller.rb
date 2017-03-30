@@ -24,23 +24,6 @@ class CoursesController < ApplicationController
     # render :json => @course
   end
 
-  # def update
-  #   @turtle = Turtle.find(params[:id])
-  #   if @turtle.update(turtle_params)
-  #     redirect_to @turtle
-  #   else
-  #     render :edit
-  #   end
-  # end
-
-  # def destroy
-  #   # @turtles = Turtle.find(params[:id])
-  #   if @turtle.destroy
-  #     redirect_to turtles_path
-  #   else
-  #     redirect_to @turtle
-  #   end
-  # end
 
 private
 

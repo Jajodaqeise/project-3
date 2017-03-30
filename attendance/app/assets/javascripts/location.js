@@ -3,22 +3,16 @@ $(()=>{
   schoolLocations = [];
   schoolNames = [];
 
-
   function getLocation() {
     navigator.geolocation.getCurrentPosition(initSearch);
   }
 
   function initSearch(location){
+    console.log(location);
     $('#course_school').keyup((e)=>{
-      findSchool(e,location);
+      findSchool(e, location);
     })
   }
-
-  // const search = (location) => {
-  //   $('#course_school').keyup((e)=>{
-  //     findSchool(e, location);
-  //   })
-  // }
 
   function findSchool(e, location){
     console.log("find", location);
@@ -27,7 +21,7 @@ $(()=>{
       "lat" : location.coords.latitude,
       "lng" : location.coords.longitude
     }
-    console.log(data);
+    console.log("data", data);
     //ajax
     $.ajax({
       method: "POST",
