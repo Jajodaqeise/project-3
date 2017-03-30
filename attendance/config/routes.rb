@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   patch "/courses/:id", to: "courses#update"
   delete "/courses/:id", to: "courses#destroy", as: :delete_course
 
-  get "/courses/:course:id/class_dates/new", to: "class_dates#new", as: :new_class_date
+  get "/courses/:course_id/class_dates/new", to: "class_dates#new", as: :new_class_date
   post "/class_dates", to: "class_dates#create"
   patch "/class_dates/:id", to: "class_dates#update"
   delete "/class_dates/:id", to: "class_dates#destroy", as: :delete_class_date
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   # we are going to be working with JSON, so that we spcify this format as the default one, and also subdomain defined
   namespace :api, defaults: { format: :json } do
     resources :find_schools
+    resources :find_classes
   end
 
 end

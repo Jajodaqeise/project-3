@@ -4,15 +4,20 @@
         <%= f.text_field :name, :placeholder => "Course name" %>
         <br>
         <%= f.label :description %>
-        <%= f.text_field :description, :placeholder => "Course description" %>
+        <%= f.text_area :description, :placeholder => "Course description" %>
         <br>
         <%= f.label :school %>
         <%= f.text_field :school, :placeholder => "School name" %>
-
+        <br>
+        <%= f.label :start_date %>
+        <%= f.date_field :start_date %>
+        <br>
+        <%= f.label :end_date %>
+        <%= f.date_field :end_date %>
+        <br>
 
         <%= f.hidden_field :teacher_id, :value => current_teacher.id %>
 
         <%= f.submit %>
     <% end %>
 </div>
-
