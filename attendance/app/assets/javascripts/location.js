@@ -29,7 +29,7 @@ $(()=>{
       url: "/api/find_schools",
       success: (schools)=>{
         console.log(schools);
-        // dropDownOptions(schools)
+        dropDownOptions(schools)
       },
       error: err =>{
         console.log(err);

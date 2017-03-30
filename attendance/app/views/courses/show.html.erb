@@ -1,0 +1,14 @@
+<%= @course.name %>
+<%= @course.school %>
+
+<p>Check in</p>
+
+<%= @course.description %>
+
+<%= @course.teacher %>
+
+<div class="map"></div>
+
+<% @course.students.each do |student| %>
+  <p><%= student.first_name %> <%= student.last_name %> </p>
+<% end %>
