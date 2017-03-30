@@ -1,0 +1,21 @@
+<div class="course-form">
+    <%= form_for(course) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, :placeholder => "Course name" %>
+        <br>
+        <%= f.label :description %>
+        <%= f.text_field :description, :placeholder => "Course description" %>
+        <br>
+        <%= f.label :school %>
+        <%= f.text_field :school, :placeholder => "School name" %>
+        <br>
+        <%= f.label :latitude %>
+        <%= f.text_field :lat, :placeholder => "latitude" %>
+        <br>
+        <%= f.label :longitude %>
+        <%= f.text_field :lng, :placeholder => "longitude" %>
+        <%= f.hidden_field :teacher_id, :value => current_teacher.id %>
+
+        <%= f.submit %>
+    <% end %>
+</div>
