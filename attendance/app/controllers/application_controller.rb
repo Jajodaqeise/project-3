@@ -5,7 +5,14 @@ class ApplicationController < ActionController::Base
   def require_user
     # redirects to the landing page if the user isn't signed in
     redirect_to '/welcome' unless current_student || current_teacher
-  
+  end
+
+  def require_teacher
+    redirect_back fallback_location: root_path unless current_teacher
+  end
+
+  def require_student
+    redirect_back fallback_location: root_path unless current_student
   end
 
   protected
