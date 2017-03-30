@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   devise_for :teachers
   devise_for :students
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "site#index"
+
+  # Root needs to be where we want to redirect the viewer when they
+  #   log in for devise
+  root to: "courses#index"
+
+  # We can have the landing page be on a different root to redirect
+  #   users that not logged in to -- configured in the application_controller.rb file
+  get "/welcome", to: "site#index", as: :landing
 
   get "/courses", to: "courses#index"
   get "/courses/new", to: "courses#new", as: :new_course
