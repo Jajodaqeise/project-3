@@ -39,24 +39,23 @@ $(()=>{
   }
   getLocation();
 
-  // const dropDownOptions = (schools) => {
-  //   console.log("schools", schools);
+  const dropDownOptions = (schools) => {
+    console.log("schools", schools);
 
-  //   $('.results').empty();
+    $('.results').empty();
 
-  //   for (let i = 0; i< 5; i++) {
-  //     const option = $('<div class="option">');
-  //     schoolNames[i] = schools[i].name;
-  //     const name = $('<p>').text(schoolNames[i]);
-  //     option.append(name);
-  //     schoolLocations[i] = schools[i].geometry.location;
-  //     $('.results').append(option).click(() => {
-  //       $('#course_school').val(schoolNames[i]);
-  //       $('#course_lat').val(schoolLocations[i].lat);
-  //       $('#course_lng').val(schoolLocations[i].lng);
-  //     })
-  //   }
-  // }
+    for (let i = 0; i< 5; i++) {
+      const option = $('<div class="option">');
+      schoolNames[i] = schools[i].name;
+      const name = $('<p>').text(schoolNames[i]);
+      option.append(name);
+      schoolLocations[i] = schools[i].geometry.location;
+      $('.results').append(option).click(() => {
+        $('#course_school').val(schoolNames[i]);
+        $('#course_lat').val(schoolLocations[i].lat);
+        $('#course_lng').val(schoolLocations[i].lng);
+      })
+    }
+  }
 
 })
-
