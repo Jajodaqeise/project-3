@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Attendance</title>
-    <%= csrf_meta_tags %>
+    <head>
+        <title>Attendance</title>
+        <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <link rel="icon" href="images/jumper.ico" type="image/x-icon">
+         <script src="https://use.fontawesome.com/2901339622.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Damion|Yellowtail" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+    <body>
+
+        <input type="checkbox" id="menuToggle">
+
+        <div id="topNav">
+            <label for="menuToggle" class="menu-icon">&#9776;</label>
+            <img id="brandImg" draggable="false" src="/assets/whiteLogo.png"/ />
+        </div>
+
+        <nav class="menu">
+                <a href="/"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
+                <a href="/"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
+                <a href="/"><i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out</a>
+
+        </nav>
+
+                <p class="notice"><%= notice %></p>
+                <p class="alert"><%= alert %></p>
+                <%= yield %>
+    </body>
+
+
 </html>

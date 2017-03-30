@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
     if @course.save
         flash[:notice] = "Course created successfully!"
-        redirect_back fallback_location: course_path
+        redirect_to @course
     else
         flash[:alert] = "Make sure you fill in all fields"
         redirect_back fallback_location: new_course_path

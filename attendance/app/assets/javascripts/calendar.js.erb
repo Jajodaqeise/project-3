@@ -10,7 +10,6 @@ const calFactory = ()=>{
       this.createMonth(this.today.getMonth(), this.today.getFullYear());
 
       this.classDates = [];
-      console.log(<%= @classes %>);
 
       return this;
     },
@@ -75,7 +74,7 @@ const calFactory = ()=>{
             .text(day);
           })
         })
-      
+
 
       return this;
     }
