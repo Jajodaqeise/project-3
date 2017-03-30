@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   patch "/courses/:id", to: "courses#update"
   delete "/courses/:id", to: "courses#destroy", as: :delete_course
 
-  get "/class_dates/new", to: "class_dates#new", as: :new_class_date
+  get "/courses/:course:id/class_dates/new", to: "class_dates#new", as: :new_class_date
   post "/class_dates", to: "class_dates#create"
   patch "/class_dates/:id", to: "class_dates#update"
   delete "/class_dates/:id", to: "class_dates#destroy", as: :delete_class_date
