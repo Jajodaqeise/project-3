@@ -2,17 +2,6 @@ class CoursesController < ApplicationController
 
   def index
 
-
-    response = HTTParty.get(
-          "https://maps.googleapis.com/maps/api/place/textsearch/json?query=shillington+school+in+new+york&key=AIzaSyClwYiKGAt5Ia23N0EK8trzEZ_L-8oYAgk").parsed_response
-          # :headers => headers
-          # ).parsed_response
-
-    results = response["results"]
-
-    results.each do |result|
-    end
-
   end
 
   def new
@@ -29,6 +18,29 @@ class CoursesController < ApplicationController
         redirect_back fallback_location: new_course_path
     end
   end
+
+  def edit
+    @course = Course.find(current_teacher)
+    # render :json => @course
+  end
+
+  # def update
+  #   @turtle = Turtle.find(params[:id])
+  #   if @turtle.update(turtle_params)
+  #     redirect_to @turtle
+  #   else
+  #     render :edit
+  #   end
+  # end
+
+  # def destroy
+  #   # @turtles = Turtle.find(params[:id])
+  #   if @turtle.destroy
+  #     redirect_to turtles_path
+  #   else
+  #     redirect_to @turtle
+  #   end
+  # end
 
 private
 
