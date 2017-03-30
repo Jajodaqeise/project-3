@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def require_user
+    # redirects to the landing page if the user isn't signed in
+    redirect_to '/welcome' unless current_user
+  end
+
   protected
 
   def configure_permitted_parameters
