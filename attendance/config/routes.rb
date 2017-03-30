@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # We can have the landing page be on a different root to redirect
   #   users that not logged in to -- configured in the application_controller.rb file
   get "/welcome", to: "site#index", as: :landing
+  get "/welcome/student", to: "site#student", as: :student_landing
+  get "/welcome/teacher", to: "site#teacher", as: :teacher_landing
+
 
   get "/courses", to: "courses#index"
   get "/courses/new", to: "courses#new", as: :new_course
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
   patch "/courses/:id", to: "courses#update"
   delete "/courses/:id", to: "courses#destroy", as: :delete_course
 
-  get "/class_dates/new", to: "class_dates#new", as: :new_class_date
+  get "/courses/:course:id/class_dates/new", to: "class_dates#new", as: :new_class_date
   post "/class_dates", to: "class_dates#create"
   patch "/class_dates/:id", to: "class_dates#update"
   delete "/class_dates/:id", to: "class_dates#destroy", as: :delete_class_date
