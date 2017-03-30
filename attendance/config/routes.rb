@@ -31,4 +31,11 @@ Rails.application.routes.draw do
 
   get "/teachers/:id", to: "teachers#show", as: :teacher
 
+  # isolate the api controllers under a namespace in Rails this is fairly simple, just create a folder under the app/controllers named api
+  # Rails will automatically map that namespace to a directory matching the name under the controllers folder, in our case the api/ directory.
+  # we are going to be working with JSON, so that we spcify this format as the default one, and also subdomain defined
+  namespace :api, defaults: { format: :json } do
+    resources :find_schools
+  end
+
 end
