@@ -1,9 +1,7 @@
 class CoursesController < ApplicationController
 
   def index
-    headers ={
-      "key" => "AIzaSyClwYiKGAt5Ia23N0EK8trzEZ_L-8oYAgk"
-    }
+
 
     response = HTTParty.get(
           "https://maps.googleapis.com/maps/api/place/textsearch/json?query=shillington+school+in+new+york&key=AIzaSyClwYiKGAt5Ia23N0EK8trzEZ_L-8oYAgk").parsed_response
@@ -14,6 +12,7 @@ class CoursesController < ApplicationController
 
     results.each do |result|
     end
+
   end
 
   def new
@@ -34,7 +33,11 @@ class CoursesController < ApplicationController
 private
 
   def course_params
+
+    params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng)
+
       params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng)
+
   end
 
 end

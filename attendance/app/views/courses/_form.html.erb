@@ -8,14 +8,11 @@
         <br>
         <%= f.label :school %>
         <%= f.text_field :school, :placeholder => "School name" %>
-        <br>
-        <%= f.label :latitude %>
-        <%= f.text_field :lat, :placeholder => "latitude" %>
-        <br>
-        <%= f.label :longitude %>
-        <%= f.text_field :lng, :placeholder => "longitude" %>
+
+
         <%= f.hidden_field :teacher_id, :value => current_teacher.id %>
 
         <%= f.submit %>
     <% end %>
 </div>
+
