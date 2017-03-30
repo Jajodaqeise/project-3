@@ -22,8 +22,6 @@ $(()=>{
     $.ajax({
       method: "POST",
       data: data,
-      processData: false,
-      contentType: false,
       url: "/api/find_schools",
       success: (data)=>{
         console.log(data);
@@ -36,4 +34,3 @@ $(()=>{
   }
   getLocation();
 })
-
