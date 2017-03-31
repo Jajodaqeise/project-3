@@ -1,17 +1,7 @@
 class CoursesController < ApplicationController
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-
-
-    response = HTTParty.get(
-          "https://maps.googleapis.com/maps/api/place/textsearch/json?query=shillington+school+in+new+york&key=AIzaSyClwYiKGAt5Ia23N0EK8trzEZ_L-8oYAgk").parsed_response
-          # :headers => headers
-          # ).parsed_response
-
-    results = response["results"]
-
-    results.each do |result|
-    end
 
   end
 
@@ -30,12 +20,47 @@ class CoursesController < ApplicationController
     end
   end
 
+  def show
+    # @course = Course.find(params[:id])
+    @students = @course.students
+    # byebug
+  end
+
+  def edit
+    # @course = Course.find(params[:id])
+    # render :json => @course
+  end
+
+
+    
+
+  def update
+    # @course = Course.find(params[:id])
+    # byebug
+    if @course.update(course_params)
+      redirect_to course_path(@course)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    # @course = Course.find(params[:id])
+    if @course.destroy
+      redirect_to courses_path
+    else
+      redirect_to @course
+    end
+  end
+
 private
 
+
   def course_params
-
     params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng, :start_date, :end_date)
-
+  end
+  def set_course
+    @course = Course.find(params[:id])
   end
 
 end

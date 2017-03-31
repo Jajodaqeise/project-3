@@ -1,3 +1,8 @@
-<h1>Attender</h1>
+<% content_for :head do %>
+  <% stylesheet_link_tag "style", "site/" %>
+<% end %>
+
+<img  id="siteBrand" draggable="false" src="/assets/whiteLogo.png"/ />
+
 <%= link_to "I am a student", student_landing_path %>
 <%= link_to "I am a teacher", teacher_landing_path %>

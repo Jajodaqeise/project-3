@@ -4,10 +4,18 @@
         <%= f.text_field :name, :placeholder => "Course name" %>
         <br>
         <%= f.label :description %>
-        <%= f.text_area :description, :placeholder => "Course description" %>
+
+        <%= f.text_area :description, cols: 40, rows: 10, :placeholder => "Course description" %>
         <br>
         <%= f.label :school %>
         <%= f.text_field :school, :placeholder => "School name" %>
+        <div class="results"></div>
+
+        <%= f.hidden_field :lat %>
+        <%= f.hidden_field :lng %>
+
+        <%= f.text_area :description, :placeholder => "Course description" %>
+
         <br>
         <%= f.label :start_date %>
         <%= f.date_field :start_date %>
