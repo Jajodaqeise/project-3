@@ -34,9 +34,7 @@ private
 
   def course_params
 
-    params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng)
-
-      params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng)
+    params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng, :start_date, :end_date)
 
   end
 

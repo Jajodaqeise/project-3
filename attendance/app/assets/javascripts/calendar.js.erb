@@ -7,29 +7,47 @@ const calFactory = ()=>{
     init: function(){
       this.dateArr = [];
       this.today = new Date();
-      this.createMonth(this.today.getMonth(), this.today.getFullYear());
-
-      this.classDates = [];
-
+      this.getClasses();
       return this;
     },
+
+    getClasses: function(){
+      const courseId = $('#render-cal').attr('data-course-id');
+      $.ajax({
+        method: "GET",
+        url: `/api/find_classes/course/${courseId}`,
+        success: (data)=>{
+          cal.classes = data.classes;
+          cal.createMonth(this.today.getMonth(), this.today.getFullYear());
+        },
+        error: (err) =>{
+          console.log(err);
+        }
+      })
+    },
+
     createMonth: function(month, year){
-      const firstDay = new Date(year, month, 1, 0, 0, 0, 0);
-      console.log(firstDay);
-      let startDayOfWeek = firstDay.getDay();
+      this.firstDay = new Date(year, month, 1, 0, 0, 0, 0);
+      let startDayOfWeek = this.firstDay.getDay();
       if (config.startOnMonday){
         startDayOfWeek = startDayOfWeek === 0 ? 7 : startDayOfWeek - 1;
       }
       for(let i = 0; i < startDayOfWeek ; i++){
         this.dateArr.push("");
       }
-      for (let i=1; i<=monthDays[firstDay.getMonth()]; i++){
+      for (let i=1; i<=monthDays[this.firstDay.getMonth()]; i++){
         this.dateArr.push(i);
+      }
+      //http://stackoverflow.com/questions/16353211/check-if-year-is-leap-year-in-javascript
+      if (this.firstDay.getMonth() == 1 && ((this.firstDay.getFullYear % 4 == 0) && (this.firstDay.getFullYear % 100 != 0)) || (this.firstDay.getFullYear % 400 == 0)){
+        this.dateArr.push(29);
       }
       this.dateArr = _.chunk(this.dateArr, 7);
       while (this.dateArr[this.dateArr.length -1].length < 7){
         this.dateArr[this.dateArr.length-1].push("");
       }
+
+      this.renderCal();
 
       return this;
     },
@@ -49,7 +67,7 @@ const calFactory = ()=>{
             class: "cal-month"
           })
           .appendTo($table)
-          .text(monthNames[this.today.getMonth()]);
+          .text(monthNames[this.firstDay.getMonth()]);
         const $tablehead = $('<tr>',{
             class: "cal-day-of-week-row cal-row"
           })
@@ -67,24 +85,126 @@ const calFactory = ()=>{
           })
           .appendTo($table);
           week.forEach(day=>{
+            const dayDate = new Date(this.firstDay.getFullYear(), this.firstDay.getMonth(), day, 0,0,0,0);
+            const classDates = findMatchingClasses(dayDate);
             const $td = $('<td>',{
-              class: "call-cell cal-day"
+              class: `call-cell cal-day${isToday(dayDate) && day ? " cal-today" : ""}${classDates.length >0 ? " cal-class-day" : ""}`
             })
             .appendTo($tr)
             .text(day);
+            if (classDates.length > 0){
+              $td.click((e)=>{
+                $('.cal-view-day').removeClass('cal-view-day');
+                $(e.target).addClass('cal-view-day');
+                const $results = $('.class-results').empty()
+                classDates.forEach(date=>{
+                  const $resultContainer = $('<div>',{
+                    class: "class-result"
+                  })
+                  .appendTo($results);
+                  const $resultTitle = $('<h4>',{
+                    class: "class-result-title"
+                  })
+                  .appendTo($resultContainer);
+                  const $resultDate = $('<input>',{
+                    type: "date",
+                    value: `${date.date.getFullYear()}-${padNumber(date.date.getMonth() + 1, 2)}-${padNumber(date.date.getDate(), 2)}`,
+                    class: "cal-edit-date"
+                  })
+                  .appendTo($resultContainer)
+                  .change((e)=>{
+                    this.editClass(date.id, $(e.target).val(), $('.cal-edit-time').val());
+                  });
+                  const $resultTimeHolder = $('<div>',{
+                    class: "input-group clockpicker"
+                  })
+                  .appendTo($resultContainer);
+                  const $timeInput = $('<input>', {
+                    type: "text",
+                    maxlength: 5,
+                    pattern: "([01]?[0-9]|2[0-3]):[0-5][0-9]",
+                    value: `${padNumber(date.date.getHours(), 2)}:${padNumber(date.date.getMinutes(), 2)}`,
+                    class: 'cal-edit-time'
+                  })
+                  .appendTo($resultTimeHolder)
+                  .change((e)=>{
+                    this.editClass(date.id, $('.cal-edit-date').val(), $(e.target).val());
+                  });
+
+                });
+                $('.clockpicker').clockpicker({
+                  donetext: "Done",
+                  autoclose: true
+                });
+              })
+            }
           })
         })
-
-
       return this;
+    },
+    editClass: function(classId, date, time){
+      $.ajax({
+        method: 'PATCH',
+        url: `/api/find_classes/${classId}`,
+        data:{
+          date: date,
+          time: time
+        },
+        success: (data)=>{
+          console.log("EDITED", data)
+          date = date.split('-');
+          cal.classes = data.classes;
+          cal.dateArr = [];
+          cal.createMonth(date[1]-1, date[0]);
+        },
+        error:(err)=>{
+          console.log("ERROR", err);
+        }
+      })
+      console.log(classId, date, time);
+    },
+    deleteClass: function(classId){
+      console.log('delete')
     }
   }
+
+  function padNumber(number, length) {
+    number = number.toString();
+    while (number.length < length){
+      number = "0" + number;
+    }
+    return number;
+  }
+  function isToday(datetime){
+    return cal.today.getFullYear() === datetime.getFullYear() && cal.today.getMonth() === datetime.getMonth() && cal.today.getDate() === datetime.getDate() ? true :false;
+  }
+
+  function findMatchingClasses(datetime){
+    const matching = [];
+    cal.classes.forEach(class_day => {
+      const classDate = new Date(class_day.date);
+      const classId = class_day.id;
+      if(classDate.getFullYear() === datetime.getFullYear() && classDate.getMonth() === datetime.getMonth() && classDate.getDate() === datetime.getDate()){
+        matching.push({
+          date: classDate,
+          id: classId
+        });
+      }
+    })
+    return matching;
+  }
+
+  $('.clockpicker').clockpicker({
+    donetext: "Done",
+    autoclose: true
+  });
   return cal;
 }
 
 $(()=>{
   let cal;
   if ($('#render-cal').length > 0){
-    cal = calFactory().init().renderCal();
+    cal = calFactory().init();
+
   }
 })

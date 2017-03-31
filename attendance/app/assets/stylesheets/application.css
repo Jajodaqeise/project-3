@@ -125,6 +125,18 @@ a {
 }
 
 
+
+.cal-class-day{
+  background-color: cyan;
+}
+.cal-today{
+  background-color: yellow;
+}
+.cal-view-day{
+  background-color:chartreuse;
+}
+
+
 /* End of Nav Bar */
 
 /*Media Q section*/
