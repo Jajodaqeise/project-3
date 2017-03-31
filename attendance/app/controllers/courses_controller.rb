@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
 
@@ -19,37 +20,43 @@ class CoursesController < ApplicationController
     end
   end
 
+  def show
+    # @course = Course.find(params[:id])
+    @students = @course.students
+    # byebug
+  end
+
   def edit
-    @course = Course.find(current_teacher)
+    # @course = Course.find(params[:id])
     # render :json => @course
   end
 
-  # def update
-  #   @turtle = Turtle.find(params[:id])
-  #   if @turtle.update(turtle_params)
-  #     redirect_to @turtle
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    # @course = Course.find(params[:id])
+    # byebug
+    if @course.update(course_params)
+      redirect_to course_path(@course)
+    else
+      render :edit
+    end
+  end
 
-  # def destroy
-  #   # @turtles = Turtle.find(params[:id])
-  #   if @turtle.destroy
-  #     redirect_to turtles_path
-  #   else
-  #     redirect_to @turtle
-  #   end
-  # end
+  def destroy
+    # @course = Course.find(params[:id])
+    if @course.destroy
+      redirect_to courses_path
+    else
+      redirect_to @course
+    end
+  end
 
 private
 
   def course_params
-
     params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng)
-
-      params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng)
-
+  end
+  def set_course
+    @course = Course.find(params[:id])
   end
 
 end

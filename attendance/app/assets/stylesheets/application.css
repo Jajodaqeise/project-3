@@ -15,6 +15,14 @@
  */
 
 
+/*map - show course page*/
+#map {
+  width: 60%;
+  height: 300px;
+  border: 1px solid #000;
+  margin: 2% 0;
+}
+
 .option {
   width: 200px;
   height: auto;

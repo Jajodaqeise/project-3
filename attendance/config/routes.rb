@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/welcome/teacher", to: "site#teacher", as: :teacher_landing
 
 
-  get "/courses", to: "courses#index"
+  get "/courses", to: "courses#index", as: :courses
   get "/courses/new", to: "courses#new", as: :new_course
   get "/courses/:id", to: "courses#show", as: :course
   get "/courses/:id/edit", to: "courses#edit", as: :edit_course
