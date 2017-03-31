@@ -1,0 +1,14 @@
+
+<% if current_teacher.present? %>
+  <h3>Teacher : <%= current_teacher.first_name %> <%= current_teacher.last_name %></h3>
+  <% @teacher_courses.each do |course| %>
+     <div class="course">
+      <%= link_to "Course: #{course.name}", course_path(course) %>
+      <br>
+      <%= link_to "Edit this course", edit_course_path(course) %>
+      <br>
+      <%= link_to "Delete this post", course, method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+    <br>
+  <% end %>
+<% end %>

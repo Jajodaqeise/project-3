@@ -1,10 +1,13 @@
-<%= link_to "Go back", edit_course_path(@course) %>
+<%= link_to "Go back to all courses", courses_path %>
+<%= link_to "Edit", edit_course_path(@course) %>
 
 <h1>Course: <%= @course.name %></h1>
 <p>School: <%= @course.school %></p>
 
 <% if current_student.present? %>
   <button id="checkin">Check in</button>
+  <h1 id="message"></h1>
+  <%= hidden_field_tag(:student_id, current_student.id) %>
 <% end %>
 
 <p>Description: <%= @course.description %></p>

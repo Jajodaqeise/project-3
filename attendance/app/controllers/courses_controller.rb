@@ -2,7 +2,12 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-
+    # @course = Course.all
+    # @student = Student.find(current_student)
+    # @student_courses = @student.courses
+    @teacher = Teacher.find(current_teacher)
+    @teacher_courses = @teacher.courses
+    # byebug
   end
 
   def new
@@ -21,22 +26,14 @@ class CoursesController < ApplicationController
   end
 
   def show
-    # @course = Course.find(params[:id])
     @students = @course.students
     # byebug
   end
 
   def edit
-    # @course = Course.find(params[:id])
-    # render :json => @course
   end
 
-
-    
-
   def update
-    # @course = Course.find(params[:id])
-    # byebug
     if @course.update(course_params)
       redirect_to course_path(@course)
     else
@@ -45,7 +42,6 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    # @course = Course.find(params[:id])
     if @course.destroy
       redirect_to courses_path
     else
@@ -54,7 +50,6 @@ class CoursesController < ApplicationController
   end
 
 private
-
 
   def course_params
     params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng, :start_date, :end_date)
