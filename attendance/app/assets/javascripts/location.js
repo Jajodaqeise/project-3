@@ -1,20 +1,23 @@
 $(()=>{
 
-  schoolLocations = [];
-  schoolNames = [];
+  const schoolLocations = [];
+  const schoolNames = [];
+  const schoolOptions = [];
 
   function getLocation() {
     navigator.geolocation.getCurrentPosition(initSearch);
   }
 
   function initSearch(location){
-    console.log(location);
+    console.log("init", location);
     $('#course_school').keyup((e)=>{
       findSchool(e, location);
     })
   }
 
   function findSchool(e, location){
+    //empty results before doing a new school search
+    $('.results').empty();
     console.log("find", location);
     const data = {
       "search" : $(e.target).val(),
@@ -39,19 +42,21 @@ $(()=>{
   }
   getLocation();
 
-  //new and edit course pages: top 5 options
+  //new and edit course pages: top 5 options of the previous search
   const dropDownOptions = (schools) => {
     console.log("schools", schools);
 
     $('.results').empty();
 
     for (let i = 0; i< 5; i++) {
-      const option = $('<div class="option">');
+      schoolOptions[i] = $('<div class="option">');
       schoolNames[i] = schools[i].name;
       const name = $('<p>').text(schoolNames[i]);
-      option.append(name);
+      schoolOptions[i].append(name);
       schoolLocations[i] = schools[i].geometry.location;
-      $('.results').append(option).click(() => {
+      $('.results').append(schoolOptions[i]);
+      schoolOptions[i].click(() => {
+        console.log("click");
         $('#course_school').val(schoolNames[i]);
         $('#course_lat').val(schoolLocations[i].lat);
         $('#course_lng').val(schoolLocations[i].lng);
