@@ -14,6 +14,20 @@
  *= require_self
  */
 
+
+/*map - show course page*/
+#map {
+  width: 60%;
+  height: 300px;
+  border: 1px solid #000;
+  margin: 2% 0;
+}
+
+.option {
+  width: 200px;
+  height: auto;
+  border: black;
+}
  body, html{
  		padding: 0;
  		margin: 0 auto;
@@ -129,6 +143,18 @@ li {
 
 a {
   text-decoration: none;
+}
+
+
+
+.cal-class-day{
+  background-color: cyan;
+}
+.cal-today{
+  background-color: yellow;
+}
+.cal-view-day{
+  background-color:chartreuse;
 }
 
 
@@ -322,5 +348,7 @@ and (max-device-width : 1366px) {
 }
 
 
+
 /*regular screen end  */
+
 }

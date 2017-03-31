@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/welcome/teacher", to: "site#teacher", as: :teacher_landing
 
 
-  get "/courses", to: "courses#index"
+  get "/courses", to: "courses#index", as: :courses
   get "/courses/new", to: "courses#new", as: :new_course
   get "/courses/:id", to: "courses#show", as: :course
   get "/courses/:id/edit", to: "courses#edit", as: :edit_course
@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   patch "/courses/:id", to: "courses#update"
   delete "/courses/:id", to: "courses#destroy", as: :delete_course
 
-  get "/courses/:course:id/class_dates/new", to: "class_dates#new", as: :new_class_date
-  post "/class_dates", to: "class_dates#create"
+  get "/courses/:course_id/class_dates/new", to: "class_dates#new", as: :new_class_date
+  post "/courses/:course_id/class_dates", to: "class_dates#create", as: :create_class_date
   patch "/class_dates/:id", to: "class_dates#update"
   delete "/class_dates/:id", to: "class_dates#destroy", as: :delete_class_date
 
@@ -39,6 +39,10 @@ Rails.application.routes.draw do
   # we are going to be working with JSON, so that we spcify this format as the default one, and also subdomain defined
   namespace :api, defaults: { format: :json } do
     resources :find_schools
+    get "/find_classes/course/:course_id", to: "find_classes#index"
+    post "/find_classes/course/:course_id", to: "find_classes#create"
+    patch "/find_classes/:id", to: "find_classes#update"
+    delete "/find_classes/:id", to: "find_classes#destroy"
   end
 
 end

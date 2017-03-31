@@ -1,3 +1,19 @@
-<div id="render-cal">
-  
+<%= form_tag(create_class_date_path(:course_id => @course.id), method: "post") do %>
+
+  <% [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday].each do |day| %>
+    <%= label_tag(day) %>
+    <%= check_box_tag(day, "1", @course[day]) %>
+  <% end %>
+
+  <br>
+  <div class="input-group clockpicker">
+    <%= text_field_tag(:time, @course[:time].strftime("%H:%M"), maxlength:5, pattern:"([01]?[0-9]|2[0-3]):[0-5][0-9]") %>
+  </div>
+  <br><%= submit_tag("Set Pattern") %>
+<% end %>
+<div id="render-cal" data-course-id="<%= @course.id %>">
 </div>
+
+<div class="class-results">
+
+</div> 
