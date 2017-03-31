@@ -35,7 +35,7 @@ class CoursesController < ApplicationController
     # @course = Course.find(params[:id])
     # byebug
     if @course.update(course_params)
-      redirect_back fallback_location: course_path(@course)
+      redirect_to course_path(@course)
     else
       render :edit
     end

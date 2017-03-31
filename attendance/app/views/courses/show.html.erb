@@ -1,7 +1,11 @@
+<%= link_to "Go back", edit_course_path(@course) %>
+
 <h1>Course: <%= @course.name %></h1>
 <p>School: <%= @course.school %></p>
 
-<button>Check in</button>
+<% if current_student.present? %>
+  <button id="checkin">Check in</button>
+<% end %>
 
 <p>Description: <%= @course.description %></p>
 
