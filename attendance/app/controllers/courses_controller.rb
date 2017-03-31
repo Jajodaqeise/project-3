@@ -31,6 +31,9 @@ class CoursesController < ApplicationController
     # render :json => @course
   end
 
+
+    
+
   def update
     # @course = Course.find(params[:id])
     # byebug
@@ -52,8 +55,9 @@ class CoursesController < ApplicationController
 
 private
 
+
   def course_params
-    params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng)
+    params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng, :start_date, :end_date)
   end
   def set_course
     @course = Course.find(params[:id])
