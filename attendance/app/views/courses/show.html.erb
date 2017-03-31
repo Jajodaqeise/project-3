@@ -1,14 +1,14 @@
-<%= @course.name %>
-<%= @course.school %>
+<h1>Course: <%= @course.name %></h1>
+<p>School: <%= @course.school %></p>
 
-<p>Check in</p>
+<button>Check in</button>
 
-<%= @course.description %>
+<p>Description: <%= @course.description %></p>
 
-<%= @course.teacher %>
+<h3>Teacher: <%= @course.teacher.first_name %> <%= @course.teacher.last_name %></h3>
 
-<div class="map"></div>
+<%= hidden_field_tag(:lat, @course.lat) %>
+<%= hidden_field_tag(:lng, @course.lng) %>
 
-<% @course.students.each do |student| %>
-  <p><%= student.first_name %> <%= student.last_name %> </p>
-<% end %>
+<div id="map"></div>
+

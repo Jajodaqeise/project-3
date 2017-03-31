@@ -22,6 +22,8 @@ class CoursesController < ApplicationController
 
   def show
     # @course = Course.find(params[:id])
+    @students = @course.students
+    # byebug
   end
 
   def edit
@@ -31,7 +33,7 @@ class CoursesController < ApplicationController
 
   def update
     # @course = Course.find(params[:id])
-    byebug
+    # byebug
     if @course.update(course_params)
       redirect_back fallback_location: course_path(@course)
     else
