@@ -1,8 +1,33 @@
-<% content_for :head do %>
-  <% stylesheet_link_tag "style", "site/" %>
+
+<div id="siteBody">
+
+
+<div id="siteIndexContainer">
+
+<div id="siteInnerContainer">
+
+
+<img  id="siteBrand" draggable="false" src="/assets/whiteLogo.png" />
+
+
+<div id="siteOptions">
+  <br />
+  <br />
+<%= link_to (student_landing_path) do %>
+<button id="siteIndexStudent">I'm a Student</button>
 <% end %>
 
-<img  id="siteBrand" draggable="false" src="/assets/whiteLogo.png"/ />
+<%= link_to (teacher_landing_path) do %>
+<button id="siteIndexTeacher">I'm a Teacher</button>
+<% end %>
 
-<%= link_to "I am a student", student_landing_path %>
-<%= link_to "I am a teacher", teacher_landing_path %>
+<%#siteOptions%>
+</div>
+
+<%#InnerContainer%>
+</div>
+
+<%#siteIndexContainer %>
+</div>
+<%#Take the Whole Body %>
+</div>
