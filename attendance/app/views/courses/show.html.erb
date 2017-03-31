@@ -6,6 +6,8 @@
 
 <% if current_student.present? %>
   <button id="checkin">Check in</button>
+  <h1 id="message"></h1>
+  <%= hidden_field_tag(:student_id, current_student.id) %>
 <% end %>
 
 <p>Description: <%= @course.description %></p>

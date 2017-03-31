@@ -27,6 +27,7 @@ class CoursesController < ApplicationController
 
   def show
     @students = @course.students
+    # byebug
   end
 
   def edit
@@ -49,7 +50,6 @@ class CoursesController < ApplicationController
   end
 
 private
-
 
   def course_params
     params.require(:course).permit(:name, :school, :description, :teacher_id, :lat, :lng, :start_date, :end_date)

@@ -86,13 +86,62 @@ $(()=>{
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
   //add marker
-  var marker = new google.maps.Marker({
+  const marker = new google.maps.Marker({
     position: LatLng,
     map: map
   });
 
   //checkin
+  const checkInButton = $('#message');
 
+  function getLocation() {
+    console.log("geolocation works");
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(validatePosition);
+      } else {
+          checkInButton.innerHTML = "Geolocation is not supported by this browser.";
+      }
+  }
+
+  function validatePosition(position) {
+    console.log("hey");
+    console.log("position", position);
+
+    const studentLat = position.coords.latitude;
+      console.log("student lat", studentLat);
+    const studentLng = position.coords.longitude;
+      console.log("student lng", studentLng);
+    $('#checkin').click(() => {
+      console.log("clicked");
+      if( studentLat === latitude && studentLng === longitude) {
+        console.log("hello");
+        checkInButton.text("You are in class");
+        // ajax call
+      }
+      else {
+        checkInButton.text("You are not in class");
+      }
+
+    });
+  }
+
+
+
+  // $('#checkin').click(() => {
+  //   const id = $('#student_id').val();
+  //   $.ajax({
+  //     method: "POST",
+  //     data: id,
+  //     url: "/attenders",
+  //     success: (data)=>{
+  //       console.log(data);
+  //     },
+  //     error: err =>{
+  //       console.log(err);
+  //     }
+  //   })
+
+  // })
 
 
 
