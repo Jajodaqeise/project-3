@@ -3,13 +3,17 @@
     <head>
         <title>Attendance</title>
         <%= csrf_meta_tags %>
-
+        <%= yield :head %>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+        <link rel="icon" href="/assets/lastIcon.ico" type="image/x-icon">
+         <script src="https://use.fontawesome.com/2901339622.js"></script>
+
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmZUgu0IoJ3_fCRho5cnYkyM09Xyd3738&libraries=geometry,places">
 
-        <link rel="icon" href="images/jumper.ico" type="image/x-icon">
         <script src="https://use.fontawesome.com/2901339622.js"></script>
+
         <link href="https://fonts.googleapis.com/css?family=Damion|Yellowtail" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
 
@@ -18,6 +22,7 @@
 
     <body>
 
+          <% if (current_student || current_teacher) && !@no_nav %>
         <input type="checkbox" id="menuToggle">
 
         <div id="topNav">
@@ -28,9 +33,13 @@
         <nav class="menu">
                 <a href="/"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
                 <a href="/"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
-                <a href="/"><i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out</a>
+                <%= link_to(destroy_student_session_path || destroy_teacher_session_path, :method => :delete) do %>
 
+                <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Logout
+                <% end %>
         </nav>
+        <% end %>
+
 
                 <p class="notice"><%= notice %></p>
                 <p class="alert"><%= alert %></p>
