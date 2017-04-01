@@ -64,26 +64,27 @@ body {
   display: flex;
   width: 100%;
   background-color: #69BAD8;
-  box-shadow: 0 0 40px #885ead;
+  box-shadow: 0 0 40px rgba(0, 0, 0, .5);
+  height: 54px;
 }
 
 
 /*this is the brand logo which is an image inside the topnav*/
 
 #brandImg {
-  height: 10vh;
   margin: 0 auto;
+  height: 5rem;
 }
 
 
 /*Nav Bar*/
 
 .menu-icon {
-  padding: 10px 20px 1px;
+  padding: 0px 20px;
   background-color: #69BAD8;
   color: white;
   cursor: pointer;
-  font-size: 4em;
+  font-size: 3.6rem;
 }
 
 .menu-icon:hover {
@@ -103,7 +104,7 @@ body {
   position: fixed;
   left: -80%;
   z-index: 99;
-  box-shadow: 10px 0 10px -5px #69BAD8;
+  box-shadow: 10px 0 10px -5px rgba(0, 0, 0, .3);
   transition: all .5s ease-in-out;
   -webkit-transition: all .5s ease-in-out;
   -moz-transition: all .5s ease-in-out;
@@ -208,7 +209,7 @@ a {
 #siteInnerContainer {
   min-width: 300px;
   max-width: 300px;
-  margin-top: 25vh;
+  margin-top: 22%;
 }
 
 #siteOptions {
@@ -341,12 +342,12 @@ a {
 }
 
 #newRemember_me{
-  font-size: 1.4em;
+  font-size: 1.6em;
   font-family: 'Crimson Text', serif;
 }
 .newForgotPw{
   display: flex;
-  font-size: 1.4em;
+  font-size: 1.6em;
 
 }
 
@@ -357,18 +358,21 @@ a {
   display: flex;
   justify-content: center;
 }
+
 .newSignUp a{
   display: flex;
-  font-size: 1.4em;
+  font-size: 1.6em;
   color: #00007f;
 }
+
 #memberYet{
-  font-size: 1.4em;
+  font-size: 1.6em;
 }
 
 #checkAndRemember{
 display: flex;
 }
+
 #containerNewCheckForgot{
   display: flex;
   width: 90%;
@@ -383,13 +387,122 @@ display: flex;
   display: flex;
   flex-direction: column;
 }
-/*new_student Ends*/
+/*new_student and Teacher SIGN IN Ends*/
 
+/*SIGN UP FOR BOTH TEACHER & STUDENT DEVISE*/
+#signUpBody{
+  width: 100%;
+  height: 100%;
+  background: #69BAD8;
+}
 
+.firstNameSignUpContainer{
+  display: flex;
+  flex-direction: column;
+}
 
+.firstNameSignUpContainer label{
+align-items:
+}
 
+#firstNameSignUp{
+  display: flex;
+  width: 90%;
+  outline: none;
+  font-size: 1.3em;
+  border: .1vw solid white;
+  font-family: 'Crimson Text', serif;
+  align-self: center;
+}
 
+.lastNameSignUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+#lastNameSignUp{
+  display: flex;
+  width: 90%;
+  outline: none;
+  font-size: 1.3em;
+  border: .1vw solid white;
+  font-family: 'Crimson Text', serif;
+}
+
+.emailSignUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#emailSignUp{
+  display: flex;
+  width: 90%;
+  outline: none;
+  font-size: 1.3em;
+  border: .1vw solid white;
+  font-family: 'Crimson Text', serif;
+}
+
+.passwordSignUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#passwordSignUp{
+  display: flex;
+  width: 90%;
+  outline: none;
+  font-size: 1.3em;
+  border: .1vw solid white;
+  font-family: 'Crimson Text', serif;
+}
+
+.password_confirmationSignUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#password_confirmationSignUp{
+  display: flex;
+  width: 90%;
+  outline: none;
+  font-size: 1.3em;
+  border: .1vw solid white;
+  font-family: 'Crimson Text', serif;
+}
+
+.SignUpSubmitContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#signUpSubmit{
+cursor: pointer;
+border-radius: .2vw;
+border: .1vw solid white;
+font-size: 2em;
+color: white;
+border-radius: .5rem;
+background: none;
+outline: none;
+/*height: 5vh;*/
+width: 80%;
+text-align: center;
+margin-top: 1rem;
+margin-bottom: 1rem;
+font-weight: bold;
+font-family: 'Crimson Text', serif;
+}
+
+#signUpSubmit:hover{
+  background-color: #00007f;
+  cursor: pointer;
+}
 
 
 
@@ -446,7 +559,8 @@ display: flex;
 
 /*Regular Screen*/
 
-@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+/*use regular screen only if all mobile is met*/
+/*@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
   #siteBrand {
     position: relative;
     left: -10vw;
@@ -459,5 +573,5 @@ display: flex;
   #siteIndexStudent {
     width: 100%;
   }
-  /*regular screen end  */
-}
+
+}*/

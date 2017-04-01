@@ -5,8 +5,8 @@ class CoursesController < ApplicationController
     # @course = Course.all
     # @student = Student.find(current_student)
     # @student_courses = @student.courses
-    @teacher = Teacher.find(current_teacher)
-    @teacher_courses = @teacher.courses
+    # @teacher = Teacher.find(current_teacher)
+    # @teacher_courses = @teacher.courses
     # byebug
   end
 
