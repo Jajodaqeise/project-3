@@ -20,7 +20,6 @@
       <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
       <% end %>
       <% end %>
-
 </nav>
 <% end %>
 
@@ -28,6 +27,7 @@
 
 <% if current_teacher %>
   <%= link_to "Edit", edit_course_path(@course) %>
+  <%= link_to "Add Classes", class_dates_path(:course_id => @course.id) %>
 <% end %>
 
 <h1>Course: <%= @course.name %></h1>

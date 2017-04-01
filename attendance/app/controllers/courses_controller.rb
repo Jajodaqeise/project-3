@@ -43,7 +43,13 @@ class CoursesController < ApplicationController
 
   def show
     @students = @course.students
+
+    if current_student
+      @current_student = current_student.courses
+    end
+
     # @current_student = current_student.courses
+
     # byebug
   end
 
