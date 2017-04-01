@@ -165,17 +165,6 @@ a {
 /*LAYOUT ENDS*/
 
 
-.cal-class-day {
-  background-color: cyan;
-}
-
-.cal-today {
-  background-color: yellow;
-}
-
-.cal-view-day {
-  background-color: chartreuse;
-}
 
 
 /*Site index Page*/
@@ -390,13 +379,12 @@ display: flex;
 
 /* CALENDAR */
 .cal-class-day{
-  background-color: cyan;
+  background-color: #888;
+  color: white;
 }
-.cal-today{
-  background-color: yellow;
-}
+
 .cal-view-day{
-  background-color:chartreuse;
+  background-color:#64a5ff;
 }
 .modal{
   -ms-align-items: center;
@@ -405,6 +393,9 @@ display: flex;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-justify-content: center;
   -moz-justify-content: center;
   -ms-justify-content: center;
@@ -412,7 +403,6 @@ display: flex;
   justify-content: center;
   height: 100%;
   left: 0;
-  padding: 10px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -421,8 +411,246 @@ display: flex;
 .modal-content{
   background-color: white;
   padding: 20px;
+  max-height: 90vh;
   max-width: 600px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 85%;
+}
+.modal-content .close{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background-color: indianred;
+  top: 0;
+  right: 0;
+}
+.modal-content .close i.fa{
+  margin-top: -3px;
+  font-size: 3em;
+  color: white;
+}
+
+.modal-content form{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.date-buttons{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  margin: 10px auto 20px;
+}
+
+.date-buttons input{
+  background-color: #64a5ff;
+  border-radius: .5rem;
+  border: 0px solid transparent;
+  color: white;
+  display: block;
+  margin: 0 5px;
+  padding: 5px;
+  width: 120px;
+}
+.modal-content form .input-group{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.check-boxes-container{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  margin: 10px auto 20px;
+}
+.check-box-container{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 5px 10px;
+}
+
+.modal-content form label{
+  font-size: 1.2em;
+  margin: 10px 0 2px;
+}
+
+.modal-content h2{
+  font-size: 2em;
+}
+
+.modal-content form input{
+  font-size: 1.5em;
+}
+
+
+#render-cal{
+  border: 1px solid #aaa;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 15px 0;
+  width: 99%;
+}
+.cal-row{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+}
+.cal-day-of-week-row{
+  border-bottom: 1px solid #bbb;
+  margin-bottom: 5px;
+  padding: 10px 0;
+}
+
+caption{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.month-option{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  height: 20px;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  width: 20px;
+}
+
+caption select{
+  font-size: 1.2em;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  padding: 7px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.new-class-button{
+  -ms-align-items: center;
+  align-items: center;
+  background-color: #64a5ff;
+  border-radius: .5rem;
+  color: white;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  font-size: 2em;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  max-width: 500px;
+  margin: 30px auto;
   width: 100%;
+}
+
+
+.class-results{
+  margin: 20px auto;
+  max-width: 500px;
+  width: 100%;
+}
+.class-result{
+  background-color:#888;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 2em;
+  padding: .01rem 10px;
+}
+.selected-result{
+  background-color: #64a5ff;
+}
+
+caption i.fa{
+  color: #999;
+  font-size: 3em;
+}
+
+select:focus{
+  outline: none;
+}
+
+.cal-cell{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flex;
+  display: inline-flex;
+  font-size: 1.5em;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  width: 12.5%;
+  border: 1px solid white;
 }
 
 

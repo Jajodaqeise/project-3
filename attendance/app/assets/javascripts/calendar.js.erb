@@ -29,6 +29,7 @@ const calFactory = ()=>{
     },
 
     createMonth: function(month, year){
+      this.dateArr = [];
       this.firstDay = new Date(year, month, 1, 0, 0, 0, 0);
       let startDayOfWeek = this.firstDay.getDay();
       if (config.startOnMonday){
@@ -54,7 +55,7 @@ const calFactory = ()=>{
       return this;
     },
     renderCal: function(){
-
+        $('.class-results').empty()
         const $calContainer = $('#render-cal').empty();
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -68,8 +69,66 @@ const calFactory = ()=>{
         const $caption = $('<caption>',{
             class: "cal-month"
           })
-          .appendTo($table)
-          .text(monthNames[this.firstDay.getMonth()]);
+          .appendTo($table);
+        const $prevMonth = $('<div>',{
+            class: "month-option"
+          })
+          .appendTo($caption)
+          .click((e)=>{
+            this.createMonth(this.firstDay.getUTCMonth() - 1, this.firstDay.getUTCFullYear());
+          });
+        const $prevIcon = $('<i>',{
+          class: 'fa fa-caret-left'
+        }).appendTo($prevMonth);
+        const $selectDiv = $("<div>").appendTo($caption);
+        const $monthSelect = $('<select>', {
+            class: "month-select",
+          })
+          .appendTo($selectDiv)
+          .change((e)=>{
+            this.createMonth($(e.target).val(), $(".year-select").val());
+          });
+        monthNames.forEach((monthName, m)=>{
+          const $month = $('<option>',{
+            class: "month-option",
+            value: m
+          })
+          .appendTo($monthSelect)
+          .text(monthName)
+          if (m == this.firstDay.getUTCMonth()){
+            $month.prop('selected', true);
+          }
+        })
+        const $yearSelect = $('<select>',{
+          class: "year-select"
+        })
+          .appendTo($selectDiv)
+          .change((e)=>{
+            this.createMonth($('.month-select').val(), $(e.target).val());
+          });
+        for (y = this.today.getUTCFullYear() - 4; y <= this.today.getUTCFullYear() + 4; y++){
+          const $yearOption = $('<option>', {
+            class: "year-option",
+            value: y
+          })
+          .appendTo($yearSelect)
+          .text(y)
+          if (y == this.firstDay.getUTCFullYear()){
+            $yearOption.prop('selected', true);
+          }
+        }
+
+        const $nextMonth = $('<div>',{
+          class: "month-option"
+        })
+          .appendTo($caption)
+          .click((e)=>{
+            this.createMonth(this.firstDay.getUTCMonth() + 1, this.firstDay.getUTCFullYear());
+          })
+        const $nextIcon = $('<i>',{
+            class: 'fa fa-caret-right'
+          }).appendTo($nextMonth);
+
         const $tablehead = $('<tr>',{
             class: "cal-day-of-week-row cal-row"
           })
@@ -90,7 +149,7 @@ const calFactory = ()=>{
             const dayDate = new Date(this.firstDay.getFullYear(), this.firstDay.getMonth(), day, 0,0,0,0);
             const classDates = findMatchingClasses(dayDate);
             const $td = $('<td>',{
-              class: `call-cell cal-day${isToday(dayDate) ? " cal-today" : ""}${classDates.length > 0 ? " cal-class-day" : ""}`
+              class: `cal-cell cal-day${day && isToday(dayDate) ? " cal-today" : ""}${day && classDates.length > 0 ? " cal-class-day" : ""}`
             })
             .appendTo($tr)
             .text(day);
@@ -106,6 +165,13 @@ const calFactory = ()=>{
                   .appendTo($results)
                   .click((e)=>{
                     $('.modal-form').load(`/class_dates/${date.id}/edit`, ()=>{
+                      $('.selected-result').removeClass('selected-result');
+                      if ($(e.target).hasClass('class-result')){
+                        $(e.target).addClass('selected-result');
+                      } else {
+                        $(e.target).parent().addClass('selected-result');
+                      }
+
                       showModalForm();
                     });
 
@@ -125,7 +191,13 @@ const calFactory = ()=>{
             }
           })
         })
+        this.resize();
+
       return this;
+    },
+    resize: function(){
+      $('.cal').width($('#render-cal').width()-30);
+      $('td').height($('td').width());
     },
     editClass: function(classId, date, time){
       $.ajax({
@@ -180,7 +252,9 @@ const calFactory = ()=>{
     })
     return matching;
   }
-
+  $(window).resize((e)=>{
+    cal.resize();
+  })
 
 
   $('.clockpicker').clockpicker({
@@ -193,13 +267,14 @@ const calFactory = ()=>{
 function showModalForm(){
   $('.hidden-form').hide();
   $("#class_date_repeat").change(()=>{
-    $('.hidden-form').toggle();
+    $('.pattern-container').toggle();
   });
   $('.modal').fadeIn('fast');
   $('.clockpicker').clockpicker({
     donetext: "Done",
     autoclose: true
   });
+
 }
 
 $(document).on('turbolinks:load', function() {
