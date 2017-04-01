@@ -63,7 +63,7 @@ body {
 #topNav {
   display: flex;
   width: 100%;
-  background-color: #69BAD8;
+  background-color: #64a5ff;
   box-shadow: 0 0 40px rgba(0, 0, 0, .5);
   height: 54px;
 }
@@ -81,7 +81,7 @@ body {
 
 .menu-icon {
   padding: 0px 20px;
-  background-color: #69BAD8;
+  background-color: #64a5ff;
   color: white;
   cursor: pointer;
   font-size: 3.6rem;
@@ -100,7 +100,7 @@ body {
   font-weight: bold;
   min-width: 20%;
   height: 100%;
-  background-color: #69BAD8;
+  background-color: #64a5ff;
   position: fixed;
   left: -80%;
   z-index: 99;
@@ -184,7 +184,7 @@ a {
 #siteBody {
   width: 100%;
   height: 100%;
-  background: #69BAD8;
+  background: #64a5ff;
 }
 
 #siteBody a {
@@ -196,7 +196,7 @@ a {
   display: flex;
   margin: 0 auto;
   flex-direction: column;
-  background-color: #69BAD8;
+  background-color: #64a5ff;
   max-width: 900px;
   min-height: 100vh;
   align-items: center;
@@ -210,7 +210,7 @@ a {
 #siteInnerContainer {
   min-width: 300px;
   max-width: 300px;
-  margin-top: 22%;
+  margin-top: 18%;
 }
 
 #siteOptions {
@@ -224,7 +224,6 @@ a {
 #siteIndexStudent {
   align-self: center;
   cursor: pointer;
-  border-radius: .2vw;
   border: .1vw solid white;
   font-size: 2em;
   color: white;
@@ -271,7 +270,7 @@ a {
 #newBody {
   width: 100%;
   height: 100%;
-  background: #69BAD8;
+  background: #64a5ff;
 }
 #newBody a {
   font-weight: bold;
@@ -285,7 +284,6 @@ a {
 #newEmail {
   border-top-right-radius: .5rem;
   border-top-left-radius: .5rem;
-  border-bottom-color: purple;
   height: 5vh;
   width: 90%;
   outline: none;
@@ -301,13 +299,12 @@ a {
 #newPassword{
     border-bottom-right-radius: .5rem;
     border-bottom-left-radius: .5rem;
-    border-top: purple;
     height: 5vh;
     width: 90%;
     outline: none;
     font-size: 2em;
     border: .1vw solid white;
-    border-top-color: grey;
+    border-top-color: #e1e1e1;
     font-family: 'Crimson Text', serif;
 }
 #newSessionBrand{
@@ -321,7 +318,6 @@ a {
 
 #newSubmit{
   cursor: pointer;
-  border-radius: .2vw;
   border: .1vw solid white;
   font-size: 2em;
   color: white;
@@ -390,31 +386,6 @@ display: flex;
 }
 /*new_student and Teacher SIGN IN Ends*/
 
-/*SIGN UP FOR BOTH TEACHER & STUDENT DEVISE*/
-#signUpBody{
-  width: 100%;
-  height: 100%;
-  background: #69BAD8;
-}
-
-.firstNameSignUpContainer{
-  display: flex;
-  flex-direction: column;
-}
-
-
-.firstNameSignUpContainer label{
-align-items:
-}
-
-#firstNameSignUp{
-  display: flex;
-  width: 90%;
-  outline: none;
-  font-size: 1.3em;
-  border: .1vw solid white;
-  font-family: 'Crimson Text', serif;
-  align-self: center;
 
 /* CALENDAR */
 .cal-class-day{
@@ -453,6 +424,33 @@ align-items:
   width: 100%;
 }
 
+/*SIGN UP FOR BOTH TEACHER & STUDENT DEVISE*/
+#signUpBody{
+  width: 100%;
+  height: 100%;
+  background: #64a5ff;
+}
+
+.firstNameSignUpContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+#firstNameSignUp{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  border-top-right-radius: .5rem;
+  border-top-left-radius: .5rem;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+  align-self: center;
+}
+
+
 .lastNameSignUpContainer{
   display: flex;
   flex-direction: column;
@@ -462,9 +460,11 @@ align-items:
 #lastNameSignUp{
   display: flex;
   width: 90%;
+  height: 5vh;
   outline: none;
-  font-size: 1.3em;
+  font-size: 2em;
   border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
   font-family: 'Crimson Text', serif;
 }
 
@@ -477,9 +477,11 @@ align-items:
 #emailSignUp{
   display: flex;
   width: 90%;
+  height: 5vh;
   outline: none;
-  font-size: 1.3em;
+  font-size: 2em;
   border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
   font-family: 'Crimson Text', serif;
 }
 
@@ -490,11 +492,12 @@ align-items:
 }
 
 #passwordSignUp{
-  display: flex;
+  height: 5vh;
   width: 90%;
   outline: none;
-  font-size: 1.3em;
+  font-size: 2em;
   border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
   font-family: 'Crimson Text', serif;
 }
 
@@ -507,8 +510,10 @@ align-items:
 #password_confirmationSignUp{
   display: flex;
   width: 90%;
+  height: 5vh;border-bottom-right-radius: .5rem;
+  border-bottom-left-radius: .5rem;
   outline: none;
-  font-size: 1.3em;
+  font-size: 2em;
   border: .1vw solid white;
   font-family: 'Crimson Text', serif;
 }
@@ -517,18 +522,17 @@ align-items:
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: .6vh;
 }
 
 #signUpSubmit{
 cursor: pointer;
-border-radius: .2vw;
 border: .1vw solid white;
 font-size: 2em;
 color: white;
 border-radius: .5rem;
 background: none;
 outline: none;
-/*height: 5vh;*/
 width: 80%;
 text-align: center;
 margin-top: 1rem;
@@ -541,6 +545,89 @@ font-family: 'Crimson Text', serif;
   background-color: #00007f;
   cursor: pointer;
 }
+
+#SignUpErrorMsg{
+  font-family: 'Crimson Text', serif;
+  font-size: 1.59em;
+}
+#SignUpErrorMsg h2 {
+  display: none;
+}
+#SignUpErrorMsg ul{
+  padding: 0;
+}
+#SignUpErrorMsg li {
+  text-align: left;
+  color: red;
+  font-weight: bold;
+}
+
+.field_with_errors{
+  position: relative;
+  width: 100%;
+  left: 13px;
+  height: 5vh;
+}
+/*REGISTRATION PAGE END*/
+
+/*FORGOT PW STARTS HERE*/
+
+#forgotEmailField{
+  height: 5vh;
+  width: 90%;
+  outline: none;
+  border-radius: .5rem;
+  font-size: 2em;
+  border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#forgotEmailSubmit{
+  cursor: pointer;
+  border: .1vw solid white;
+  font-size: 2em;
+  color: white;
+  border-radius: .5rem;
+  background: none;
+  outline: none;
+  width: 80%;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+}
+#forgotEmailSubmit:hover {
+background-color: #00007f;
+cursor: pointer;
+}
+
+#resetInstructions{
+  font-size: 1.6em;
+}
+
+#forgotPasswordError{
+  font-family: 'Crimson Text', serif;
+  font-size: 1.6em;
+  color: red;
+  text-align: center;
+}
+
+#forgotPasswordError ul{
+  padding: 0;
+}
+
+#forgotPasswordError li{
+  text-align: center;
+}
+
+#forgotPasswordError h2{
+  display: none;
+}
+
+
+
 
 
 
