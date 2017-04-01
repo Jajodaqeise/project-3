@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330191159) do
+ActiveRecord::Schema.define(version: 20170331210246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,13 +30,6 @@ ActiveRecord::Schema.define(version: 20170330191159) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_class_dates_on_course_id", using: :btree
-  end
-
-  create_table "course_student_tables", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "course_id"
-    t.index ["course_id"], name: "index_course_student_tables_on_course_id", using: :btree
-    t.index ["student_id"], name: "index_course_student_tables_on_student_id", using: :btree
   end
 
   create_table "courses", force: :cascade do |t|
@@ -59,6 +52,13 @@ ActiveRecord::Schema.define(version: 20170330191159) do
     t.boolean  "saturday",    default: false
     t.datetime "time"
     t.index ["teacher_id"], name: "index_courses_on_teacher_id", using: :btree
+  end
+
+  create_table "courses_students", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_courses_students_on_course_id", using: :btree
+    t.index ["student_id"], name: "index_courses_students_on_student_id", using: :btree
   end
 
   create_table "students", force: :cascade do |t|
