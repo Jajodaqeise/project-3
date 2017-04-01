@@ -1,10 +1,11 @@
-$(()=>{
+// $(()=>{
+  $(document).on('turbolinks:load', function() {
 
   const schoolLocations = [];
   const schoolNames = [];
   const schoolOptions = [];
 
-
+  // modal
   const modal = $('#modal');
   const modalMessage = $('#modal p');
 
@@ -14,7 +15,7 @@ $(()=>{
 
   function getLocation() {
     navigator.geolocation.getCurrentPosition(initSearch);
-    toggleModal();
+    // toggleModal();
 
     // check in button to check in at a class
     $('#checkin').click(() => {
@@ -25,7 +26,7 @@ $(()=>{
 
   function initSearch(location){
     console.log("init", location);
-    toggleModal();
+    // toggleModal();
     $('#course_school').keyup((e)=>{
       console.log("keyup");
       findSchool(e, location);
@@ -82,6 +83,7 @@ $(()=>{
   }
 
   //show course page
+  // toggleModal();
   const latitude = parseFloat($('#lat').val());
   const longitude = parseFloat($('#lng').val());
   const LatLng = {lat: latitude, lng: longitude};
@@ -107,6 +109,7 @@ $(()=>{
     position: LatLng,
     map: map
   });
+  // toggleModal();
 
   //checkin
   const checkInButton = $('#message');
@@ -126,18 +129,20 @@ $(()=>{
         toggleModal();
         checkInButton.text("You are in class");
         // ajax call
-        const student = $('#student').val();
-        const course = $('#course_id').val();
+        const student = $('#student_id').val();
+        // console.log("student_id", student);
+        //class date goes here to make a post ajax request
+
         const data = {
            student: student,
-           course: course
+           date: date
         }
         $.ajax({
           method: "POST",
           data: data,
           url: "/attenders",
           success: (data)=>{
-            console.log(data);
+            console.log("attender", data);
           },
           error: err =>{
             console.log(err);
@@ -150,14 +155,5 @@ $(()=>{
       //   checkInButton.text("You are not in class");
       // }
   // }
-
-
-
-
-
-
-
-
-
 
 })

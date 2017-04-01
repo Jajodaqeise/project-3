@@ -1,28 +1,38 @@
 
 <% if current_teacher %>
-  <h3>Teacher : <%= current_teacher.first_name %> <%= current_teacher.last_name %></h3>
+  <h1>Teacher : <%= current_teacher.first_name %> <%= current_teacher.last_name %></h1>
   <%= link_to "Create a new Course", new_course_path %>
+  <br>
+  <br>
   <% current_teacher.courses.each do |course| %>
      <div class="course">
       <%= link_to "Course: #{course.name}", course_path(course) %>
       <br>
       <%= link_to "Edit this course", edit_course_path(course) %>
       <br>
-      <%= link_to "Delete this post", course, method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= link_to "Delete this course", course, method: :delete, data: {confirm: "Are you sure?"} %>
     </div>
     <br>
   <% end %>
 <% end %>
 
 <% if current_student %>
-  <h3>Student: <%= current_student.first_name %> <%= current_student.last_name %></h3>
-  <% @courses.each do |course| %>
-     <div class="course">
-      <%= link_to "Course: #{course.name}", course_path(course) %>
-      <br>
-      <%= button_to "Register in this course", register_course_path(current_student, course) %>
-      <br>
+  <h1>Student: <%= current_student.first_name %> <%= current_student.last_name %></h1>
+
+  <!-- search course -->
+  <div class="course-search">
+    <%= form_tag do %>
+        <%= label_tag :search_course %>
+        <%= text_field_tag :course_name %>
+        <div class="results"></div>
+    <% end %>
+  </div>
+
+  <h2>My courses</h2>
+  <% current_student.courses.each do |enrolled_course| %>
+    <div class="enrolled-course">
+      <p><%= link_to "Course: #{enrolled_course.name}", course_path(enrolled_course) %></p>
     </div>
-    <br>
   <% end %>
+
 <% end %>

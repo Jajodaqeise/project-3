@@ -10,12 +10,12 @@
 <% if current_student %>
   <button id="checkin">Check in</button>
   <h1 id="message"></h1>
-  <%= hidden_field_tag(:student, current_student) %>
+  <%= hidden_field_tag(:student_id, current_student.id) %>
 <% end %>
 
 <p>Description: <%= @course.description %></p>
 
-<h3>Teacher: <%= @course.teacher.first_name %> <%= @course.teacher.last_name %></h3>
+<h2>Teacher: <%= @course.teacher.first_name %> <%= @course.teacher.last_name %></h2>
 
 <%= hidden_field_tag(:course_id, @course.id) %>
 <%= hidden_field_tag(:lat, @course.lat) %>
@@ -24,9 +24,9 @@
 <div id="map"></div>
 
 <% if current_teacher %>
+  <h2>Enrolled students</h2>
   <% @students.each do |student| %>
-    <p> <%= student.first_name %> <%= student.last_name %></p>
-    <p> <%= student.first_name %> <%= student.last_name %></p>
+    <p> <%= link_to "#{student.first_name}#{student.last_name} ------- attendance %" %></p>
   <% end %>
 <% end %>
 

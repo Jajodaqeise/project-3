@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     resources :find_schools
     resources :class_dates
     resources :class_patterns
+    resources :find_courses
   end
 
 end

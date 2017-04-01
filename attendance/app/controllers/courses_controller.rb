@@ -3,6 +3,20 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
+    if params[:search]
+      @courses = Course.search(params[:search]).order("created_at DESC")
+    else
+      @courses = Course.all.order("created_at DESC")
+    end
+
+    # @course = Course.new
+
+    # @student_courses = current_student.courses
+    # @enrolled_courses = []
+    # @student_courses.each do |course|
+    #   @course = Course.find(course)
+    #   @enrolled_courses << @course
+    # end
   end
 
   def new
