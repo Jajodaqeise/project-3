@@ -1,0 +1,20 @@
+<%= form_for(class_pattern) do |f| %>
+  <%= f.hidden_field(:course_id) %>
+  <%= f.date_field(:start_date) %>
+  <%= f.date_field(:end_date) %>
+  <div class="input-group clockpicker">
+    <%= f.time_field(:time) %>
+  </div>
+  <div class="check-boxes-container">
+    <% [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday].each do |day| %>
+
+    <div class="check-box-container">
+      <%= f.label(day) %>
+      <%= f.check_box(day) %>
+    </div>
+
+    <% end %>
+  </div>
+
+<%= f.submit %>
+<% end %>

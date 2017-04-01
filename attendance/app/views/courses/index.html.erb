@@ -1,5 +1,6 @@
 
-<% if (current_student || current_teacher) && !@no_nav %>
+
+
 <input type="checkbox" id="menuToggle">
 
 <div id="topNav">
@@ -23,17 +24,32 @@
       <% end %>
 
 </nav>
-<% end %>
+
 
 <% if current_teacher.present? %>
+
   <h3>Teacher : <%= current_teacher.first_name %> <%= current_teacher.last_name %></h3>
-  <% @teacher_courses.each do |course| %>
+  <%= link_to "Create a new Course", new_course_path %>
+  <% current_teacher.courses.each do |course| %>
      <div class="course">
       <%= link_to "Course: #{course.name}", course_path(course) %>
       <br>
       <%= link_to "Edit this course", edit_course_path(course) %>
       <br>
       <%= link_to "Delete this post", course, method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+    <br>
+  <% end %>
+<% end %>
+
+<% if current_student %>
+  <h3>Student: <%= current_student.first_name %> <%= current_student.last_name %></h3>
+  <% @courses.each do |course| %>
+     <div class="course">
+      <%= link_to "Course: #{course.name}", course_path(course) %>
+      <br>
+      <%= button_to "Register in this course", register_course_path(current_student, course) %>
+      <br>
     </div>
     <br>
   <% end %>

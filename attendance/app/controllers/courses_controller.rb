@@ -2,12 +2,16 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
+
     # @course = Course.all
     # @student = Student.find(current_student)
     # @student_courses = @student.courses
     # @teacher = Teacher.find(current_teacher)
     # @teacher_courses = @teacher.courses
-    # byebug
+
+
+    @courses = Course.all
+
   end
 
   def new
@@ -27,6 +31,7 @@ class CoursesController < ApplicationController
 
   def show
     @students = @course.students
+    @current_student = current_student.courses
     # byebug
   end
 

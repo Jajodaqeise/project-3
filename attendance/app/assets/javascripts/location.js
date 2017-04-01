@@ -6,11 +6,17 @@ $(()=>{
 
   function getLocation() {
     navigator.geolocation.getCurrentPosition(initSearch);
+
+    // check in button to check in at a class
+    $('#checkin').click(() => {
+      navigator.geolocation.getCurrentPosition(validateStudentLocation);
+    });
   }
 
   function initSearch(location){
     console.log("init", location);
     $('#course_school').keyup((e)=>{
+      console.log("keyup");
       findSchool(e, location);
     })
   }
@@ -94,35 +100,25 @@ $(()=>{
   //checkin
   const checkInButton = $('#message');
 
-  function getLocation() {
-    console.log("geolocation works");
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(validatePosition);
-      } else {
-          checkInButton.innerHTML = "Geolocation is not supported by this browser.";
-      }
-  }
+  function validateStudentLocation(location) {
+    // console.log("student location", location);
 
-  function validatePosition(position) {
-    console.log("hey");
-    console.log("position", position);
-
-    const studentLat = position.coords.latitude;
+    const studentLat = location.coords.latitude;
       console.log("student lat", studentLat);
-    const studentLng = position.coords.longitude;
+      console.log("course lat", latitude);
+    const studentLng = location.coords.longitude;
       console.log("student lng", studentLng);
-    $('#checkin').click(() => {
-      console.log("clicked");
-      if( studentLat === latitude && studentLng === longitude) {
-        console.log("hello");
+      console.log("course lng", longitude);
+      // console.log("clicked");
+      if( studentLat.toFixed(2) === latitude.toFixed(2) && studentLng.toFixed(2) === longitude.toFixed(2)) {
+        // console.log("hello");
         checkInButton.text("You are in class");
         // ajax call
+
       }
       else {
         checkInButton.text("You are not in class");
       }
-
-    });
   }
 
 

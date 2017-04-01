@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330191159) do
+
+ActiveRecord::Schema.define(version: 20170331210246) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,17 +29,30 @@ ActiveRecord::Schema.define(version: 20170330191159) do
   create_table "class_dates", force: :cascade do |t|
     t.integer  "course_id"
     t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "class_pattern_id"
+    t.boolean  "repeat",           default: false
+    t.index ["class_pattern_id"], name: "index_class_dates_on_class_pattern_id", using: :btree
     t.index ["course_id"], name: "index_class_dates_on_course_id", using: :btree
   end
 
-  create_table "course_student_tables", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "course_id"
-    t.index ["course_id"], name: "index_course_student_tables_on_course_id", using: :btree
-    t.index ["student_id"], name: "index_course_student_tables_on_student_id", using: :btree
+
+  create_table "class_patterns", force: :cascade do |t|
+    t.integer  "course_id"
+    t.boolean  "monday",     default: false
+    t.boolean  "tuesday",    default: false
+    t.boolean  "wednesday",  default: false
+    t.boolean  "thursday",   default: false
+    t.boolean  "friday",     default: false
+    t.boolean  "saturday",   default: false
+    t.boolean  "sunday",     default: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "time"
+    t.index ["course_id"], name: "index_class_patterns_on_course_id", using: :btree
   end
+
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -46,19 +61,18 @@ ActiveRecord::Schema.define(version: 20170330191159) do
     t.integer  "teacher_id"
     t.decimal  "lat"
     t.decimal  "lng"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.datetime "start_date"
     t.datetime "end_date"
-    t.boolean  "sunday",      default: false
-    t.boolean  "monday",      default: false
-    t.boolean  "tuesday",     default: false
-    t.boolean  "wednesday",   default: false
-    t.boolean  "thursday",    default: false
-    t.boolean  "friday",      default: false
-    t.boolean  "saturday",    default: false
-    t.datetime "time"
     t.index ["teacher_id"], name: "index_courses_on_teacher_id", using: :btree
+  end
+
+  create_table "courses_students", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_courses_students_on_course_id", using: :btree
+    t.index ["student_id"], name: "index_courses_students_on_student_id", using: :btree
   end
 
   create_table "students", force: :cascade do |t|
@@ -99,4 +113,5 @@ ActiveRecord::Schema.define(version: 20170330191159) do
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "class_dates", "class_patterns"
 end
