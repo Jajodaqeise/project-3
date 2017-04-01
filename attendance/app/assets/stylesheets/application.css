@@ -16,12 +16,39 @@
 
 
 /*map - show course page*/
-
 #map {
   width: 60%;
   height: 300px;
   border: 1px solid #000;
   margin: 2% 0;
+}
+
+/* "loading" animated modal, while the geolocation hasn't been retrieved*/
+#modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.75);
+}
+
+#modal section {
+  position: relative;
+  background-color: white;
+  width: 50%;
+  padding: 2em;
+  margin: 0 auto;
+
+  /* This doesn't quite vertically center the section, but if you knew the exact height of the section, you could make the margin-top negative one/half. E.g. for a height of 300 px, margin-top: -150px.*/
+  top: 50%;
+  margin-top: -5%;
+}
+
+#modal p {
+  display: block;
+  margin: 0 auto;
 }
 
 .option {

@@ -12,6 +12,18 @@ class CoursesController < ApplicationController
 
     @courses = Course.all
 
+    # @course = Course.new
+  if current_student
+    @student_courses = current_student.courses
+    @enrolled_courses = []
+    @student_courses.each do |course|
+      @course = Course.find(course)
+      @enrolled_courses << @course
+    end
+  end
+
+
+
   end
 
   def new
@@ -31,7 +43,7 @@ class CoursesController < ApplicationController
 
   def show
     @students = @course.students
-    @current_student = current_student.courses
+    # @current_student = current_student.courses
     # byebug
   end
 

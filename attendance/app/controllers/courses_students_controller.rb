@@ -5,7 +5,20 @@ class CoursesStudentsController < ApplicationController
     # byebug
     @course = Course.find(params[:id])
     @student.courses << @course
-    byebug
+    if @student.save
+        flash[:notice] = "Student registered successfully!"
+        redirect_to course_path @course
+    else
+        flash[:alert] = "Couldn't registered for this course"
+        redirect_back fallback_location: courses_path
+    end
+  end
+
+  def show
+    @student = Student.find(params[:student_id])
+    # byebug
+    @course = Course.find(params[:id])
+    @student.courses << @course
     if @student.save
         flash[:notice] = "Student registered successfully!"
         redirect_to course_path @course
