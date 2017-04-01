@@ -1,5 +1,6 @@
+let courseId;
 const config = {
-  startOnMonday: true
+  startOnMonday: false
 }
 const calFactory = ()=>{
   const monthDays = [31,28,31,30,31,30,31,31,30,31,30,31];
@@ -12,12 +13,13 @@ const calFactory = ()=>{
     },
 
     getClasses: function(){
-      const courseId = $('#render-cal').attr('data-course-id');
+       courseId = $('#render-cal').attr('data-course-id');
       $.ajax({
         method: "GET",
-        url: `/api/find_classes/course/${courseId}`,
+        url: `/api/class_dates/${courseId}`,
         success: (data)=>{
           cal.classes = data.classes;
+          console.log(cal.classes);
           cal.createMonth(this.today.getMonth(), this.today.getFullYear());
         },
         error: (err) =>{
@@ -88,7 +90,7 @@ const calFactory = ()=>{
             const dayDate = new Date(this.firstDay.getFullYear(), this.firstDay.getMonth(), day, 0,0,0,0);
             const classDates = findMatchingClasses(dayDate);
             const $td = $('<td>',{
-              class: `call-cell cal-day${isToday(dayDate) && day ? " cal-today" : ""}${classDates.length >0 ? " cal-class-day" : ""}`
+              class: `call-cell cal-day${isToday(dayDate) ? " cal-today" : ""}${classDates.length > 0 ? " cal-class-day" : ""}`
             })
             .appendTo($tr)
             .text(day);
@@ -101,41 +103,24 @@ const calFactory = ()=>{
                   const $resultContainer = $('<div>',{
                     class: "class-result"
                   })
-                  .appendTo($results);
+                  .appendTo($results)
+                  .click((e)=>{
+                    $('.modal-form').load(`/class_dates/${date.id}/edit`, ()=>{
+                      showModalForm();
+                    });
+
+                  });
+                  let hours = date.date.getUTCHours();
+                  const formattedTime = `${date.date.toDateString()} ${hours % 12}:${padNumber(date.date.getUTCMinutes(), 2)} ${hours>12 ? "PM" : "AM"}`;
                   const $resultTitle = $('<h4>',{
                     class: "class-result-title"
                   })
-                  .appendTo($resultContainer);
-                  const $resultDate = $('<input>',{
-                    type: "date",
-                    value: `${date.date.getFullYear()}-${padNumber(date.date.getMonth() + 1, 2)}-${padNumber(date.date.getDate(), 2)}`,
-                    class: "cal-edit-date"
-                  })
                   .appendTo($resultContainer)
-                  .change((e)=>{
-                    this.editClass(date.id, $(e.target).val(), $('.cal-edit-time').val());
-                  });
-                  const $resultTimeHolder = $('<div>',{
-                    class: "input-group clockpicker"
-                  })
-                  .appendTo($resultContainer);
-                  const $timeInput = $('<input>', {
-                    type: "text",
-                    maxlength: 5,
-                    pattern: "([01]?[0-9]|2[0-3]):[0-5][0-9]",
-                    value: `${padNumber(date.date.getHours(), 2)}:${padNumber(date.date.getMinutes(), 2)}`,
-                    class: 'cal-edit-time'
-                  })
-                  .appendTo($resultTimeHolder)
-                  .change((e)=>{
-                    this.editClass(date.id, $('.cal-edit-date').val(), $(e.target).val());
-                  });
+                  .text(formattedTime);
 
+                  const editButton = $
                 });
-                $('.clockpicker').clockpicker({
-                  donetext: "Done",
-                  autoclose: true
-                });
+
               })
             }
           })
@@ -145,7 +130,7 @@ const calFactory = ()=>{
     editClass: function(classId, date, time){
       $.ajax({
         method: 'PATCH',
-        url: `/api/find_classes/${classId}`,
+        url: `/api/class_dates/${classId}`,
         data:{
           date: date,
           time: time
@@ -182,9 +167,11 @@ const calFactory = ()=>{
   function findMatchingClasses(datetime){
     const matching = [];
     cal.classes.forEach(class_day => {
+      console.log(class_day.date)
       const classDate = new Date(class_day.date);
+      console.log(classDate);
       const classId = class_day.id;
-      if(classDate.getFullYear() === datetime.getFullYear() && classDate.getMonth() === datetime.getMonth() && classDate.getDate() === datetime.getDate()){
+      if(classDate.getUTCFullYear() === datetime.getFullYear() && classDate.getUTCMonth() === datetime.getMonth() && classDate.getUTCDate() === datetime.getDate()){
         matching.push({
           date: classDate,
           id: classId
@@ -194,6 +181,8 @@ const calFactory = ()=>{
     return matching;
   }
 
+
+
   $('.clockpicker').clockpicker({
     donetext: "Done",
     autoclose: true
@@ -201,10 +190,39 @@ const calFactory = ()=>{
   return cal;
 }
 
-$(()=>{
+function showModalForm(){
+  $('.hidden-form').hide();
+  $("#class_date_repeat").change(()=>{
+    $('.hidden-form').toggle();
+  });
+  $('.modal').fadeIn('fast');
+  $('.clockpicker').clockpicker({
+    donetext: "Done",
+    autoclose: true
+  });
+}
+
+$(document).on('turbolinks:load', function() {
   let cal;
   if ($('#render-cal').length > 0){
     cal = calFactory().init();
-
   }
+
+
+
+  $('.close').click(()=>{
+    $('.modal').fadeOut('fast',()=>{
+      $('.modal-form').empty()
+    });
+  });
+
+  $('.modal').hide();
+  $('.new-class-button').click((e)=>{
+    $('.modal-form').load(`/courses/${courseId}/class_dates/new`, ()=>{
+      showModalForm();
+    });
+  })
+
+
+
 })

@@ -1,0 +1,11 @@
+<%= form_for(@class_date) do |f| %>
+  <%= f.hidden_field(:course_id) %>
+  <%= f.label(:date) %>
+  <%= f.date_field(:date) %>
+  <%= f.label(:repeat) %>
+  <%= f.check_box(:repeat) %>
+  <%= f.submit %>
+<% end %>
+<div class="pattern-container<%= @class_date.repeat ? "" : " hidden-form" %>">
+    <%= render "shared/class_pattern_form", class_pattern: @class_pattern %>
+</div>
