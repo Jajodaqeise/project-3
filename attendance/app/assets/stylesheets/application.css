@@ -143,15 +143,7 @@ a {
 
 
 
-.cal-class-day{
-  background-color: cyan;
-}
-.cal-today{
-  background-color: yellow;
-}
-.cal-view-day{
-  background-color:chartreuse;
-}
+
 
 
 /* End of Nav Bar */
@@ -180,7 +172,42 @@ a {
 
 
 
-
+/* CALENDAR */
+.cal-class-day{
+  background-color: cyan;
+}
+.cal-today{
+  background-color: yellow;
+}
+.cal-view-day{
+  background-color:chartreuse;
+}
+.modal{
+  -ms-align-items: center;
+  align-items: center;
+  background-color: rgba(0,0,0,.5);
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  left: 0;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.modal-content{
+  background-color: white;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+}
 
 
 

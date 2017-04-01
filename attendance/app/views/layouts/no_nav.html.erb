@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Attendance</title>
+        <%= csrf_meta_tags %>
+        <%= yield :head %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+        <link rel="icon" href="/assets/lastIcon.ico" type="image/x-icon">
+         <script src="https://use.fontawesome.com/2901339622.js"></script>
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmZUgu0IoJ3_fCRho5cnYkyM09Xyd3738&libraries=geometry,places">
+
+        <script src="https://use.fontawesome.com/2901339622.js"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Damion|Yellowtail" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    </head>
+
+    <body>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </body>
+
+
+    </html>
