@@ -1,16 +1,38 @@
-<h2>Forgot your password?</h2>
+<div id="newBody">
+    <div id="siteIndexContainer">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+        <div id="siteInnerContainer">
+            <img id="newSessionBrand" draggable="false" src="/assets/whiteLogo.png"/>
+            <br/>
+            <br/>
+            <br/>
+            <center>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+                <span id="resetInstructions">We will email you instructions</span>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
-<%= render "devise/shared/links" %>
+                <br/>
+                <div class="field">
+                    <%#= f.label :email %>
+                    <%= f.email_field :email,placeholder: 'Email', id: 'forgotEmailField', autofocus: true %>
+                </div>
+                <br/>
+                <div class="actions">
+                    <%= f.submit "Reset my password", id: 'forgotEmailSubmit' %>
+                </div>
+                <% end %>
+            </center>
+
+            <div id="forgotPasswordError">
+                <%= devise_error_messages! %>
+            </div>
+            <%#siteInnerContainer %>
+        </div>
+
+        <%#siteIndexContainer %>
+    </div>
+
+    <%# render "devise/shared/links" %>
+    <%#Take the Whole Body %>
+</div>
