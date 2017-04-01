@@ -3,7 +3,7 @@
 
 <div id="topNav">
   <label for="menuToggle" class="menu-icon">&#9776;</label>
-  <img id="brandImg" draggable="false" src="/assets/whiteLogo.png"/ />
+  <img id="brandImg" draggable="false" src="/assets/attender.svg"/ />
 </div>
 
 <nav class="menu">
@@ -41,9 +41,26 @@
 
 <p>Description: <%= @course.description %></p>
 
-<h3>Teacher: <%= @course.teacher.first_name %> <%= @course.teacher.last_name %></h3>
+<h2>Teacher: <%= @course.teacher.first_name %> <%= @course.teacher.last_name %></h2>
 
+<%= hidden_field_tag(:course_id, @course.id) %>
 <%= hidden_field_tag(:lat, @course.lat) %>
 <%= hidden_field_tag(:lng, @course.lng) %>
 
 <div id="map"></div>
+
+
+<% if current_teacher %>
+  <h2>Enrolled students</h2>
+  <% @students.each do |student| %>
+    <p> <%= link_to "#{student.first_name}#{student.last_name} ------- attendance %" %></p>
+  <% end %>
+<% end %>
+
+<div id='modal'>
+  <section>
+    <p>Loading</p>
+  </section>
+</div>
+
+

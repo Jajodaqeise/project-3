@@ -1,20 +1,32 @@
-$(()=>{
+// $(()=>{
+  $(document).on('turbolinks:load', function() {
 
   const schoolLocations = [];
   const schoolNames = [];
   const schoolOptions = [];
 
+  // modal
+  const modal = $('#modal');
+  const modalMessage = $('#modal p');
+
+  const toggleModal = function(){
+    modal.fadeToggle('fast');
+  }
+
   function getLocation() {
     navigator.geolocation.getCurrentPosition(initSearch);
+    // toggleModal();
 
     // check in button to check in at a class
     $('#checkin').click(() => {
+      toggleModal();
       navigator.geolocation.getCurrentPosition(validateStudentLocation);
     });
   }
 
   function initSearch(location){
     console.log("init", location);
+    // toggleModal();
     $('#course_school').keyup((e)=>{
       console.log("keyup");
       findSchool(e, location);
@@ -71,6 +83,7 @@ $(()=>{
   }
 
   //show course page
+  // toggleModal();
   const latitude = parseFloat($('#lat').val());
   const longitude = parseFloat($('#lng').val());
   const LatLng = {lat: latitude, lng: longitude};
@@ -96,6 +109,7 @@ $(()=>{
     position: LatLng,
     map: map
   });
+  // toggleModal();
 
   //checkin
   const checkInButton = $('#message');
@@ -110,38 +124,36 @@ $(()=>{
       console.log("student lng", studentLng);
       console.log("course lng", longitude);
       // console.log("clicked");
-      if( studentLat.toFixed(2) === latitude.toFixed(2) && studentLng.toFixed(2) === longitude.toFixed(2)) {
+      // if( studentLat.toFixed(4) === latitude.toFixed(4) && studentLng.toFixed(4) === longitude.toFixed(4)) {
         // console.log("hello");
+        toggleModal();
         checkInButton.text("You are in class");
         // ajax call
+        const student = $('#student_id').val();
+        // console.log("student_id", student);
+        //class date goes here to make a post ajax request
 
+        const data = {
+           student: student,
+           date: date
+        }
+        $.ajax({
+          method: "POST",
+          data: data,
+          url: "/attenders",
+          success: (data)=>{
+            console.log("attender", data);
+          },
+          error: err =>{
+            console.log(err);
+          }
+        })
+
+        // })
       }
-      else {
-        checkInButton.text("You are not in class");
-      }
-  }
-
-
-
-  // $('#checkin').click(() => {
-  //   const id = $('#student_id').val();
-  //   $.ajax({
-  //     method: "POST",
-  //     data: id,
-  //     url: "/attenders",
-  //     success: (data)=>{
-  //       console.log(data);
-  //     },
-  //     error: err =>{
-  //       console.log(err);
-  //     }
-  //   })
-
-  // })
-
-
-
-
-
+      // else {
+      //   checkInButton.text("You are not in class");
+      // }
+  // }
 
 })
