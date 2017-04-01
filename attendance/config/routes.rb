@@ -28,12 +28,13 @@ Rails.application.routes.draw do
   patch "/class_dates/:id", to: "class_dates#update", as: :update_class_date
   get "/courses/:course_id/class_dates/new", to: "class_dates#new", as: :new_class_date
   get "/class_dates/:id/edit", to: "class_dates#edit", as: :edit_class_date
+  delete "/class_dates/:id", to: "class_dates#destroy", as: :delete_class_date
 
   get "/class_patterns", to: "class_patterns#index", as: :class_patterns
   get "/class_pattern/:id", to: "class_patterns#show", as: :class_pattern
   post "/class_patterns", to: "class_patterns#create", as: :create_class_pattern
   patch "/class_pattern/:id", to: "class_patterns#update", as: :update_class_pattern
-  delete "/class_pattern/:id", to: "class_patterns#destroy", as: :delete_class_pattern
+  delete "/class_patterns/:id", to: "class_patterns#destroy", as: :delete_class_pattern
 
   post "/attenders", to: "attenders#create", as: :check_in
 

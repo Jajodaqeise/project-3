@@ -7,7 +7,7 @@
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-        <link rel="icon" href="/assets/lastIcon.ico" type="image/x-icon">
+        <link rel="icon" href="/assets/attender_small.ico" type="image/x-icon">
          <script src="https://use.fontawesome.com/2901339622.js"></script>
 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmZUgu0IoJ3_fCRho5cnYkyM09Xyd3738&libraries=geometry,places">
@@ -21,34 +21,6 @@
     </head>
 
     <body>
-
-
-          <% if (current_student || current_teacher) && !@no_nav %>
-        <input type="checkbox" id="menuToggle">
-
-        <div id="topNav">
-            <label for="menuToggle" class="menu-icon">&#9776;</label>
-            <img id="brandImg" draggable="false" src="/assets/whiteLogo.png"/ />
-        </div>
-
-        <nav class="menu">
-                <a href="/"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
-                <a href="/"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
-                <% if current_student %>
-                <%= link_to(destroy_student_session_path, :method => :delete) do %>
-
-                <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Logout
-                <% end %>
-                <% else %>
-                <%= link_to(destroy_teacher_session_path, :method => :delete) do %>
-
-                <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Logout
-                <% end %>
-                <% end %>
-
-        </nav>
-        <% end %>
-
 
                 <p class="notice"><%= notice %></p>
                 <p class="alert"><%= alert %></p>
