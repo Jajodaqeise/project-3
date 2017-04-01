@@ -22,7 +22,7 @@ class CoursesController < ApplicationController
 
   def show
     @students = @course.students
-    @current_student = current_student.courses
+    # @current_student = current_student.courses
     # byebug
   end
 

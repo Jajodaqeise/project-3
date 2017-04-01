@@ -23,6 +23,13 @@
 
 <div id="map"></div>
 
+<% if current_teacher %>
+  <% @students.each do |student| %>
+    <p> <%= student.first_name %> <%= student.last_name %></p>
+    <p> <%= student.first_name %> <%= student.last_name %></p>
+  <% end %>
+<% end %>
+
 <div id='modal'>
   <section>
     <p>Loading</p>
