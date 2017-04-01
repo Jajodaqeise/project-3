@@ -1,7 +1,33 @@
+<% if (current_student || current_teacher) && !@no_nav %>
+<input type="checkbox" id="menuToggle">
+
+<div id="topNav">
+  <label for="menuToggle" class="menu-icon">&#9776;</label>
+  <img id="brandImg" draggable="false" src="/assets/attender.svg"/ />
+</div>
+
+<nav class="menu">
+      <a href="/"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
+      <a href="/"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
+      <% if current_student %>
+      <%= link_to(destroy_student_session_path, :method => :delete) do %>
+
+      <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
+      <% end %>
+      <% else %>
+      <%= link_to(destroy_teacher_session_path, :method => :delete) do %>
+
+      <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
+      <% end %>
+      <% end %>
+</nav>
+<% end %>
+
 <%= link_to "Go back to all courses", courses_path %>
 
 <% if current_teacher %>
   <%= link_to "Edit", edit_course_path(@course) %>
+  <%= link_to "Add Classes", class_dates_path(:course_id => @course.id) %>
 <% end %>
 
 <h1>Course: <%= @course.name %></h1>
@@ -23,6 +49,7 @@
 
 <div id="map"></div>
 
+
 <% if current_teacher %>
   <h2>Enrolled students</h2>
   <% @students.each do |student| %>
@@ -35,4 +62,5 @@
     <p>Loading</p>
   </section>
 </div>
+
 

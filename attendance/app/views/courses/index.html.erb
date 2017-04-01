@@ -1,6 +1,34 @@
+<input type="checkbox" id="menuToggle">
+
+<div id="topNav">
+  <label for="menuToggle" class="menu-icon">&#9776;</label>
+  <img id="brandImg" draggable="false" src="/assets/attender.svg"/ />
+</div>
+
+<nav class="menu">
+      <a href="/"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
+      <a href="/"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
+      <% if current_student %>
+      <%= link_to(destroy_student_session_path, :method => :delete) do %>
+
+      <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
+      <% end %>
+      <% else %>
+      <%= link_to(destroy_teacher_session_path, :method => :delete) do %>
+
+      <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
+      <% end %>
+      <% end %>
+
+</nav>
+
+
+<% if current_teacher.present? %>
+
 
 <% if current_teacher %>
   <h1>Teacher : <%= current_teacher.first_name %> <%= current_teacher.last_name %></h1>
+
   <%= link_to "Create a new Course", new_course_path %>
   <br>
   <br>
@@ -8,9 +36,11 @@
      <div class="course">
       <%= link_to "Course: #{course.name}", course_path(course) %>
       <br>
-      <%= link_to "Edit this course", edit_course_path(course) %>
+      <%= link_to "Edit Course", edit_course_path(course) %>
       <br>
-      <%= link_to "Delete this course", course, method: :delete, data: {confirm: "Are you sure?"} %>
+
+      <%= link_to "Delete Course", course, method: :delete, data: {confirm: "Are you sure?"} %>
+
     </div>
     <br>
   <% end %>
