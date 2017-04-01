@@ -34,10 +34,18 @@
         <nav class="menu">
                 <a href="/"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
                 <a href="/"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
-                <%= link_to(destroy_student_session_path || destroy_teacher_session_path, :method => :delete) do %>
+                <% if current_student %>
+                <%= link_to(destroy_student_session_path, :method => :delete) do %>
 
                 <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Logout
                 <% end %>
+                <% else %>
+                <%= link_to(destroy_teacher_session_path, :method => :delete) do %>
+
+                <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Logout
+                <% end %>
+                <% end %>
+
         </nav>
         <% end %>
 

@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get "/welcome/student", to: "site#student", as: :student_landing
   get "/welcome/teacher", to: "site#teacher", as: :teacher_landing
 
-
   get "/courses", to: "courses#index", as: :courses
   get "/courses/new", to: "courses#new", as: :new_course
   get "/courses/:id", to: "courses#show", as: :course
@@ -42,6 +41,8 @@ Rails.application.routes.draw do
   get "/student/:id", to: "student#show", as: :student
 
   get "/teachers/:id", to: "teachers#show", as: :teacher
+
+  post "students/:student_id/courses/:id/register", to: "courses_students#create", as: :register_course
 
   # isolate the api controllers under a namespace in Rails this is fairly simple, just create a folder under the app/controllers named api
   # Rails will automatically map that namespace to a directory matching the name under the controllers folder, in our case the api/ directory.
