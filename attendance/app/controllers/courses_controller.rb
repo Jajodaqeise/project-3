@@ -13,12 +13,13 @@ class CoursesController < ApplicationController
     @courses = Course.all
 
     # @course = Course.new
-  if current_student
-    @student_courses = current_student.courses
-    @enrolled_courses = []
-    @student_courses.each do |course|
-      @course = Course.find(course)
-      @enrolled_courses << @course
+    if current_student
+      @student_courses = current_student.courses
+      @enrolled_courses = []
+      @student_courses.each do |course|
+        @course = Course.find(course)
+        @enrolled_courses << @course
+      end
     end
   end
 
