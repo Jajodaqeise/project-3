@@ -4,17 +4,28 @@ $(()=>{
   const schoolNames = [];
   const schoolOptions = [];
 
+
+  const modal = $('#modal');
+  const modalMessage = $('#modal p');
+
+  const toggleModal = function(){
+    modal.fadeToggle('fast');
+  }
+
   function getLocation() {
     navigator.geolocation.getCurrentPosition(initSearch);
+    toggleModal();
 
     // check in button to check in at a class
     $('#checkin').click(() => {
+      toggleModal();
       navigator.geolocation.getCurrentPosition(validateStudentLocation);
     });
   }
 
   function initSearch(location){
     console.log("init", location);
+    toggleModal();
     $('#course_school').keyup((e)=>{
       console.log("keyup");
       findSchool(e, location);
@@ -112,6 +123,7 @@ $(()=>{
       // console.log("clicked");
       // if( studentLat.toFixed(4) === latitude.toFixed(4) && studentLng.toFixed(4) === longitude.toFixed(4)) {
         // console.log("hello");
+        toggleModal();
         checkInButton.text("You are in class");
         // ajax call
         const student = $('#student').val();
