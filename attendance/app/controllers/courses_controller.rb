@@ -31,7 +31,9 @@ class CoursesController < ApplicationController
 
   def show
     @students = @course.students
-    @current_student = current_student.courses
+    if current_student
+      @current_student = current_student.courses
+    end
     # byebug
   end
 
