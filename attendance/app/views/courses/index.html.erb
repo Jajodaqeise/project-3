@@ -18,15 +18,18 @@
 
 <% if current_student %>
   <h1>Student: <%= current_student.first_name %> <%= current_student.last_name %></h1>
+  <%= hidden_field_tag(:student_id, current_student.id) %>
 
-  <!-- search course -->
   <div class="course-search">
     <%= form_tag do %>
         <%= label_tag :search_course %>
         <%= text_field_tag :course_name %>
         <div class="results"></div>
+        <div class="btn"></div>
     <% end %>
   </div>
+
+   <%= button_to "Register in this course" %>
 
   <h2>My courses</h2>
   <% current_student.courses.each do |enrolled_course| %>

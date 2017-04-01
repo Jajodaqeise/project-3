@@ -1,19 +1,23 @@
 $(()=>{
 
+  const courseOptions = [];
+  const coursesNames = [];
+  const courses = [];
+  const coursesId = [];
   const searchCourse = $('#course_name');
 
 
   searchCourse.keyup((e) => {
       const search = searchCourse.val();
-      console.log("keyup");
+      // console.log("keyup");
       findCourse(e, search);
     })
 
   function findCourse(e, search){
     //empty results before doing a new course search
     // $('.results').empty();
-    console.log("find", e);
-    console.log("search", search);
+    // console.log("find", e);
+    // console.log("search", search);
     const data = {
       data: search
     }
@@ -23,7 +27,7 @@ $(()=>{
       data: data,
       url: "/api/find_courses",
       success: (courses)=>{
-        console.log(courses);
+        // console.log(courses);
         dropDownOptions(courses);
       },
       error: err =>{
@@ -33,24 +37,36 @@ $(()=>{
   }
 
   const dropDownOptions = (courses) => {
-  console.log("schools", schools);
+  console.log("courses", courses);
 
   $('.results').empty();
 
-  for (let i = 0; i< 5; i++) {
-    schoolOptions[i] = $('<div class="option">');
-    schoolNames[i] = schools[i].name;
-    const name = $('<p>').text(schoolNames[i]);
-    schoolOptions[i].append(name);
-    schoolLocations[i] = schools[i].geometry.location;
-    $('.results').append(schoolOptions[i]);
-    schoolOptions[i].click(() => {
+  for (let i = 0; i< courses.length; i++) {
+    console.log("hey");
+    courseOptions[i] = $('<div class="option">');
+    console.log("option1", courseOptions[i]);
+    coursesNames[i] = courses[i].name;
+    const name = $('<p>').text(coursesNames[i]);
+    courseOptions[i].append(name);
+    coursesId[i] = courses[i].id;
+    $('.results').append(courseOptions[i]);
+    courseOptions[i].click(() => {
       console.log("click");
-      $('#course_school').val(schoolNames[i]);
-      $('#course_lat').val(schoolLocations[i].lat);
-      $('#course_lng').val(schoolLocations[i].lng);
+      const courseSelected = $('#course_name').val(coursesNames[i]);
+      const studentId = $('#student_id').val();
+      $link = $('<a>',{
+        href: '/students/'+studentId+'/courses/'+coursesId[i]+'/register'
+      })
+      .text('register')
+      .appendTo($('.btn'));
     })
     }
   }
+
+
+
+
+
+
 
 });
