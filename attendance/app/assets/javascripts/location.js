@@ -110,34 +110,38 @@ $(()=>{
       console.log("student lng", studentLng);
       console.log("course lng", longitude);
       // console.log("clicked");
-      if( studentLat.toFixed(2) === latitude.toFixed(2) && studentLng.toFixed(2) === longitude.toFixed(2)) {
+      // if( studentLat.toFixed(4) === latitude.toFixed(4) && studentLng.toFixed(4) === longitude.toFixed(4)) {
         // console.log("hello");
         checkInButton.text("You are in class");
         // ajax call
+        const student = $('#student').val();
+        const course = $('#course_id').val();
+        const data = {
+           student: student,
+           course: course
+        }
+        $.ajax({
+          method: "POST",
+          data: data,
+          url: "/attenders",
+          success: (data)=>{
+            console.log(data);
+          },
+          error: err =>{
+            console.log(err);
+          }
+        })
 
+        // })
       }
-      else {
-        checkInButton.text("You are not in class");
-      }
-  }
+      // else {
+      //   checkInButton.text("You are not in class");
+      // }
+  // }
 
 
 
-  // $('#checkin').click(() => {
-  //   const id = $('#student_id').val();
-  //   $.ajax({
-  //     method: "POST",
-  //     data: id,
-  //     url: "/attenders",
-  //     success: (data)=>{
-  //       console.log(data);
-  //     },
-  //     error: err =>{
-  //       console.log(err);
-  //     }
-  //   })
 
-  // })
 
 
 

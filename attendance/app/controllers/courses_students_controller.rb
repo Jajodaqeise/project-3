@@ -5,7 +5,7 @@ class CoursesStudentsController < ApplicationController
     # byebug
     @course = Course.find(params[:id])
     @student.courses << @course
-    byebug
+    # byebug
     if @student.save
         flash[:notice] = "Student registered successfully!"
         redirect_to course_path @course
