@@ -26,7 +26,6 @@
 <% if current_teacher.present? %>
 
 
-<% if current_teacher %>
   <h1>Teacher : <%= current_teacher.first_name %> <%= current_teacher.last_name %></h1>
 
   <%= link_to "Create a new Course", new_course_path %>
