@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   # We can have the landing page be on a different root to redirect
   #   users that not logged in to -- configured in the application_controller.rb file
   get "/welcome", to: "site#index", as: :landing
-  get "/welcome/student", to: "site#student", as: :student_landing
-  get "/welcome/teacher", to: "site#teacher", as: :teacher_landing
+  # get "/welcome/student", to: "site#student", as: :student_landing
+  # get "/welcome/teacher", to: "site#teacher", as: :teacher_landing
 
   get "/profile", to: "students#show", as: :student_profile
 

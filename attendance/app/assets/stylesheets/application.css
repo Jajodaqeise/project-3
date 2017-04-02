@@ -238,9 +238,6 @@ a {
 }
 
 #siteInnerContainer {
-  /*min-width: 300px;
-  max-width: 300px;
-  margin-top: 18%;*/
   margin: 100px auto;
   width: 100%;
   max-width: 500px;
@@ -1288,10 +1285,11 @@ select:focus{
 
 .course-form input[type="submit"]{
   background-color: #00007f;
+  font-family: 'Crimson Text', serif;
   border: .1vw solid white;
   cursor: pointer;
   color: white;
-  font-size: 1.34em;
+  font-size: 1.28em;
   font-weight: bold;
   width: 80%;
   margin: 0 auto;
@@ -1420,6 +1418,41 @@ select:focus{
   color: #000;
 }
 
+
+/*Profile Page starts*/
+
+#profileContainer {
+  margin: 30px auto;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+  font-family: 'Crimson Text', serif;
+}
+.editProfileButton{
+  cursor: pointer;
+  border: .1vw solid white;
+  font-size: 1.66em;
+  color: white;
+  border-radius: .5rem;
+  background: #00007f;
+  outline: none;
+  width: 80%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+}
+
+/*Profile page ends*/
+
 /* course search */
 .dropbtn {
   background-color: #4CAF50;
@@ -1506,7 +1539,7 @@ select:focus{
 
 }
 
-/*<<<<<<< HEAD*/
+
 /*COURSE FORM FOR COURSES/EDIT*/
 
 
@@ -1516,20 +1549,22 @@ select:focus{
 
 /*=======*/
 /*.profile {
->>>>>>> 0d38a75d98403581398260ffdd0374b3777874c6
+
 
   margin-top: 10%;
 }
 */
 
+
+
+
+
+
+
 /*Media Q section*/
-
-
-
-
 /* Ipad 1 Portrait */
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+/*@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
   #siteBrand {
     width: 60vw;
     height: 12vh;
@@ -1551,15 +1586,15 @@ select:focus{
     top: 4vh;
   }
   /*ipad ends*/
-}
+/*}*/
 
 
 /*ipad pro*/
 
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
+/*@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
 
   /* ipad pro ends */
-}
+/*}*/
 
 
 /*Regular Screen*/
