@@ -661,7 +661,7 @@ caption select{
   justify-content: center;
   max-width: 500px;
   margin: 30px auto;
-  width: 72%;
+  width: 90%;
 }
 
 
@@ -671,10 +671,13 @@ caption select{
 }
 .class-cal-container h2, .class-cal-container h3{
   text-align: center;
+  font-size: 2em;
+  font-family: 'Crimson Text', serif;
 }
 .class-cal-container h2{
   font-size: 2em;
   margin-bottom: 0;
+  font-family: 'Crimson Text', serif;
 }
 
 
@@ -1008,6 +1011,8 @@ max-width: 500px;
   display: flex;
   width: 90%;
   height: 5vh;
+  border-bottom-right-radius: .5rem;
+  border-bottom-left-radius: .5rem;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1166,6 +1171,7 @@ select:focus{
   outline: none;
   border: .1vw solid #e1e1e1;
   border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
 }
 
 .descriptionField {
@@ -1226,16 +1232,6 @@ select:focus{
   color: #fff;
 }
 
-#course_name {
-  width: 80%;
-  outline: none;
-  border-radius: .5rem;
-  font-size: 1.6em;
-  border: .1vw solid #e1e1e1;
-  border-bottom-color: #e1e1e1;
-  font-family: 'Crimson Text', serif;
-  width: 200px;
-}
 
 .my-courses-heading {
   width: 100%;
