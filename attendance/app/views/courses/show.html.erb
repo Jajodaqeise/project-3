@@ -21,12 +21,12 @@
      </div>
      <div class="check-in-form">
       <i class="fa fa-check" aria-hidden="true"></i>
-       <%= form_for(create_attender_path) do |f| %>
+       <%= form_tag(create_attender_path, method: :post ) do %>
          <%= hidden_field_tag(:student_lat) %>
          <%= hidden_field_tag(:student_lng) %>
          <%= hidden_field_tag(:student_id, current_student.id) %>
          <%= hidden_field_tag(:class_date_id, @current_class.id) %>
-         <%= f.submit('Check In') %>
+         <%= submit_tag('Check In') %>
        <% end %>
      </div>
    </div>
