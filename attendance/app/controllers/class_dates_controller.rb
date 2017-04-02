@@ -3,6 +3,7 @@ class ClassDatesController < ApplicationController
   before_action :require_teacher
   def index
     @course = Course.find(params[:course_id])
+    render layout: "nav"
   end
 
   def new
