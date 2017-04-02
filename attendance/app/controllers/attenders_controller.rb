@@ -3,6 +3,11 @@ class AttendersController < ApplicationController
   def create
     # @student = params
     # byebug
+    location = IpGeocoder.geocode()
+    course = ClassDate.find(params[:attender][:class_date_id]).course
+    byebug
+    student_location = Geokit::LatLng.new()
+    if course.within()
     @attender = Attender.new(attender_params)
     if @attender.save
     #   # byebug
