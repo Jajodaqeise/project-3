@@ -73,6 +73,7 @@
       schoolLocations[i] = schools[i].geometry.location;
       $('.results').append(schoolOptions[i]);
       schoolOptions[i].click(() => {
+        $('.results').empty();
         console.log("click");
         $('#course_school').val(schoolNames[i]);
         $('#course_lat').val(schoolLocations[i].lat);

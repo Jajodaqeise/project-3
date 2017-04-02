@@ -60,8 +60,10 @@ $(()=>{
         coursesId[i] = courses[i].id;
         $('.results').append(courseOptions[i]);
         courseOptions[i].click(() => {
+          $('.btn').empty();
           console.log("click");
-          const courseSelected = $('#course_name').val(coursesNames[i]);
+          $('.results').empty();
+          const courseSelected = $('#course').val(coursesNames[i]);
           console.log("course selected", courseSelected);
           const studentId = $('#student_id').val();
           registerCourse(studentId, coursesId[i]);
@@ -77,4 +79,6 @@ $(()=>{
     .text('register')
     .appendTo($('.btn'));
   }
+
+
 });
