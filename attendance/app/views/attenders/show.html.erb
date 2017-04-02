@@ -2,6 +2,8 @@
   <h2><%= @course.name %></h2>
   <h3><%= @student.full_name %></h3>
 
+  <h4 class="percent-title"><%= @percent.round(2) %></h4>
+
   <div class="attendance-bar-holder">
 
     <div class="attendance-bar" style="width: <%= @percent %>%; background-color: rgb(<%= "#{@color_red}, #{@color_green}, 0" %>)">
