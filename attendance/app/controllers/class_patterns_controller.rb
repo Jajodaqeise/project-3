@@ -1,8 +1,10 @@
 class ClassPatternsController < ApplicationController
+  before_action :require_user
+  before_action :require_teacher
   before_action :set_days, only: [:create, :update]
   def create
     @class_pattern = ClassPattern.new(class_pattern_params)
-    @class_pattern.time += params[:timezone_offset].to_i * 60 
+    @class_pattern.time += params[:timezone_offset].to_i * 60
     @class_pattern.save
     @class_pattern.add_class_date_range(@days, @class_pattern.time, @class_pattern.start_date, @class_pattern.end_date)
     puts @class_pattern.course_id

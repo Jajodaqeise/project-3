@@ -1,5 +1,5 @@
 class AttendersController < ApplicationController
-
+  before_action :require_user
   def create
     # @student = params
     # byebug
