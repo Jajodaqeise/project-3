@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get "/welcome/student", to: "site#student", as: :student_landing
   get "/welcome/teacher", to: "site#teacher", as: :teacher_landing
 
+  get "/profile", to: "students#show", as: :student_profile
+
   get "/courses", to: "courses#index", as: :courses
   get "/courses/new", to: "courses#new", as: :new_course
   get "/courses/:id", to: "courses#show", as: :course
