@@ -1166,6 +1166,7 @@ select:focus{
   outline: none;
   border: .1vw solid #e1e1e1;
   border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
 }
 
 .course-form input[type="submit"]{
@@ -1233,16 +1234,6 @@ select:focus{
   transform: translateY(4px);
 }*/
 
-#course_name {
-  width: 80%;
-  outline: none;
-  border-radius: .5rem;
-  font-size: 1.6em;
-  border: .1vw solid #e1e1e1;
-  border-bottom-color: #e1e1e1;
-  font-family: 'Crimson Text', serif;
-  width: 200px;
-}
 
 .my-courses {
 }
