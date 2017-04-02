@@ -15,7 +15,7 @@
             <div class="newPasswordContainer" class="field">
                 <%= f.password_field :password, placeholder: 'Password', id: 'newPassword', autocomplete: "off" %>
             </div>
-
+              <br />
             <div id="containerNewCheckForgot">
                 <% if devise_mapping.rememberable? -%>
                 <div id="checkAndRemember" class="field">
@@ -35,6 +35,7 @@
             </div>
             <% end %>
 
+              <br />
             <div class="newSharedLinks">
                 <%= render "devise/shared/links" %>
             </div>
