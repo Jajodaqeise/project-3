@@ -406,7 +406,7 @@ display: flex;
 #containerNewCheckForgot{
   display: flex;
   width: 90%;
-  margin-left: 2.14rem;
+  margin-left: 2.20rem;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -887,6 +887,42 @@ margin: 30px auto;
 width: 100%;
 max-width: 500px;
 }
+#editPwFirstNameContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPwFirstName{
+  display: flex;
+  border-top-right-radius: .5rem;
+  border-top-left-radius: .5rem;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwLastNameContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPwLastName{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
 #editPwEmailContainer{
   display: flex;
   flex-direction: column;
@@ -897,8 +933,6 @@ max-width: 500px;
   display: flex;
   width: 90%;
   height: 5vh;
-  border-top-right-radius: .5rem;
-  border-top-left-radius: .5rem;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1098,6 +1132,9 @@ select:focus{
 .student-name {
   text-indent: 2%;
 }
+#search_course{
+  font-size: 1.6em;
+}
 .course-search form {
   text-indent: 5%;
 }
@@ -1150,7 +1187,7 @@ select:focus{
 
 /*  /courses/:id  */
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD*/
 /*COURSE FORM FOR COURSES/EDIT*/
 
 
@@ -1158,7 +1195,7 @@ select:focus{
 /*COURSE FORM FOR COURSES/EDIT END*/
 
 
-=======
+/*=======*/
 /*.profile {
 >>>>>>> 0d38a75d98403581398260ffdd0374b3777874c6
 

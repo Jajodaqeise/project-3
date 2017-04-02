@@ -28,7 +28,8 @@
 <div id="editRegistrationsContainer">
 
 
-<div class="yield-container">
+<div class="yield-container"></div>
+
   <div id="editRegistrationsInnerContainer">
 <center>
     <span id="editPassWordSpan">Update Info</span>
@@ -36,11 +37,11 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <br />
-  <div id="firstNameContainer"class="field">
-    <%= f.text_field :first_name, placeholder: 'First Name', id: 'editFirstName',  autofocus: true %>
+  <div id="editPwFirstNameContainer"class="field">
+    <%= f.text_field :first_name, placeholder: 'First Name', id: 'editPwFirstName',  autofocus: true %>
   </div>
-  <div id="lastNameContainer"class="field">
-    <%= f.text_field :last_name, placeholder: 'Last Name', id: 'editLasttName',  autofocus: true %>
+  <div id="editPwLastNameContainer"class="field">
+    <%= f.text_field :last_name, placeholder: 'Last Name', id: 'editPwLastName',  autofocus: true %>
   </div>
   <div id="editPwEmailContainer"class="field">
     <%= f.email_field :email, placeholder: 'Email', id: 'editPwEmail',  autofocus: true %>
