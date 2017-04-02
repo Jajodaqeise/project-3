@@ -7,4 +7,7 @@ class Course < ApplicationRecord
   def self.search(search)
     where("name ILIKE ?", "%#{search}%")
   end
+  def past_classes
+    self.class_dates.where("date < ?", Time.now)
+  end
 end
