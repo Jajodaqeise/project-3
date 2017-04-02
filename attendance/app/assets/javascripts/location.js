@@ -124,7 +124,7 @@
       console.log("student lng", studentLng);
       console.log("course lng", longitude);
       // console.log("clicked");
-      // if( studentLat.toFixed(4) === latitude.toFixed(4) && studentLng.toFixed(4) === longitude.toFixed(4)) {
+      if( studentLat.toFixed(4) === latitude.toFixed(4) && studentLng.toFixed(4) === longitude.toFixed(4)) {
         // console.log("hello");
         toggleModal();
         checkInButton.text("You are in class");
@@ -132,7 +132,6 @@
         const student = $('#student_id').val();
         // console.log("student_id", student);
         //class date goes here to make a post ajax request
-
         const data = {
            student: student,
            date: date
@@ -151,9 +150,10 @@
 
         // })
       }
-      // else {
-      //   checkInButton.text("You are not in class");
-      // }
-  // }
+      else {
+        checkInButton.text("You are not in class");
+        toggleModal();
+      }
+  }
 
 })

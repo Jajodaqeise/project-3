@@ -1,30 +1,34 @@
 class CoursesStudentsController < ApplicationController
 
   def create
-    @student = Student.find(params[:student_id])
-    # byebug
-    @course = Course.find(params[:id])
-    @student.courses << @course
-    if @student.save
-        flash[:notice] = "Student registered successfully!"
-        redirect_to course_path @course
-    else
-        flash[:alert] = "Couldn't registered for this course"
-        redirect_back fallback_location: courses_path
-    end
+
   end
 
   def show
     @student = Student.find(params[:student_id])
-    # byebug
     @course = Course.find(params[:id])
-    @student.courses << @course
-    if @student.save
-        flash[:notice] = "Student registered successfully!"
-        redirect_to course_path @course
+
+    @student_courses = @student.courses
+
+    course = []
+    @student_courses.each do |course|
+      if course == @course
+        course = @course
+      end
+    end
+
+    if course.length > 0
+      flash[:alert] = "You are already registered in this course"
+      redirect_back fallback_location: courses_path
     else
-        flash[:alert] = "Couldn't registered for this course"
-        redirect_back fallback_location: courses_path
+      @student.courses << @course
+      if @student.save
+          flash[:notice] = "Student registered successfully!"
+          redirect_to course_path @course
+      else
+          flash[:alert] = "Couldn't registered for this course"
+          redirect_back fallback_location: courses_path
+      end
     end
   end
 

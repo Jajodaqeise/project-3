@@ -33,6 +33,7 @@
 <h1>Course: <%= @course.name %></h1>
 <p>School: <%= @course.school %></p>
 
+
 <% if current_student && @attender %>
   <%= form_for(@attender) do |f| %>
     <%= f.hidden_field(:student_id) %>
@@ -40,7 +41,7 @@
     <%= f.submit %>
   <% end %>
 
-<% end %>
+
 
 <p>Description: <%= @course.description %></p>
 
