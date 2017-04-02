@@ -34,11 +34,17 @@
 <p>School: <%= @course.school %></p>
 
 
-<% if current_student && @attender %>
-  <%= form_for(@attender, ) do |f| %>
-    <%= f.hidden_field(:student_id) %>
-    <%= f.hidden_field(:class_date_id) %>
-    <%= f.submit %>
+<% if current_student %>
+   <% if @attender %>
+    <%= form_for(@attender, ) do |f| %>
+      <%= f.hidden_field(:student_id) %>
+      <%= f.hidden_field(:class_date_id) %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+  <% if @current_class %>
+    <div class="check-class" data-class-id="<% @current_class.id %>" data-student-id="<% current_student.id %>">
+    </div>
   <% end %>
 <% end %>
 
@@ -61,7 +67,7 @@
     <p> <%= link_to "#{student.first_name}#{student.last_name} ------- attendance %" %></p>
   <% end %>
 <% end %>
-
+<div id="location-on"></div>
 <div id='modal'>
   <section>
     <p>Loading</p>

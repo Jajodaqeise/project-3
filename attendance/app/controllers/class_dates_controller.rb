@@ -55,8 +55,7 @@ class ClassDatesController < ApplicationController
     @class_date.date += params[:timezone_offset].to_i * 60
     @class_date.save
 
-    now = Time.new
-    byebug
+
 
     if repeat && datetime.to_i != @class_date.date.to_i
       @class_date.repeat = false

@@ -293,11 +293,11 @@ $(document).on('turbolinks:load', function() {
 
   $('.modal').hide();
   $('.new-class-button').click((e)=>{
+
     $('.modal-form').load(`/courses/${courseId}/class_dates/new`, ()=>{
       showModalForm();
+      console.log("test");
     });
-  })
-
-
+  });
 
 })
