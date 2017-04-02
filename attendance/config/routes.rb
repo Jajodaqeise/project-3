@@ -36,7 +36,8 @@ Rails.application.routes.draw do
   patch "/class_pattern/:id", to: "class_patterns#update", as: :update_class_pattern
   delete "/class_patterns/:id", to: "class_patterns#destroy", as: :delete_class_pattern
 
-  post "/attenders", to: "attenders#create", as: :check_in
+  get "/attenders", to: "attenders#index"
+  post "/attenders", to: "attenders#create"
 
   get "/courses/:id/students", to: "students#index", as: :students
   get "/student/:id", to: "student#show", as: :student

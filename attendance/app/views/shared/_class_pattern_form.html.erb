@@ -6,9 +6,9 @@
   <%= f.label(:end_date) %>
   <%= f.date_field(:end_date) %>
   <%= f.label(:time) %>
+  <%= hidden_field_tag(:timezone_offset) %>
   <div class="input-group clockpicker">
-    <%= hidden_field_tag(:timezone_offset) %>
-    <% time = class_pattern[:time] ? class_pattern[:time].strftime("%H:%M") : DateTime.now.strftime("%H:%M") %>
+    <% time = class_pattern[:time] ? class_pattern[:time].localtime.strftime("%H:%M") : DateTime.now.strftime("%H:%M") %>
     <%= f.time_field(:time, :value => time) %>
   </div>
   <div class="check-boxes-container">
@@ -24,7 +24,7 @@
   <div class="date-buttons">
     <%= f.submit(class_pattern.id ? "Edit Pattern" : "Create Pattern") %>
     <% if class_pattern.id %>
-      <%= button_to "Delete Pattern", delete_class_pattern_path(:id => class_pattern.id),  method: :delete %>
+      <%= link_to "Delete Pattern", delete_class_pattern_path(:id => class_pattern.id),  method: :delete %>
     <% end %>
   </div>
 

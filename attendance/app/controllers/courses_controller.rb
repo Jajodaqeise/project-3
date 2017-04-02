@@ -1,6 +1,9 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   geocode_ip_address
+  require 'haversine'
+
+
 
   def index
     @courses = Course.all
@@ -34,25 +37,27 @@ class CoursesController < ApplicationController
     @students = @course.students
 
     if current_student
+      lat = session[:geo_location][:lat]
+      lng = session[:geo_location][:lng]
+
       classes = @course.class_dates
       current_class = false
       classes.each do |class_date|
         now = DateTime.now
-        byebug
         if class_date.date - (5 * 60) < now && now < class_date.date + (10 * 60)
-          current_class = class_date.id
+          current_class = class_date
         end
       end
       if current_class
-        lat = session[:geo_location].lat
-        lng = session[:geo_location].lng
-        byebug
+
+
+        # distance = Haversine.distance(lat, lng, @course.lat, @course.lng)
+        # meters = distance.to_meters
+
         @attender = Attender.new()
         @attender.student_id = current_student.id
         @attender.class_date_id = current_class
       end
-
-
 
     end
 
