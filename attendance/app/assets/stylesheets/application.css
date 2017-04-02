@@ -1,0 +1,1220 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+/*map - show course page*/
+#map {
+  width: 100%;
+  height: 300px;
+  border: 0px solid transparent;
+  max-width: 600px;
+  margin: 2% 0;
+}
+
+/* "loading" animated modal, while the geolocation hasn't been retrieved*/
+#modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.75);
+}
+
+#modal section {
+  position: relative;
+  background-color: white;
+  width: 50%;
+  padding: 2em;
+  margin: 0 auto;
+
+  /* This doesn't quite vertically center the section, but if you knew the exact height of the section, you could make the margin-top negative one/half. E.g. for a height of 300 px, margin-top: -150px.*/
+  top: 50%;
+  margin-top: -5%;
+}
+
+#modal p {
+  display: block;
+  margin: 0 auto;
+}
+
+.option {
+  width: 200px;
+  height: auto;
+  border: black;
+}
+
+body, html {
+  padding: 0;
+  margin: 0 auto;
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Crimson Text', serif;
+  display: block;
+}
+
+
+/*LAY OUT*/
+
+
+/*so basically, this is for devise but it's taking space from my other pages*/
+
+.notice {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.alert {
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+/*Top Nav Bar*/
+
+#topNav {
+  display: flex;
+  width: 100%;
+  background-color: #64a5ff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, .5);
+  height: 54px;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+
+}
+
+
+/*this is the brand logo which is an image inside the topnav*/
+
+#brandImg {
+  margin: 0 auto;
+  height: 5rem;
+}
+
+
+/*Nav Bar*/
+
+.menu-icon {
+  padding: 0px 20px;
+  background-color: #64a5ff;
+  color: white;
+  cursor: pointer;
+  font-size: 3.6rem;
+}
+
+.menu-icon:hover {
+  color: #00007f;
+}
+
+
+/*Nav Bar to that's out the page in order to slide in */
+
+.menu {
+  margin: 0 auto;
+  font-size: 2em;
+  font-weight: bold;
+  min-width: 200px;
+  height: 100%;
+  background-color: #64a5ff;
+  position: fixed;
+  left: -80%;
+  z-index: 5;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+  top:0px;
+  padding-top: 64px;
+  transition: all .5s ease-in-out;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+}
+
+
+/*Content inside the nav bar*/
+
+.menu a {
+  display: flex;
+  align-content: center;
+  z-index: 9;
+  padding: 10px;
+  width: 90%;
+  min-width: 90%;
+  text-decoration: none;
+  color: white;
+  /*background-color: black;
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));*/
+}
+
+.menu a:hover {
+  color: #00007f;
+  padding: 12px;
+  transition: 0.5s;
+}
+
+.menu a i {
+  margin: 5px 5px 0 5px;
+}
+
+.yield-container{
+  padding-top: 54px;
+}
+
+/*end of slide content*/
+
+li {
+  list-style-type: none;
+}
+
+.menu:last-child a {
+  border-bottom: none;
+}
+
+#menuToggle:checked~.menu {
+  position: absolute;
+  left: 0;
+}
+
+#menuToggle {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* End of Nav Bar */
+
+
+/*LAYOUT ENDS*/
+
+
+
+
+/*Site index Page*/
+
+#siteBody {
+  width: 100%;
+  height: 100%;
+  background: #64a5ff;
+}
+
+#siteBody a {
+  color: white;
+  font-weight: bold;
+}
+
+#siteIndexContainer {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  background-color: #64a5ff;
+  max-width: 900px;
+  min-height: 100vh;
+  align-items: center;
+}
+
+#siteBrand {
+  /*height: 10vh;*/
+  width: 100%;
+}
+
+#siteInnerContainer {
+  /*min-width: 300px;
+  max-width: 300px;
+  margin-top: 18%;*/
+  margin: 100px auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+#siteOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  width: 100%;
+}
+
+#siteIndexStudent {
+  align-self: center;
+  cursor: pointer;
+  border: .1vw solid white;
+  font-size: 2em;
+  color: white;
+  border-radius: .5rem;
+  background: none;
+  outline: none;
+  /*height: 5vh;*/
+  width: 80%;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+}
+
+#siteIndexTeacher {
+  align-self: center;
+  cursor: pointer;
+  border-radius: .2vw;
+  border: .1vw solid white;
+  font-size: 2em;
+  color: white;
+  border-radius: .5rem;
+  background: none;
+  outline: none;
+  /*height: 5vh;*/
+  width: 80%;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+}
+
+#siteIndexTeacher:hover {
+  /*background-color: #FFA500;*/
+  background-color: #00007f;
+}
+
+#siteIndexStudent:hover {
+  /*background-color: #FFA500;*/
+  background-color: #00007f;
+}
+
+
+/*Devise session Sign in Page for both Students & Teachers*/
+#newBody {
+  width: 100%;
+  height: 100%;
+  background: #64a5ff;
+}
+#newBody a {
+  font-weight: bold;
+}
+
+.newEmailContainer{
+  display: flex;
+  justify-content: center;
+}
+
+#newEmail {
+  border-top-right-radius: .5rem;
+  border-top-left-radius: .5rem;
+  height: 5vh;
+  width: 90%;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid white;
+  font-family: 'Crimson Text', serif;
+}
+
+.newPasswordContainer{
+  display: flex;
+  justify-content: center;
+}
+#newPassword{
+    border-bottom-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    height: 5vh;
+    width: 90%;
+    outline: none;
+    font-size: 2em;
+    border: .1vw solid white;
+    border-top-color: #e1e1e1;
+    font-family: 'Crimson Text', serif;
+}
+#newSessionBrand{
+  width: 100%;
+}
+
+.newSubmitContainer{
+  display: flex;
+  justify-content: center;
+}
+
+#newSubmit{
+  cursor: pointer;
+  border: .1vw solid white;
+  font-size: 2em;
+  color: white;
+  border-radius: .5rem;
+  background: none;
+  outline: none;
+  /*height: 5vh;*/
+  width: 80%;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+}
+
+#newSubmit:hover{
+  background-color: #00007f;
+  cursor: pointer;
+}
+
+#newRemember_me{
+  font-size: 1.6em;
+  font-family: 'Crimson Text', serif;
+}
+.newForgotPw{
+  display: flex;
+  font-size: 1.6em;
+
+}
+
+.newForgotPw a{
+  color: #00007f;
+}
+.newSignUp{
+  display: flex;
+  justify-content: center;
+}
+
+.newSignUp a{
+  display: flex;
+  font-size: 1.6em;
+  color: #00007f;
+}
+
+#memberYet{
+  font-size: 1.6em;
+}
+
+#checkAndRemember{
+display: flex;
+}
+
+#containerNewCheckForgot{
+  display: flex;
+  width: 90%;
+  margin-left: 2.14rem;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/*New student form*/
+#new_student{
+  font-family: 'Crimson Text', serif;
+  display: flex;
+  flex-direction: column;
+}
+/*new_student and Teacher SIGN IN Ends*/
+
+
+/* CALENDAR */
+.cal-class-day{
+  background-color: #888;
+  color: white;
+}
+
+.cal-view-day{
+  background-color:#64a5ff;
+}
+.modal{
+  -ms-align-items: center;
+  align-items: center;
+  background-color: rgba(0,0,0,.5);
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.modal-content{
+  background-color: white;
+  padding: 20px;
+  max-height: 90vh;
+  max-width: 600px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 85%;
+}
+.modal-content .close{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background-color: indianred;
+  top: 0;
+  right: 0;
+}
+.modal-content .close i.fa{
+  margin-top: -3px;
+  font-size: 3em;
+  color: white;
+}
+
+.modal-content form{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.date-buttons{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  margin: 10px auto 20px;
+  font-family: 'Crimson Text', serif;
+}
+
+.date-buttons input{
+  cursor: pointer;
+  background-color: #00007f;
+  border-radius: .5rem;
+  border: 0px solid transparent;
+  color: white;
+  display: block;
+  margin: 0 5px;
+  padding: 5px;
+  width: 120px;
+  font-family: 'Crimson Text', serif;
+}
+.modal-content form .input-group{
+  cursor: pointer;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.check-boxes-container{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  margin: 10px auto 20px;
+  font-size: 1.3em;
+}
+/*joel editing calendar a bit*/
+.labelski{
+  font-size: 2em;
+}
+
+.check-box-container{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 5px 10px;
+}
+
+.modal-content form label{
+  font-size: 1.2em;
+  margin: 10px 0 2px;
+}
+
+.modal-content h2{
+  font-size: 2em;
+}
+
+.modal-content form input{
+  font-size: 1.5em;
+}
+
+
+#render-cal{
+  border: 1px solid #aaa;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 15px 0;
+  width: 90%;
+}
+.cal-row{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+}
+.cal-day-of-week-row{
+  border-bottom: 1px solid #bbb;
+  margin-bottom: 5px;
+  padding: 10px 0;
+}
+
+caption{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.month-option{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  height: 20px;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  width: 20px;
+}
+
+caption select{
+  font-size: 1.2em;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  padding: 7px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.new-class-button{
+  -ms-align-items: center;
+  align-items: center;
+  background-color: #00007f;
+  border-radius: .5rem;
+  color: white;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  font-size: 2em;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  max-width: 500px;
+  margin: 30px auto;
+  width: 72%;
+}
+
+/*SIGN UP FOR BOTH TEACHER & STUDENT DEVISE*/
+#signUpBody{
+  width: 100%;
+  height: 100%;
+  background: #64a5ff;
+}
+
+.firstNameSignUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#firstNameSignUp{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  border-top-right-radius: .5rem;
+  border-top-left-radius: .5rem;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+
+.lastNameSignUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#lastNameSignUp{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+.emailSignUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#emailSignUp{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+.passwordSignUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#passwordSignUp{
+  height: 5vh;
+  width: 90%;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+.password_confirmationSignUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#password_confirmationSignUp{
+  display: flex;
+  width: 90%;
+  height: 5vh;border-bottom-right-radius: .5rem;
+  border-bottom-left-radius: .5rem;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid white;
+  font-family: 'Crimson Text', serif;
+}
+
+.SignUpSubmitContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: .6vh;
+}
+
+#signUpSubmit{
+cursor: pointer;
+border: .1vw solid white;
+font-size: 2em;
+color: white;
+border-radius: .5rem;
+background: none;
+outline: none;
+width: 80%;
+text-align: center;
+margin-top: 1rem;
+margin-bottom: 1rem;
+font-weight: bold;
+font-family: 'Crimson Text', serif;
+}
+
+#signUpSubmit:hover{
+  background-color: #00007f;
+  cursor: pointer;
+}
+
+#SignUpErrorMsg{
+  font-family: 'Crimson Text', serif;
+  font-size: 1.59em;
+}
+#SignUpErrorMsg h2 {
+  display: none;
+}
+#SignUpErrorMsg ul{
+  padding: 0;
+}
+#SignUpErrorMsg li {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+.field_with_errors{
+  position: relative;
+  width: 100%;
+  left: 0px;
+  height: 5vh;
+}
+/*REGISTRATION PAGE END*/
+
+/*FORGOT PW STARTS HERE*/
+
+#forgotEmailField{
+  height: 5vh;
+  width: 90%;
+  outline: none;
+  border-radius: .5rem;
+  font-size: 2em;
+  border: .1vw solid white;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#forgotEmailSubmit{
+  cursor: pointer;
+  border: .1vw solid white;
+  font-size: 2em;
+  color: white;
+  border-radius: .5rem;
+  background: none;
+  outline: none;
+  width: 80%;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+}
+#forgotEmailSubmit:hover {
+background-color: #00007f;
+cursor: pointer;
+}
+
+#resetInstructions{
+  font-size: 1.6em;
+}
+
+#forgotPasswordError{
+  font-family: 'Crimson Text', serif;
+  font-size: 1.6em;
+  color: red;
+  text-align: center;
+}
+
+#forgotPasswordError ul{
+  padding: 0;
+}
+
+#forgotPasswordError li{
+  text-align: center;
+}
+
+#forgotPasswordError h2{
+  display: none;
+}
+/*FORGOT PASSWORD PAGE ENDS*/
+
+/*EDIT PASSWORD PAGE STARTS HERE*/
+#editPassWordSpan{
+  font-size: 3em;
+  font-family: 'Crimson Text', serif;
+}
+
+#editRegistrationsContainer{
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  max-width: 900px;
+  min-height: 100vh;
+  align-items: center;
+}
+
+#editRegistrationsInnerContainer{
+margin: 30px auto;
+width: 100%;
+max-width: 500px;
+}
+#editPwEmailContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPwEmail{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  border-top-right-radius: .5rem;
+  border-top-left-radius: .5rem;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwCurrentPwContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPwCurrentPw{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwNewPwContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPwNewPw{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwConfirmNewPwContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPwConfirmNewPw{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  border-bottom-right-radius: .5rem;
+  border-bottom-left-radius: .5rem;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwSubmitContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPwSubmit{
+  cursor: pointer;
+  border: .1vw solid white;
+  font-size: 2em;
+  color: white;
+  border-radius: .5rem;
+  background: #00007f;
+  outline: none;
+  width: 80%;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+  }
+
+#deviseEditPw{
+  font-family: 'Crimson Text', serif;
+  font-size: 1.6em;
+  color: red;
+  font-weight: bold;
+}
+
+#deviseEditPw ul{
+ padding: 0;
+}
+#deviseEditPw li{
+ text-align: center;
+}
+
+#deviseEditPw h2{
+ display: none;
+}
+/*EDIT PW END*/
+
+/*Jackies' stuff*/
+.class-results{
+  margin: 20px auto;
+  max-width: 500px;
+  width: 100%;
+}
+.class-result{
+  background-color:#888;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 2em;
+  padding: .01rem 10px;
+}
+.selected-result{
+  background-color: #64a5ff;
+}
+
+caption i.fa{
+  color: #999;
+  font-size: 3em;
+}
+
+select:focus{
+  outline: none;
+}
+
+.cal-cell{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flex;
+  display: inline-flex;
+  font-size: 1.5em;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  width: 12.5%;
+  border: 1px solid white;
+}
+
+.course-form form{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 15px auto;
+  max-width: 500px;
+  font-size: 1.3em;
+  width: 90%
+}
+.course-form textarea{
+  resize: none;
+  border-radius: .5rem;
+}
+/*just incase */
+#courseFormDescription{
+  font-size: 1.2em;
+  height: 20vh;
+  outline: none;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+}
+
+.courseFormTextField{
+  border-radius: .5rem;
+  height: 4vh;
+  font-size: 1.2em;
+  outline: none;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+}
+
+.course-form input[type="submit"]{
+  background-color: #00007f;
+  border: .1vw solid white;
+  cursor: pointer;
+  color: white;
+  font-size: 1.34em;
+  font-weight: bold;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: .5rem;
+}
+/*jackies stuff ends*/
+
+
+/*  /courses   */
+
+.course{
+  font-size: 1.2em;
+}
+.student-name {
+  text-indent: 2%;
+}
+.course-search form {
+  text-indent: 5%;
+}
+
+#course_name {
+  width: 80%;
+  outline: none;
+  border-radius: .5rem;
+  font-size: 1.6em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+  width: 200px;
+}
+.my-courses {
+}
+
+.my-courses-heading {
+  width: 100%;
+  background-color: #f7f7f7;
+  color: #4F8CFD;
+  font-weight: bold;
+  text-indent: 5%;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.enrolled-courses {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 5% 0;
+  font-size: 1.2em;
+}
+
+.enrolled-course {
+  margin: .5%;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 0, 0, .1);
+  padding: 3%;
+
+}
+
+.enrolled-course a {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #000;
+}
+
+/*  /courses/:id  */
+
+/*COURSE FORM FOR COURSES/EDIT*/
+
+
+
+/*COURSE FORM FOR COURSES/EDIT END*/
+
+
+
+
+
+/*Media Q section*/
+
+
+
+
+/* Ipad 1 Portrait */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+  #siteBrand {
+    width: 60vw;
+    height: 12vh;
+    position: relative;
+    left: -10vw;
+    top: 0vh;
+  }
+  #siteIndexStudent {
+    width: 40vw;
+    font-size: 3em;
+  }
+  #siteIndexTeacher {
+    width: 40vw;
+    font-size: 3em;
+  }
+  #siteOptions {
+    position: relative;
+    left: 0vw;
+    top: 4vh;
+  }
+  /*ipad ends*/
+}
+
+
+/*ipad pro*/
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
+
+  /* ipad pro ends */
+}
+
+
+/*Regular Screen*/
+
+/*use regular screen only if all mobile is met*/
+/*@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  #siteBrand {
+    position: relative;
+    left: -10vw;
+    top: -5vh;
+    width: 40vw;
+  }
+  #siteIndexTeacher {
+    width: 100%;
+  }
+  #siteIndexStudent {
+    width: 100%;
+  }
+
+}*/

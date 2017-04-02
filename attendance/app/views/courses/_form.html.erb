@@ -1,0 +1,29 @@
+<div class="course-form">
+    <%= form_for(course) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name,id: 'courseFormName',class: 'courseFormTextField', :placeholder => "Course Name" %>
+        <br>
+        <%= f.label :description %>
+
+        <%= f.text_area :description,id: 'courseFormDescription', cols: 40, rows: 10, :placeholder => "Course Description" %>
+        <br>
+        <%= f.label :school %>
+        <%= f.text_field :school, id: 'courseFormSchool',class: 'courseFormTextField', :placeholder => "School Name" %>
+        <div class="results"></div>
+
+        <%= f.hidden_field :lat %>
+        <%= f.hidden_field :lng %>
+
+        <br>
+        <%= f.label :start_date %>
+        <%= f.date_field :start_date,class: 'courseFormTextField', id: 'courseFormStartDate'%>
+        <br>
+        <%= f.label :end_date %>
+        <%= f.date_field :end_date,class: 'courseFormTextField', id: 'courseFormEndDate'%>
+        <br>
+
+        <%= f.hidden_field :teacher_id, :value => current_teacher.id %>
+
+        <%= f.submit %>
+    <% end %>
+</div>

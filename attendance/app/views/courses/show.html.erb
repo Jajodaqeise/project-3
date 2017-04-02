@@ -1,0 +1,52 @@
+
+
+<%= link_to "Go back to all courses", courses_path %>
+
+<% if current_teacher %>
+  <%= link_to "Edit", edit_course_path(@course) %>
+  <%= link_to "Add Classes", class_dates_path(:course_id => @course.id) %>
+<% end %>
+
+<h1>Course: <%= @course.name %></h1>
+<p>School: <%= @course.school %></p>
+
+
+<% if current_student %>
+   <% if @attender %>
+    <%= form_for(@attender, ) do |f| %>
+      <%= f.hidden_field(:student_id) %>
+      <%= f.hidden_field(:class_date_id) %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+  <% if @current_class %>
+    <div class="check-class" data-class-id="<% @current_class.id %>" data-student-id="<% current_student.id %>">
+    </div>
+  <% end %>
+<% end %>
+
+
+
+<p>Description: <%= @course.description %></p>
+
+<h2>Teacher: <%= @course.teacher.first_name %> <%= @course.teacher.last_name %></h2>
+
+<%= hidden_field_tag(:course_id, @course.id) %>
+<%= hidden_field_tag(:lat, @course.lat) %>
+<%= hidden_field_tag(:lng, @course.lng) %>
+
+<div id="map"></div>
+
+
+<% if current_teacher %>
+  <h2>Enrolled students</h2>
+  <% @students.each do |student| %>
+    <p> <%= link_to "#{student.first_name}#{student.last_name} ------- attendance %" %></p>
+  <% end %>
+<% end %>
+<div id="location-on"></div>
+<div id='modal'>
+  <section>
+    <p>Loading</p>
+  </section>
+</div>
