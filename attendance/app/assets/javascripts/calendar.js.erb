@@ -274,7 +274,7 @@ function showModalForm(){
     donetext: "Done",
     autoclose: true
   });
-
+  $('#timezone_offset').val(new Date().getTimezoneOffset())
 }
 
 $(document).on('turbolinks:load', function() {

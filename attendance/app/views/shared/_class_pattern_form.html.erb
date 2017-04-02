@@ -7,6 +7,7 @@
   <%= f.date_field(:end_date) %>
   <%= f.label(:time) %>
   <div class="input-group clockpicker">
+    <%= hidden_field_tag(:timezone_offset) %>
     <% time = class_pattern[:time] ? class_pattern[:time].strftime("%H:%M") : DateTime.now.strftime("%H:%M") %>
     <%= f.time_field(:time, :value => time) %>
   </div>

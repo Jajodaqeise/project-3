@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  geocode_ip_address
 
   def index
 
@@ -43,7 +44,26 @@ class CoursesController < ApplicationController
     @students = @course.students
 
     if current_student
-      @current_student = current_student.courses
+      classes = @course.class_dates
+      current_class = false
+      classes.each do |class_date|
+        now = DateTime.now
+        byebug
+        if class_date.date - (5 * 60) < now && now < class_date.date + (10 * 60)
+          current_class = class_date.id
+        end
+      end
+      if current_class
+        lat = session[:geo_location].lat
+        lng = session[:geo_location].lng
+        byebug
+        @attender = Attender.new()
+        @attender.student_id = current_student.id
+        @attender.class_date_id = current_class
+      end
+
+
+
     end
 
     # @current_student = current_student.courses
