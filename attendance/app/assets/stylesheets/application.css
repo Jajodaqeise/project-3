@@ -985,6 +985,56 @@ textarea{
 /*jackies stuff ends*/
 
 
+/*  /courses   */
+
+.student-name {
+  /*text-indent: 5%;*/
+}
+.course-search form {
+  text-indent: 5%;
+}
+
+#course_name {
+  width: 200px;
+}
+.my-courses {
+}
+
+.my-courses-heading {
+  width: 100%;
+  background-color: #f7f7f7;
+  color: #64a5ff;
+  text-indent: 5%;
+  font-size: 1.5em;
+}
+
+.enrolled-courses {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 5% 0;
+  font-size: 1.2em;
+}
+
+.enrolled-course {
+  margin: .5%;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 0, 0, .1);
+  padding: 3%;
+
+}
+
+a {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #000;
+}
+
+/*  /courses/:id  */
+
+
+
 
 /*Media Q section*/
 
@@ -1026,7 +1076,7 @@ textarea{
 /*ipad pro*/
 
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
-  
+
   /* ipad pro ends */
 }
 
