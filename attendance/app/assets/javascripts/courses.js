@@ -55,7 +55,7 @@ $(()=>{
         courseOptions[i] = $('<div class="option">');
         // console.log("option1", courseOptions[i]);
         coursesNames[i] = courses[i].name;
-        const name = $('<p>').text(coursesNames[i]);
+        const name = $('<a>').text(coursesNames[i]);
         courseOptions[i].append(name);
         coursesId[i] = courses[i].id;
         $('.results').append(courseOptions[i]);
