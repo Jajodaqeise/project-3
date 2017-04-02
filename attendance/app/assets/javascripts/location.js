@@ -23,6 +23,7 @@
 
     console.log("init", location);
     // toggleModal();
+
     $('#course_school').keyup((e)=>{
       console.log("keyup");
       findSchool(e, location);
