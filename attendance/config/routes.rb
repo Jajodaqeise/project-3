@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     resources :class_dates
     resources :class_patterns
     resources :find_courses
+    post "/attenders/check", to: "attenders#check"
   end
 
 end

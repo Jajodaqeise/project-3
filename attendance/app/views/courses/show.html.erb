@@ -11,19 +11,17 @@
 <p>School: <%= @course.school %></p>
 
 
-<% if current_student %>
-   <% if @attender %>
-    <%= form_for(@attender, ) do |f| %>
+
+   <% if current_student && @attender && @current_class %>
+    <%= form_for(@attender) do |f| %>
+      <%= hidden_field_tag(:student_lat) %>
+      <%= hidden_field_tag(:student_lng) %>
       <%= f.hidden_field(:student_id) %>
-      <%= f.hidden_field(:class_date_id) %>
+      <%= f.hidden_field(:class_date_id, :value => @current_class.id) %>
       <%= f.submit %>
     <% end %>
   <% end %>
-  <% if @current_class %>
-    <div class="check-class" data-class-id="<% @current_class.id %>" data-student-id="<% current_student.id %>">
-    </div>
-  <% end %>
-<% end %>
+
 
 
 
