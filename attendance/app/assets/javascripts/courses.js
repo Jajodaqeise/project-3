@@ -6,13 +6,8 @@ $(()=>{
   const coursesId = [];
   const enrolledCourses = [];
 
-  const searchCourse = $('#course_name');
+  const searchCourse = $('#course');
 
-  $('.enrolled-course').each((i, course) => {
-    enrolledCourses.push($(course).attr('data-course-id'));
-  });
-
-  console.log(enrolledCourses);
   searchCourse.keyup((e) => {
       const search = searchCourse.val();
       // console.log("keyup");
@@ -41,6 +36,12 @@ $(()=>{
       }
     });
   }
+
+  $('.enrolled-course').each((i, course) => {
+    enrolledCourses.push($(course).attr('data-course-id'));
+  });
+
+  console.log(enrolledCourses);
 
   const dropDownOptions = (courses) => {
     console.log("courses", courses);
