@@ -7,12 +7,34 @@ class AttendersController < ApplicationController
   def index
     @course = Course.find(params[:course_id])
     @students = @course.students
+    render layout: "nav"
   end
 
   def show
     @course = Course.find(params[:course_id])
+
+      unless (current_student && params[:student_id].to_i == current_student.id) || (current_teacher && @course.teacher_id == current_teacher.id)
+        byebug
+        redirect_to courses_path
+      end
+
     @student = Student.find(params[:student_id])
-    @attenders = @student.attenders.order(:date)
+
+    @class_dates = @course.class_dates.order(:date)
+    @attendances = []
+    @class_dates.each do |class_date|
+      attendance = @student.attenders.exists?(:class_date_id => class_date.id) ? true : false
+      @attendances << {
+        :date => class_date.date,
+        :attendance => attendance
+      }
+    end
+
+    @percent = @student.attender_percent(@course.id)
+    @color_green = ((@percent / 100) * 255).to_i
+    @color_red = 255 - @color_green
+
+    render layout: "nav"
   end
 
 

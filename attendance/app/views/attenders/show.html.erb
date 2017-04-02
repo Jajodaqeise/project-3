@@ -1,0 +1,21 @@
+<div class="attendance-main-container">
+  <h2><%= @course.name %></h2>
+  <h3><%= @student.full_name %></h3>
+
+  <div class="attendance-bar-holder">
+
+    <div class="attendance-bar" style="width: <%= @percent %>%; background-color: rgb(<%= "#{@color_red}, #{@color_green}, 0" %>)">
+
+    </div>
+  </div>
+
+  <div class="attendances">
+    <% @attendances.each do |attendance| %>
+      <% att = attendance[:attendance] %>
+      <div class="attendance <%= att ? "yes" : "no" %>">
+        <p class="attendance-date"><%= attendance[:date].localtime.strftime("%D %l:%M %p") %></p>
+        <i class="fa <%= att ? "fa-check" : "fa-times"%>" aria-hidden="true"></i>
+      </div>
+    <% end %>
+  </div>
+</div>
