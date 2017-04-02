@@ -31,7 +31,8 @@ class ClassDatesController < ApplicationController
   def create
     @class_date = ClassDate.new(class_date_params)
     time = params[:class_date][:time].split(":")
-    @class_date.date = @class_date.date.change(hour: time[0], min: time[1]) + (params[:class_date][:timezone_offset].to_i * 60)
+    @class_date.date = @class_date.date.change(hour: time[0], min: time[1])
+    @class_date.date += params[:timezone_offset].to_i * 60
     @class_date.save
     redirect_to class_dates_path(course_id: params[:course_id])
   end
@@ -50,8 +51,12 @@ class ClassDatesController < ApplicationController
     end
 
     time = params[:class_date][:time].split(":")
-    @class_date.date = @class_date.date.change(hour: time[0], min: time[1]) + (params[:class_date][:timezone_offset].to_i * 60)
+    @class_date.date = @class_date.date.change(hour: time[0], min: time[1])
+    @class_date.date += params[:timezone_offset].to_i * 60
     @class_date.save
+
+    now = Time.new
+    byebug
 
     if repeat && datetime.to_i != @class_date.date.to_i
       @class_date.repeat = false

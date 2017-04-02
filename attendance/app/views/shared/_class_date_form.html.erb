@@ -1,14 +1,13 @@
 <h2><%= @class_date.course.name %></h2>
 <%= form_for(@class_date) do |f| %>
   <%= f.hidden_field(:course_id) %>
-
+    <% date = @class_date[:date] ? @class_date[:date].localtime : DateTime.now.localtime %>
       <%= f.label(:date) %>
-      <%= f.date_field(:date) %>
+      <%= f.date_field(:date, :value => date.strftime("%F")) %>
     <%= f.label(:time) %>
+    <%= hidden_field_tag(:timezone_offset) %>
     <div class="input-group clockpicker">
-      <%= hidden_field_tag(:timezone_offset) %>
-      <% time = @class_date[:date] ? @class_date[:date].strftime("%H:%M") : DateTime.now.strftime("%H:%M") %>
-      <%= f.time_field(:time, :value=>time) %>
+      <%= f.time_field(:time, :value=>date.strftime("%H:%M")) %>
     </div>
 
   <%= f.label(:repeat) %>
@@ -16,7 +15,7 @@
   <div class="date-buttons">
     <%= f.submit(@class_date.id ? "Edit Class" : "Create Class") %>
     <% if @class_date.id %>
-      <%= button_to "Delete Class", delete_class_date_path(:id => @class_date.id),  method: :delete %>
+      <%= link_to "Delete Class", delete_class_date_path(:id => @class_date.id),  method: :delete %>
     <% end %>
   </div>
 

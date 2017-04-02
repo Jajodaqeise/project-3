@@ -94,6 +94,10 @@ body {
   background-color: #64a5ff;
   box-shadow: 0 0 40px rgba(0, 0, 0, .5);
   height: 54px;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+
 }
 
 
@@ -126,13 +130,15 @@ body {
   margin: 0 auto;
   font-size: 2em;
   font-weight: bold;
-  min-width: 20%;
+  min-width: 200px;
   height: 100%;
   background-color: #64a5ff;
   position: fixed;
   left: -80%;
-  z-index: 99;
-  box-shadow: 10px 0 10px -5px rgba(0, 0, 0, .3);
+  z-index: 5;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+  top:0px;
+  padding-top: 64px;
   transition: all .5s ease-in-out;
   -webkit-transition: all .5s ease-in-out;
   -moz-transition: all .5s ease-in-out;
@@ -163,6 +169,13 @@ body {
   transition: 0.5s;
 }
 
+.menu a i {
+  margin: 5px 5px 0 5px;
+}
+
+.yield-container{
+  padding-top: 54px;
+}
 
 /*end of slide content*/
 
@@ -1108,12 +1121,7 @@ a {
 
 /*Media Q section*/
 
-@media screen and (min-width: 900px) {
-  .menu {
-    min-width: 10%;
-  }
-  /*900px*/
-}
+
 
 
 /* Ipad 1 Portrait */

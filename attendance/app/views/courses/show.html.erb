@@ -35,9 +35,9 @@
 
 
 <% if current_student && @attender %>
-  <%= form_for(@attender) do |f| %>
+  <%= form_for(@attender, ) do |f| %>
     <%= f.hidden_field(:student_id) %>
-    <%= f.hidden_field(:course_id) %>
+    <%= f.hidden_field(:class_date_id) %>
     <%= f.submit %>
   <% end %>
 <% end %>
