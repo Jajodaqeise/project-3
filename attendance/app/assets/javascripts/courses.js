@@ -62,6 +62,7 @@ $(()=>{
         courseOptions[i].click(() => {
           $('.btn').empty();
           console.log("click");
+          $('.results').empty();
           const courseSelected = $('#course').val(coursesNames[i]);
           console.log("course selected", courseSelected);
           const studentId = $('#student_id').val();
@@ -78,4 +79,6 @@ $(()=>{
     .text('register')
     .appendTo($('.btn'));
   }
+
+
 });
