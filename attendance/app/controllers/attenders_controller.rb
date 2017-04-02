@@ -1,7 +1,8 @@
 class AttendersController < ApplicationController
   before_action :require_user
-  before_action :require_teacher only: [:index]
-  before_action :require_student only: [:create]
+
+  before_action :require_teacher, only: [:index]
+  before_action :require_student, only: [:create]
 
   def index
     @course = Course.find(params[:course_id])
@@ -13,6 +14,7 @@ class AttendersController < ApplicationController
     @student = Student.find(params[:student_id])
     @attenders = @student.attenders.order(:date)
   end
+
 
   def create
 

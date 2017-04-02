@@ -1,4 +1,9 @@
 class ClassPattern < ApplicationRecord
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :time, presence: true
+  validates :course_id, presence: true
+
   belongs_to :course
   has_many :class_dates
 
