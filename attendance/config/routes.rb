@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   get "/courses/:course_id/attenders", to: "attenders#index", as: :attenders
   get "/courses/:course_id/students/:student_id/attenders", to: "attenders#show", as: :attender
-  post "/attenders", to: "attenders#create"
+  post "/attenders", to: "attenders#create", as: :create_attender
 
   get "/courses/:id/students", to: "students#index", as: :students
   get "/student/:id", to: "student#show", as: :student

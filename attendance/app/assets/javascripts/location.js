@@ -125,8 +125,8 @@
 
   //checkin
 
-  const studentId = parseInt($('#attender_student_id').val());
-  const classId = parseInt($('#attender_class_date_id').val());
+  const studentId = parseInt($('#student_id').val());
+  const classId = parseInt($('#class_date_id').val());
   const $checkInForm = $('.check-in-form').remove();
 
   function validateStudentLocation(location) {
