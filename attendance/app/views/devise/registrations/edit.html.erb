@@ -1,36 +1,47 @@
 <input type="checkbox" id="menuToggle">
 
 <div id="topNav">
-  <label for="menuToggle" class="menu-icon">&#9776;</label>
-  <img id="brandImg" draggable="false" src="/assets/attender.svg"/ />
+    <label for="menuToggle" class="menu-icon">&#9776;</label>
+    <img  id="brandImg" draggable="false" src="/assets/attender.svg"/>
 </div>
 
 <nav class="menu">
-      <a href="/"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
-      <a href="/"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
-      <% if current_student %>
-      <%= link_to(destroy_student_session_path, :method => :delete) do %>
+    <a href="/">
+        <i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
+    <a href="/">
+        <i class="fa fa-book" aria-hidden="true">&#160;</i>
+        Course</a>
+    <% if current_student %>
+    <%= link_to(destroy_student_session_path, :method => :delete) do %>
 
-      <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
-      <% end %>
-      <% else %>
-      <%= link_to(destroy_teacher_session_path, :method => :delete) do %>
+    <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
+    <% end %>
+<% else %>
+    <%= link_to(destroy_teacher_session_path, :method => :delete) do %>
 
-      <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
-      <% end %>
-      <% end %>
+    <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
+    <% end %>
+    <% end %>
 
 </nav>
 
 <div id="editRegistrationsContainer">
 
+
+<div class="yield-container">
   <div id="editRegistrationsInnerContainer">
 <center>
-    <span id="editPassWordSpan">Change Password</span>
+    <span id="editPassWordSpan">Update Info</span>
 </center>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <br />
+  <div id="firstNameContainer"class="field">
+    <%= f.text_field :first_name, placeholder: 'First Name', id: 'editFirstName',  autofocus: true %>
+  </div>
+  <div id="lastNameContainer"class="field">
+    <%= f.text_field :last_name, placeholder: 'Last Name', id: 'editLasttName',  autofocus: true %>
+  </div>
   <div id="editPwEmailContainer"class="field">
     <%= f.email_field :email, placeholder: 'Email', id: 'editPwEmail',  autofocus: true %>
   </div>
@@ -63,6 +74,6 @@
 </div>
 
 <%#siteInnerContainer %>
-</div>
-  <%#siteIndexContainer %>
   </div>
+</div>
+</div>

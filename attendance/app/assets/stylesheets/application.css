@@ -1070,14 +1070,24 @@ textarea{
 
 /*  /courses   */
 
+.course{
+  font-size: 1.2em;
+}
 .student-name {
-  /*text-indent: 5%;*/
+  text-indent: 2%;
 }
 .course-search form {
   text-indent: 5%;
 }
 
 #course_name {
+  width: 80%;
+  outline: none;
+  border-radius: .5rem;
+  font-size: 1.6em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
   width: 200px;
 }
 .my-courses {
@@ -1086,9 +1096,11 @@ textarea{
 .my-courses-heading {
   width: 100%;
   background-color: #f7f7f7;
-  color: #64a5ff;
+  color: #4F8CFD;
+  font-weight: bold;
   text-indent: 5%;
   font-size: 1.5em;
+  text-align: center;
 }
 
 .enrolled-courses {
@@ -1108,16 +1120,19 @@ textarea{
 
 }
 
-/*a {
+.enrolled-course a {
   font-size: 1.5em;
   font-weight: bold;
   color: #000;
-}*/
+}
 
 /*  /courses/:id  */
 
+/*.profile {
 
-
+  margin-top: 10%;
+}
+*/
 
 /*Media Q section*/
 
