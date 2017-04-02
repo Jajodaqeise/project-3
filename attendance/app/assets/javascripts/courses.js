@@ -69,11 +69,11 @@ $(()=>{
   }
 
   const registerCourse = (studentId, coursesId) => {
-      $link = $('<a>',{
-        href: '/students/'+studentId+'/courses/'+coursesId+'/register'
-      })
-      .text('register')
-      .appendTo($('.btn'));
-    }
+    $link = $('<a>',{
+      href: '/students/'+studentId+'/courses/'+coursesId+'/register'
+    })
+    .text('register')
+    .appendTo($('.btn'));
+  }
 
 });
