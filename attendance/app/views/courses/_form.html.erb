@@ -8,8 +8,8 @@
         <%= f.text_area :description , class: 'descriptionField courseFormTextField', cols: 40, rows: 10, :placeholder => "Course Description" %>
         <br>
         <%= f.label :school %>
-        <%= f.text_field :school , class: 'courseFormTextField', :placeholder => "School Name" %>
-        <div class="results"></div>
+        <%= f.text_field :school , class: 'courseFormTextField', :placeholder => "School Name", autocomplete: 'off' %>
+        <div class="results-school"></div>
 
         <%= f.hidden_field :lat %>
         <%= f.hidden_field :lng %>

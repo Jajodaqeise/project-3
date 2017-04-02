@@ -55,7 +55,7 @@ $(()=>{
         courseOptions[i] = $('<div class="option">');
         // console.log("option1", courseOptions[i]);
         coursesNames[i] = courses[i].name;
-        const name = $('<p>').text(coursesNames[i]);
+        const name = $('<a>').text(coursesNames[i]);
         courseOptions[i].append(name);
         coursesId[i] = courses[i].id;
         $('.results').append(courseOptions[i]);
@@ -73,10 +73,10 @@ $(()=>{
   }
 
   const registerCourse = (studentId, coursesId) => {
-    $link = $('<a>',{
+    $link = $('<div class="register-course" ><a>',{
       href: '/students/'+studentId+'/courses/'+coursesId+'/register'
     })
-    .text('register')
+    .text('Register')
     .appendTo($('.btn'));
   }
 

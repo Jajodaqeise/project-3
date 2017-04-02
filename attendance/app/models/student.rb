@@ -17,6 +17,10 @@ class Student < ApplicationRecord
     return course_attenders
   end
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   def attender_percent(course_id)
     course = Course.find(course_id)
     percent = course.past_classes.count == 0 ? 100 : ((course_attenders(course_id).count.to_f / course.past_classes.count) * 100)
