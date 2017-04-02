@@ -58,7 +58,10 @@
       }
     })
   }
-  getLocation();
+  if ($('.location-on').length > 0){
+    getLocation();
+  }
+
 
   //new and edit course pages: top 5 options of the previous search
   const dropDownOptions = (schools) => {
@@ -87,8 +90,8 @@
   const latitude = parseFloat($('#lat').val());
   const longitude = parseFloat($('#lng').val());
   const LatLng = {lat: latitude, lng: longitude};
-  console.log(latitude);
-  console.log(longitude);
+  // console.log(latitude);
+  // console.log(longitude);
 
   //grab this code from google maps documentation
   const mapOptions = {
@@ -116,7 +119,9 @@
 
   function validateStudentLocation(location) {
     // console.log("student location", location);
-
+    const $checkClass = $('.check-class');
+    const studentId = parseInt($checkClass.attr('data-student-id'));
+    const classId = parseInt($checkClass.attr('data-class-id'));
     const studentLat = location.coords.latitude;
       console.log("student lat", studentLat);
       console.log("course lat", latitude);
@@ -124,36 +129,38 @@
       console.log("student lng", studentLng);
       console.log("course lng", longitude);
       // console.log("clicked");
-      if( studentLat.toFixed(4) === latitude.toFixed(4) && studentLng.toFixed(4) === longitude.toFixed(4)) {
-        // console.log("hello");
-        toggleModal();
-        checkInButton.text("You are in class");
-        // ajax call
-        const student = $('#student_id').val();
-        // console.log("student_id", student);
-        //class date goes here to make a post ajax request
+      // if( studentLat.toFixed(4) === latitude.toFixed(4) && studentLng.toFixed(4) === longitude.toFixed(4)) {
+      //   // console.log("hello");
+      //   toggleModal();
+      //   checkInButton.text("You are in class");
+      //   // ajax call
+      //   const student = $('#student_id').val();
+      //   // console.log("student_id", student);
+      //   //class date goes here to make a post ajax request
         const data = {
-           student: student,
-           date: date
+           student_id: studentId,
+           class_id: classId,
+           student_lat: studentLat,
+           studentLng: studentLng
         }
-        $.ajax({
-          method: "POST",
-          data: data,
-          url: "/attenders",
-          success: (data)=>{
-            console.log("attender", data);
-          },
-          error: err =>{
-            console.log(err);
-          }
-        })
+        // $.ajax({
+        //   method: "POST",
+        //   data: data,
+        //   url: "/attenders",
+        //   success: (data)=>{
+        //     console.log("attender", data);
+        //   },
+        //   error: err =>{
+        //     console.log(err);
+        //   }
+        // })
 
         // })
-      }
-      else {
-        checkInButton.text("You are not in class");
-        toggleModal();
-      }
-  }
+    }
+      // else {
+      //   checkInButton.text("You are not in class");
+      //   toggleModal();
+      // }
+
 
 })
