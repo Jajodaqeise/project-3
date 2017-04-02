@@ -24,12 +24,13 @@
 
 <div id="editRegistrationsContainer">
 
-  <div id="siteInnerContainer">
-
-<span id="editPassWordSpan">Change your password</span>
+  <div id="editRegistrationsInnerContainer">
+<center>
+    <span id="editPassWordSpan">Change Password</span>
+</center>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-
+  <br />
   <div id="editPwEmailContainer"class="field">
     <%= f.email_field :email, placeholder: 'Email', id: 'editPwEmail',  autofocus: true %>
   </div>
@@ -50,12 +51,17 @@
     <%= f.password_field :password_confirmation, id: 'editPwConfirmNewPw', placeholder: 'Confirm New Password', autocomplete: "off" %>
   </div>
 
-
+  <br />
   <div id="editPwSubmitContainer"class="actions">
     <%= f.submit "Update", id: 'editPwSubmit' %>
   </div>
 <% end %>
-<%= devise_error_messages! %>
+
+
+<div id="deviseEditPw">
+  <%= devise_error_messages! %>
+</div>
+
 <%#siteInnerContainer %>
 </div>
   <%#siteIndexContainer %>
