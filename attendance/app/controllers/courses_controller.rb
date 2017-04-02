@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :require_user
   geocode_ip_address
   require 'haversine'
 
@@ -15,11 +16,13 @@ class CoursesController < ApplicationController
         @enrolled_courses << @course
       end
     end
+    render layout: "nav"
   end
 
 
   def new
     @course = Course.new
+    render layout: "nav"
   end
 
   def create
@@ -66,9 +69,11 @@ class CoursesController < ApplicationController
     # @current_student = current_student.courses
 
     # byebug
+    render layout: "nav"
   end
 
   def edit
+    render layout: "nav"
   end
 
   def update
