@@ -9,7 +9,7 @@ class Api::FindSchoolsController < ApplicationController
     search = params[:search]
 
 
-    response = HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&rankby=distance&type=school&keyword=#{search}&key=AIzaSyDq8048uOHDImpSu0p-y0YRWB4lZX6YIQs").parsed_response
+    response = HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&rankby=distance&type=school&keyword=#{search}&key=AIzaSyAT4G9caMuNs3FQOeeYhaWpZfb7MrHPFGY").parsed_response
 
 
 
