@@ -20,7 +20,7 @@ class AttendersController < ApplicationController
 
     distance_check = 60
 
-    @course = ClassDate.find(params[:attender][:class_date_id]).course
+    @course = ClassDate.find(params[:class_id]).course
 
     lat = params[:student_lat].to_f
     lng = params[:student_lng].to_f
@@ -29,7 +29,9 @@ class AttendersController < ApplicationController
     meters = distance.to_meters
 
     if meters <= distance_check
-      @attender = Attender.new(attender_params)
+      @attender = Attender.new
+      @attender.class_date_id = params[:class_id]
+      @attender.student_id = params[:student_id]
       @attender.save
 
       flash[:notice] = "Checked in successfully!"
