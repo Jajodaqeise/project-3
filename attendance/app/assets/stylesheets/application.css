@@ -1240,7 +1240,7 @@ select:focus{
 }
 
 .edit_this_course {
-  background-color: #0751b7;
+  background-color: #3f6fb1;
   color: #fff;
   padding: 10% 30%;
   margin: 1%;
@@ -1372,7 +1372,35 @@ select:focus{
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
+
+
 /*  /courses/:id  */
+
+.links_show_course_page {
+  display: flex;
+}
+
+.edit_show_course {
+  width: 50%;
+  background-color: #3f6fb1;
+  color: #fff;
+  margin: 5%;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.course_title_show {
+  line-height: 0.5em;
+  color: #3f6fb1;
+  text-align: center;
+  margin: 10%;
+}
+
+.description_course_show {
+
+
+}
 
 /*<<<<<<< HEAD*/
 /*COURSE FORM FOR COURSES/EDIT*/
