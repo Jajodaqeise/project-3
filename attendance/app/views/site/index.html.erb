@@ -13,13 +13,16 @@
 <div id="siteOptions">
   <br />
   <br />
-<%= link_to (student_landing_path) do %>
+<%#= link_to (student_landing_path) do %>
+<a href="/students/sign_in">
 <button id="siteIndexStudent">I'm a Student</button>
-<% end %>
+</a>
+<%# end %>
 
-<%= link_to (teacher_landing_path) do %>
-<button id="siteIndexTeacher">I'm a Teacher</button>
-<% end %>
+<%#= link_to (teacher_landing_path) do %>
+<a href="/teachers/sign_in"><button id="siteIndexTeacher">I'm a Teacher</button>
+</a>
+<%# end %>
 
 <%#siteOptions%>
 </div>
