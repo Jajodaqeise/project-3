@@ -43,8 +43,8 @@
   }
 
   function findSchool(e, location){
-    //empty results before doing a new school search
-    $('.results').empty();
+    //empty result-school before doing a new school search
+    $('.result-school').empty();
     console.log("find", location);
     const data = {
       "search" : $(e.target).val(),
@@ -76,7 +76,7 @@
   const dropDownOptions = (schools) => {
     console.log("schools", schools);
 
-    $('.results').empty();
+    $('.result-school').empty();
 
     for (let i = 0; i< 5; i++) {
       schoolOptions[i] = $('<div class="option">');
@@ -84,9 +84,9 @@
       const name = $('<p>').text(schoolNames[i]);
       schoolOptions[i].append(name);
       schoolLocations[i] = schools[i].geometry.location;
-      $('.results').append(schoolOptions[i]);
+      $('.result-school').append(schoolOptions[i]);
       schoolOptions[i].click(() => {
-        $('.results').empty();
+        $('.result-school').empty();
         console.log("click");
         $('#course_school').val(schoolNames[i]);
         $('#course_lat').val(schoolLocations[i].lat);
