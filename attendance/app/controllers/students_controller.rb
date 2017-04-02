@@ -7,8 +7,8 @@ class StudentsController < ApplicationController
 
   end
   def show
-    @student = params[:id]
-    @courses = @student.courses
+    # @student = params[:id]
+    # @courses = @student.courses
     render layout: "nav"
   end
 

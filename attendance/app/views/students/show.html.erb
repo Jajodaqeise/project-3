@@ -25,13 +25,13 @@
 <% end %>
 
 <div class="profile">
-<% if current_student %>
+<% if current_student.present? %>
   <%= link_to "Edit Profile", edit_student_registration_path(current_student) %>
   <h2> Name: <%= current_student.first_name %> <%= current_student.last_name %> </h2>
   <p> E-mail: <%= current_student.email %></p>
 <% end %>
 
-<% if current_teacher %>
+<% if current_teacher.present? %>
   <%= link_to "Edit Profile", edit_teacher_registration_path(current_teacher) %>
   <h2> Name: <%= current_teacher.first_name %> <%= current_teacher.last_name %> </h2>
   <p> E-mail: <%= current_teacher.email %></p>
