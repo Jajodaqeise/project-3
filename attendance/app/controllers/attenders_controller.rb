@@ -1,6 +1,9 @@
 class AttendersController < ApplicationController
   before_action :require_user
+<<<<<<< HEAD
+=======
 
+>>>>>>> 0bfd779e14fb146ad23bb485cbcf6be7a302d6b5
   before_action :require_teacher, only: [:index]
   before_action :require_student, only: [:create]
 
