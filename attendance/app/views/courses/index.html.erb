@@ -1,10 +1,10 @@
 <% if current_teacher.present? %>
-  <p class="user indent">Teacher</p>
   <div class="indent user-info">
-    <h1 class="">
+    <h1 class="indent user">
+      Hello,
       <%= current_teacher.first_name %>
       <%= current_teacher.last_name %></h1>
-    <p class="button"><%= link_to "Create a new Course", new_course_path %></p>
+      <%= link_to content_tag(:span, "New Course"), new_course_path, class: "button" %>
   </div>
 
   <div class="my-courses-heading">
@@ -28,9 +28,8 @@
 <% end %>
 
 <% if current_student.present? %>
-  <p class="user indent">Student</p>
   <div class="user-info">
-    <h1 class="indent">Student:
+    <h1 class="indent user">Student:
         <%= current_student.first_name %>
         <%= current_student.last_name %></h1>
 
