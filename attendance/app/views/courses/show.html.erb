@@ -13,14 +13,31 @@
 
 
    <% if current_student && @attender && @current_class %>
-    <%= form_for(@attender) do |f| %>
-      <%= hidden_field_tag(:student_lat) %>
-      <%= hidden_field_tag(:student_lng) %>
-      <%= f.hidden_field(:student_id) %>
-      <%= f.hidden_field(:class_date_id, :value => @current_class.id) %>
-      <%= f.submit %>
-    <% end %>
+
+   <div class="check-in-container">
+     <div class="checked-in">
+       <i class="fa fa-spinner check-in-icon" aria-hidden="true"></i>
+       <p></p>
+     </div>
+     <div class="check-in-form">
+      <i class="fa fa-check" aria-hidden="true"></i>
+       <%= form_for(@attender) do |f| %>
+         <%= hidden_field_tag(:student_lat) %>
+         <%= hidden_field_tag(:student_lng) %>
+         <%= f.hidden_field(:student_id) %>
+         <%= f.hidden_field(:class_date_id, :value => @current_class.id) %>
+         <%= f.submit('Check In') %>
+       <% end %>
+     </div>
+   </div>
+  <% elsif @checked_in %>
+  <div class="checked-in green">
+    <i class="fa fa-check" aria-hidden="true"></i>
+    <p>You Are Checked In</p>
+  </div>
   <% end %>
+
+
 
 
 
