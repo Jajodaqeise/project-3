@@ -1,5 +1,6 @@
 class CoursesStudentsController < ApplicationController
-
+  before_action :require_user
+  before_action :require_student
   def create
 
   end

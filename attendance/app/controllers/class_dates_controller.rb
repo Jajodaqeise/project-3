@@ -1,4 +1,6 @@
 class ClassDatesController < ApplicationController
+  before_action :require_user
+  before_action :require_teacher
   def index
     @course = Course.find(params[:course_id])
   end
