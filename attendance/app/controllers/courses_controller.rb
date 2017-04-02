@@ -2,17 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-
-    # @course = Course.all
-    # @student = Student.find(current_student)
-    # @student_courses = @student.courses
-    # @teacher = Teacher.find(current_teacher)
-    # @teacher_courses = @teacher.courses
-
-
     @courses = Course.all
-
-    # @course = Course.new
     if current_student
       @student_courses = current_student.courses
       @enrolled_courses = []
