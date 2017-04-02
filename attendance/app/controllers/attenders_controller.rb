@@ -1,9 +1,6 @@
 class AttendersController < ApplicationController
+  geocode_ip_address
   before_action :require_user
-<<<<<<< HEAD
-=======
-
->>>>>>> 0bfd779e14fb146ad23bb485cbcf6be7a302d6b5
   before_action :require_teacher, only: [:index]
   before_action :require_student, only: [:create]
 
@@ -21,7 +18,7 @@ class AttendersController < ApplicationController
 
   def create
 
-    distance_check = 80
+    distance_check = 60
 
     @course = ClassDate.find(params[:attender][:class_date_id]).course
 
@@ -34,6 +31,7 @@ class AttendersController < ApplicationController
     if meters <= distance_check
       @attender = Attender.new(attender_params)
       @attender.save
+
       flash[:notice] = "Checked in successfully!"
       redirect_back fallback_location: course_path(@course)
     else

@@ -21,7 +21,7 @@
   height: 300px;
   border: 0px solid transparent;
   max-width: 600px;
-  margin: 2% 0;
+  margin: 0 auto;
 }
 
 /* "loading" animated modal, while the geolocation hasn't been retrieved*/
@@ -188,7 +188,7 @@ li {
 }
 
 #menuToggle:checked~.menu {
-  position: absolute;
+  position: fixed;
   left: 0;
 }
 
@@ -663,6 +663,64 @@ caption select{
   margin: 30px auto;
   width: 100%;
 }
+
+
+.class-cal-container{
+  max-width: 502px;
+  margin: 0 auto;
+}
+.class-cal-container h2, .class-cal-container h3{
+  text-align: center;
+}
+.class-cal-container h2{
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+
+.checked-in, .check-in-form{
+  background-color: indianred;
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  color: White;
+  padding: 5px 10px;
+  border-radius: .5em;
+  margin: 0 auto;
+  max-width: 400px;
+}
+.check-in-form{
+  background-color: #00007f;
+  cursor: pointer;
+}
+
+.check-in-form input[type="submit"]{
+  font-family: 'Crimson Text', serif;
+  background-color: transparent;
+  color: white;
+  border: 0px solid transparent;
+  font-size: 2.5em;
+}
+.checked-in p{
+  font-size: 2.5em;
+  margin: 0;
+
+}
+.checked-in i, .check-in-form i{
+  font-size: 2em;
+  padding: 9px;
+}
+.checked-in.green{
+  background-color: seagreen;
+}
+
 
 /*SIGN UP FOR BOTH TEACHER & STUDENT DEVISE*/
 #signUpBody{

@@ -7,18 +7,31 @@ class Student < ApplicationRecord
   has_and_belongs_to_many :courses
   has_many :attenders
 
-  def attender_percent(course)
-    course.past_classes.count == 0 ? 100 : (self.attenders.count / course.past_classes.count) * 100
+  def course_attenders(course_id)
+    course_attenders = []
+    self.attenders.each do |attender|
+      if attender.class_date.course_id = course_id
+        course_attenders.push(attender)
+      end
+    end
+    return course_attenders
   end
 
-  def missed_classes(course)
+  def attender_percent(course_id)
+    course = Course.find(course_id)
+    percent = course.past_classes.count == 0 ? 100 : ((course_attenders(course_id).count.to_f / course.past_classes.count) * 100)
+    return percent
+  end
+
+  def missed_classes(course_id)
+    course = Course.find(course_id)
     missed = []
     course.past_classes.each do |past_class|
       unless self.attenders.exists?(:class_date_id => past_class.id)
-        missed.pusch(past_class)
+        missed.push(past_class)
       end
     end
   end
 
-  
+
 end
