@@ -15,16 +15,12 @@
 
   function getLocation() {
     navigator.geolocation.getCurrentPosition(initSearch);
-    // toggleModal();
-
-    // check in button to check in at a class
-    $('#checkin').click(() => {
-      toggleModal();
-      navigator.geolocation.getCurrentPosition(validateStudentLocation);
-    });
   }
 
   function initSearch(location){
+
+    validateStudentLocation(location);
+
     console.log("init", location);
     // toggleModal();
     $('#course_school').keyup((e)=>{
@@ -54,11 +50,11 @@
       },
       error: err =>{
         console.log(err);
-
       }
     })
   }
-  if ($('.location-on').length > 0){
+  if ($('.location-on')){
+    console.log("location-on");
     getLocation();
   }
 
@@ -77,6 +73,7 @@
       schoolLocations[i] = schools[i].geometry.location;
       $('.results').append(schoolOptions[i]);
       schoolOptions[i].click(() => {
+        $('.results').empty();
         console.log("click");
         $('#course_school').val(schoolNames[i]);
         $('#course_lat').val(schoolLocations[i].lat);
@@ -118,14 +115,17 @@
   const checkInButton = $('#message');
 
   function validateStudentLocation(location) {
+    console.log(location);
     // console.log("student location", location);
     const $checkClass = $('.check-class');
     const studentId = parseInt($checkClass.attr('data-student-id'));
     const classId = parseInt($checkClass.attr('data-class-id'));
     const studentLat = location.coords.latitude;
+    $('#student_lat').val(studentLat)
       console.log("student lat", studentLat);
       console.log("course lat", latitude);
     const studentLng = location.coords.longitude;
+      $('#student_lng').val(studentLng)
       console.log("student lng", studentLng);
       console.log("course lng", longitude);
       // console.log("clicked");
@@ -137,16 +137,16 @@
       //   const student = $('#student_id').val();
       //   // console.log("student_id", student);
       //   //class date goes here to make a post ajax request
-        const data = {
-           student_id: studentId,
-           class_id: classId,
-           student_lat: studentLat,
-           studentLng: studentLng
-        }
+        // const data = {
+        //    student_id: studentId,
+        //    class_id: classId,
+        //    student_lat: studentLat,
+        //    student_lng: studentLng
+        // }
         // $.ajax({
         //   method: "POST",
         //   data: data,
-        //   url: "/attenders",
+        //   url: "/api/attenders/check",
         //   success: (data)=>{
         //     console.log("attender", data);
         //   },
@@ -155,7 +155,7 @@
         //   }
         // })
 
-        // })
+
     }
       // else {
       //   checkInButton.text("You are not in class");

@@ -174,7 +174,7 @@ body {
 }
 
 .yield-container{
-  padding-top: 54px;
+  padding: 54px 10px 10px;
 }
 
 /*end of slide content*/
@@ -1150,6 +1150,7 @@ select:focus{
 
 /*  /courses/:id  */
 
+<<<<<<< HEAD
 /*COURSE FORM FOR COURSES/EDIT*/
 
 
@@ -1157,8 +1158,13 @@ select:focus{
 /*COURSE FORM FOR COURSES/EDIT END*/
 
 
+=======
+/*.profile {
+>>>>>>> 0d38a75d98403581398260ffdd0374b3777874c6
 
-
+  margin-top: 10%;
+}
+*/
 
 /*Media Q section*/
 
