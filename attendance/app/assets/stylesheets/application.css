@@ -487,10 +487,12 @@ display: flex;
   -o-justify-content: center;
   justify-content: center;
   margin: 10px auto 20px;
+  font-family: 'Crimson Text', serif;
 }
 
 .date-buttons input{
-  background-color: #64a5ff;
+  cursor: pointer;
+  background-color: #00007f;
   border-radius: .5rem;
   border: 0px solid transparent;
   color: white;
@@ -498,8 +500,10 @@ display: flex;
   margin: 0 5px;
   padding: 5px;
   width: 120px;
+  font-family: 'Crimson Text', serif;
 }
 .modal-content form .input-group{
+  cursor: pointer;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
@@ -520,7 +524,13 @@ display: flex;
   -o-justify-content: center;
   justify-content: center;
   margin: 10px auto 20px;
+  font-size: 1.3em;
 }
+/*joel editing calendar a bit*/
+.labelski{
+  font-size: 2em;
+}
+
 .check-box-container{
   -ms-align-items: center;
   align-items: center;
@@ -618,7 +628,7 @@ caption select{
 .new-class-button{
   -ms-align-items: center;
   align-items: center;
-  background-color: #64a5ff;
+  background-color: #00007f;
   border-radius: .5rem;
   color: white;
   display: -webkit-flex;
@@ -841,6 +851,73 @@ cursor: pointer;
 }
 /*FORGOT PASSWORD PAGE ENDS*/
 
+/*EDIT PASSWORD PAGE STARTS HERE*/
+#editPassWordSpan{
+  font-size: 3em;
+  font-family: 'Crimson Text', serif;
+}
+
+#editRegistrationsContainer{
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  max-width: 900px;
+  min-height: 100vh;
+  align-items: center;
+}
+#editPwEmail{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwCurrentPw{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwNewPw{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwConfirmNewPw{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwSubmit{
+
+}
+
+
+
+/*EDIT PW END*/
+
+/*Jackies' stuff*/
 .class-results{
   margin: 20px auto;
   max-width: 500px;
@@ -882,8 +959,6 @@ select:focus{
   border: 1px solid white;
 }
 
-
-
 .course-form form{
   display: -webkit-flex;
   display: -ms-flex;
@@ -907,7 +982,7 @@ textarea{
   margin: 0 auto;
   border-radius: .5rem;
 }
-
+/*jackies stuff ends*/
 
 
 
