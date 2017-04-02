@@ -1171,6 +1171,18 @@ select:focus{
   font-size: 1.2em;
 }
 
+.enrolled-courses input{
+  font-size: 1.2em;
+  border-radius: .5rem;
+  outline: none;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+}
+.enrolled-courses label{
+  font-size: 1.3em;
+}
+
+
 .enrolled-course {
   margin: .5%;
   text-align: center;
