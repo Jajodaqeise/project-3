@@ -49,14 +49,16 @@ class CoursesController < ApplicationController
         end
       end
       if current_class
+        @current_class = current_class
 
+        if lat && lng
+          distance = Haversine.distance(lat, lng, @course.lat, @course.lng)
+          meters = distance.to_meters
 
-        # distance = Haversine.distance(lat, lng, @course.lat, @course.lng)
-        # meters = distance.to_meters
-
-        @attender = Attender.new()
-        @attender.student_id = current_student.id
-        @attender.class_date_id = current_class
+          @attender = Attender.new()
+          @attender.student_id = current_student.id
+          @attender.class_date_id = current_class
+        end
       end
 
     end
