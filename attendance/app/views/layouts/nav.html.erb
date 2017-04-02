@@ -31,8 +31,8 @@
       </div>
 
       <nav class="menu">
-            <a href="/"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
-            <a href="/"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
+            <a href="/profile"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
+            <a href="/courses"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
             <% if current_student %>
             <%= link_to(destroy_student_session_path, :method => :delete) do %>
 
