@@ -726,10 +726,71 @@ caption select{
   justify-content: space-between;
 }
 
-.attendance i, .attendance p{
-  margin:10px;
+.attendance-main-container h3{
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+.attendance-main-container h2{
+  margin-bottom: 0;
 }
 
+.attendance p{
+  margin: 10px;
+}
+.attendance i{
+  margin: 0 10px;
+}
+.attendance:first-of-type{
+  border-top: 1px solid #bbb;
+}
+.attendances a{
+  color: black;
+  cursor: pointer;
+}
+.attendances a:hover {
+  background-color: #64a5ff;
+  color: white;
+}
+.attendance-bar{
+
+  height: 30px;
+}
+.attendance-bar-holder{
+  border-radius: .5em;
+  background-color: #ccc;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.attendance-bar-container{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  width: 45%;
+}
+
+.percent-title{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  font-size: 1.8em;
+  line-height: 1em;
+  margin: 20px auto;
+}
+
+.percent-title::after{
+  content: "%";
+  margin-left: 5px;
+}
+
+.attendance-bar-holder.small{
+  margin: 10px;
+  width: 80%;
+}
+.attendance-bar-holder.small .attendance-bar{
+  height: 100%;
+}
 
 
 .attendance-main-container{
@@ -745,12 +806,7 @@ caption select{
   font-size: 16px;
 }
 
-.attendance-bar{
-  height: 30px;
-}
-.attendance-bar-holder{
-  background-color: #ccc;
-}
+
 
 .check-in-form input[type="submit"]{
   font-family: 'Crimson Text', serif;
