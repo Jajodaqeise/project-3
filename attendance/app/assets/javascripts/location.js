@@ -54,7 +54,6 @@
       },
       error: err =>{
         console.log(err);
-
       }
     })
   }
