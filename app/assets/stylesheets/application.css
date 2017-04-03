@@ -787,6 +787,10 @@ caption select{
 }
 .attendance i{
   margin: 0 10px;
+  font-size: 1.3em;
+}
+.attendence.yes{
+  color: #64a5ff;
 }
 .attendance:first-of-type{
   border-top: 1px solid #bbb;
