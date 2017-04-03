@@ -118,6 +118,7 @@ body {
   padding: 0px 20px;
   background-color: #64a5ff;
   color: white;
+  margin-top: 2px;
   cursor: pointer;
   font-size: 3.6rem;
 }
@@ -269,7 +270,6 @@ a {
   border-radius: .5rem;
   background: none;
   outline: none;
-  /*height: 5vh;*/
   width: 80%;
   text-align: center;
   margin-bottom: 1rem;
@@ -287,7 +287,6 @@ a {
   border-radius: .5rem;
   background: none;
   outline: none;
-  /*height: 5vh;*/
   width: 80%;
   text-align: center;
   font-weight: bold;
@@ -323,7 +322,7 @@ a {
 #newEmail {
   border-top-right-radius: .5rem;
   border-top-left-radius: .5rem;
-  height: 5vh;
+  height: 32px;
   width: 90%;
   outline: none;
   font-size: 2em;
@@ -338,7 +337,7 @@ a {
 #newPassword{
     border-bottom-right-radius: .5rem;
     border-bottom-left-radius: .5rem;
-    height: 5vh;
+    height: 32px;
     width: 90%;
     outline: none;
     font-size: 2em;
@@ -363,7 +362,6 @@ a {
   border-radius: .5rem;
   background: none;
   outline: none;
-  /*height: 5vh;*/
   width: 80%;
   text-align: center;
   margin-top: 1rem;
@@ -531,6 +529,24 @@ display: flex;
   width: 120px;
   font-family: 'Crimson Text', serif;
 }
+
+.modal-content input{
+  border-radius: .5rem;
+  border: 1px solid #222;
+}
+.modal-content input[type="submit"]{
+  border: 0px solid transparent;
+}
+
+.modal-content input[type="date"]{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.modal-content input:focus{
+  outline: 1px solid #64a5ff;
+}
+
 .class-cal-container .date-buttons a{
   -ms-align-items: center;
   align-items: center;
@@ -901,7 +917,7 @@ caption select{
 #firstNameSignUp{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   border-top-right-radius: .5rem;
   border-top-left-radius: .5rem;
   outline: none;
@@ -921,7 +937,7 @@ caption select{
 #lastNameSignUp{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid white;
@@ -938,7 +954,7 @@ caption select{
 #emailSignUp{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid white;
@@ -953,7 +969,7 @@ caption select{
 }
 
 #passwordSignUp{
-  height: 5vh;
+  height: 32px;
   width: 90%;
   outline: none;
   font-size: 2em;
@@ -971,7 +987,8 @@ caption select{
 #password_confirmationSignUp{
   display: flex;
   width: 90%;
-  height: 5vh;border-bottom-right-radius: .5rem;
+  height: 32px;
+  border-bottom-right-radius: .5rem;
   border-bottom-left-radius: .5rem;
   outline: none;
   font-size: 2em;
@@ -1027,14 +1044,14 @@ font-family: 'Crimson Text', serif;
   position: relative;
   width: 100%;
   left: 0px;
-  height: 5vh;
+  height: 32px;
 }
 /*REGISTRATION PAGE END*/
 
 /*FORGOT PW STARTS HERE*/
 
 #forgotEmailField{
-  height: 5vh;
+  height: 32px;
   width: 90%;
   outline: none;
   border-radius: .5rem;
@@ -1119,7 +1136,7 @@ max-width: 500px;
   border-top-right-radius: .5rem;
   border-top-left-radius: .5rem;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1136,7 +1153,7 @@ max-width: 500px;
 #editPwLastName{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1153,7 +1170,7 @@ max-width: 500px;
 #editPwEmail{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1170,7 +1187,7 @@ max-width: 500px;
 #editPwCurrentPw{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   border-bottom-right-radius: .5rem;
   border-bottom-left-radius: .5rem;
   outline: none;
@@ -1189,7 +1206,7 @@ max-width: 500px;
 #editPwNewPw{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1206,7 +1223,7 @@ max-width: 500px;
 #editPwConfirmNewPw{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   border-bottom-right-radius: .5rem;
   border-bottom-left-radius: .5rem;
   outline: none;
@@ -1783,7 +1800,7 @@ a.my-courses-heading{
   #siteBrand {
     position: relative;
     left: -10vw;
-    top: -5vh;
+    
     width: 40vw;
   }
   #siteIndexTeacher {
