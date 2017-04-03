@@ -1397,6 +1397,12 @@ select:focus{
   margin: 0 20px 20px ;
   text-align: center;
 }
+
+#log_them_out{
+  height: 0px;
+  opacity: 0;
+}
+
 .results{
   width: 100%;
   position: relative;

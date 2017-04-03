@@ -1,6 +1,10 @@
 <div id="newBody">
     <div id="siteIndexContainer">
-
+      <% if current_teacher %>
+        <%= button_to("logout", destroy_teacher_session_path, :method => :delete, :id=>"log_them_out")  %>
+      <% elsif current_student%>
+        <%= button_to("logout", destroy_student_session_path, :method => :delete, :id=>"log_them_out")  %>
+      <% end %>
         <div id="siteInnerContainer">
 
             <%= image_tag("attender.svg", draggable: "false", id: "newSessionBrand") %>

@@ -1,6 +1,12 @@
 
   $(document).on('turbolinks:load', function() {
 
+    $logout = $('#log_them_out');
+    console.log("Log them out");
+    if($logout && $logout.length){
+      $logout.click();
+    }
+
   var schoolLocations = [];
   var schoolNames = [];
   var schoolOptions = [];
