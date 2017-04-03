@@ -538,9 +538,10 @@ display: flex;
   border: 0px solid transparent;
 }
 
-.modal-content input[type="date"]{
+input[type="date"]{
   -webkit-appearance: none;
   -moz-appearance: none;
+  width: 100%;
 }
 
 .modal-content input:focus{
@@ -1703,6 +1704,7 @@ a.my-courses-heading{
 .results-school{
     position: absolute;
     display: inline-block;
+    width: 100%;
 }
 
 .results {
@@ -1728,7 +1730,7 @@ a.my-courses-heading{
 
 .results-school div {
     color: black;
-    padding: 12px 80px;
+    text-indent: 15px;
     text-decoration: none;
     display: block;
 }
@@ -1808,7 +1810,7 @@ a.my-courses-heading{
   #siteBrand {
     position: relative;
     left: -10vw;
-    
+
     width: 40vw;
   }
   #siteIndexTeacher {
