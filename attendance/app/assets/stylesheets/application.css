@@ -174,7 +174,9 @@ body {
 }
 
 .yield-container{
+  max-width: 500px;
   padding: 54px 10px 10px;
+  margin: 0 auto;
 }
 
 /*end of slide content*/
@@ -1501,7 +1503,7 @@ select:focus{
   margin: 0 auto;
 }
 
-.links_show_course_page {
+.links_show_course_page {}
 
 #ProfileBackground{
   background-color: #e1e1e1;
