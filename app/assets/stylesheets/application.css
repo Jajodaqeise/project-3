@@ -1371,7 +1371,7 @@ select:focus{
 .course-search form {
   width: 100%;
   font-size: 1.5em;
-  margin-top: 0.67em;
+  margin-top: .2em;
 }
 
 .user {
@@ -1382,12 +1382,20 @@ select:focus{
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   margin: 5%;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -ms-justify-content: space-between;
-  -o-justify-content: space-between;
-  justify-content: space-between;
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+}
+.user-info h1{
+  font-size: 2.2em;
+  margin: 0 20px 20px ;
+  text-align: center;
 }
 .results{
   width: 100%;
