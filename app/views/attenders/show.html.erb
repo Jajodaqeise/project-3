@@ -18,7 +18,7 @@
       <% @attendances.each do |attendance| %>
         <% att = attendance[:attendance] %>
         <div class="attendance <%= att ? "yes" : "no" %>">
-          <p class="attendance-date"><%= attendance[:date].localtime.strftime("%D %l:%M %p") %></p>
+          <p class="attendance-date"><%= attendance[:date].strftime("%D %l:%M %p") %></p>
           <i class="fa <%= att ? "fa-check" : "fa-times"%>" aria-hidden="true"></i>
         </div>
       <% end %>
