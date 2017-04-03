@@ -1,5 +1,6 @@
 <div class="class-cal-container">
-  <h2><%= @course.name %></h2>
+  <h2><%=link_to @course.name, course_path(:id=>@course.id) %></h2>
+
   <h3><%= @course.school %></h3>
 
   <div class="new-class-button">New Class</div>
