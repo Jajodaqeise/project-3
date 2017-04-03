@@ -174,7 +174,9 @@ body {
 }
 
 .yield-container{
+  max-width: 500px;
   padding: 54px 10px 10px;
+  margin: 0 auto;
 }
 
 /*end of slide content*/
@@ -1501,8 +1503,7 @@ select:focus{
   margin: 0 auto;
 }
 
-.links_show_course_page {
-}
+.links_show_course_page {}
 
 #ProfileBackground{
   background-color: #e1e1e1;
@@ -1549,7 +1550,7 @@ select:focus{
   margin-top: 10%;
 }
 
-/*COURSE FORM FOR COURSES/EDIT*/
+/*COURSE FORM FOR COURSES EDIT*/
 
 
 
@@ -1558,8 +1559,6 @@ select:focus{
 
 /*=======*/
 /*.profile {
-
-
   margin-top: 10%;
 }
 */
@@ -1601,7 +1600,6 @@ select:focus{
 /*ipad pro*/
 
 /*@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
-
   /* ipad pro ends */
 /*}*/
 
@@ -1622,5 +1620,4 @@ select:focus{
   #siteIndexStudent {
     width: 100%;
   }
-
 }*/
