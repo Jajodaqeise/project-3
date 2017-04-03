@@ -1301,7 +1301,8 @@ select:focus{
   margin: 15px auto;
   max-width: 500px;
   font-size: 1.3em;
-  width: 90%
+  width: 90%;
+  position: absolute;
 }
 .course-form textarea{
   resize: none;
@@ -1365,6 +1366,7 @@ select:focus{
 .course-search form {
   text-indent: 5%;
   width: 100%;
+  font-size: 1.5em;
 }
 
 .user {
@@ -1377,41 +1379,33 @@ select:focus{
   align-items: center;
   justify-content: space-between;
 }
-
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 1.2em;
-    font-size: 1.2em;
-    border: none;
-    cursor: pointer;
-}
-
-.dropdown {
+.results{
     position: relative;
     display: inline-block;
 }
 
-.results {
+.register-course a {
     display: block;
-    position: absolute;
     background-color: #f9f9f9;
-    min-width: 100px;
+    width: 90%;
     box-shadow: 0px 1em 1em 0px rgba(0,0,0,0.2);
     z-index: 1;
+    position: absolute;
+}
+
+.results:hover .register-course{
+    display: block;
 }
 
 .results a {
     color: black;
-    padding: 12px 16px;
-    /*text-decoration: none;*/
+    /*padding: 5em;*/
+    /*margin: 1%;*/
+    text-decoration: none;
     /*display: block;*/
 }
 
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-
+/*courseFormTextField*/
 .register-course {
   background-color: #3f6fb1;
   color: #fff;
@@ -1423,18 +1417,7 @@ select:focus{
 
 #course {
   border: 1px solid #000;
-}
-
-.button {
-  cursor: pointer;
-
-  background-color: #3f6fb1;
-  padding: 4%;
-  border-radius: 5px;
-  transition: all 0.5s;
-  width: 25%;
-  color: #fff;
-  text-align: center;
+  font-size: 1.2em;
 }
 
 .new_this_course {
@@ -1517,6 +1500,7 @@ select:focus{
   text-align: center;
   box-shadow: 0 0 40px rgba(0, 0, 0, .1);
   padding: 3%;
+  font-size: 1.5em;
 }
 
 .enrolled-course a {

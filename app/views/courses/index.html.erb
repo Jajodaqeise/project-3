@@ -39,8 +39,7 @@
 
     <div class="course-search dropdown">
       <%= form_tag ({:class => 'dropbtn'})do %>
-        <%= label_tag :search_course %>
-        <%= text_field_tag :course, '', autocomplete: 'off' %>
+        <%= text_field_tag :course, '' , :placeholder => 'Search course', autocomplete: 'off' %>
         <div class="results"></div>
         <div class="btn"></div>
       <% end %>
