@@ -1530,7 +1530,7 @@ a.my-courses-heading{
 .my-courses-heading {
   width: 100%;
   background-color: #f7f7f7;
-  color: #3f6fb1;
+  color: #64a5ff;
   font-weight: bold;
   text-indent: 5%;
   font-size: 1.5em;
@@ -1767,10 +1767,16 @@ a.my-courses-heading{
 }
 
 
-
-
-
-
+/* Portrait */
+@media screen
+  and (device-width: 320px)
+  and (device-height: 640px)
+  and (-webkit-device-pixel-ratio: 3)
+  and (orientation: portrait) {
+    #containerNewCheckForgot{
+    width: 80%;
+    }
+}
 
 /*Media Q section*/
 /* Ipad 1 Portrait */
