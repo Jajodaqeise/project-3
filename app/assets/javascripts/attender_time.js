@@ -15,12 +15,12 @@ $(document).on('turbolinks:load', function() {
     console.log(totalTimeDif);
     // console.log(time.getUTCHours());
 
-    time.setMinutes(time.getMinutes() - new Date().getTimezoneOffset())
-    var hours = time.getUTCHours();
+    time.setMinutes(time.getMinutes() - totalTimeDif)
+    var hours = time.getHours();
     var formattedTime = time.toDateString() + " - ";
     formattedTime += hours % 12 == 0 ? 12 : hours % 12;
     formattedTime += ':';
-    formattedTime += padNumber(time.getUTCMinutes(), 2) + ' ';
+    formattedTime += padNumber(time.getMinutes(), 2) + ' ';
     formattedTime += hours > 11 ? "PM" : "AM";
 
     $(attn).children('.attendance-date').text(formattedTime);

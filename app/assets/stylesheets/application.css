@@ -531,7 +531,7 @@ display: flex;
   width: 120px;
   font-family: 'Crimson Text', serif;
 }
-.date-buttons a{
+.class-cal-container .date-buttons a{
   -ms-align-items: center;
   align-items: center;
   background-color: indianred;
