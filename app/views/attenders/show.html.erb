@@ -1,7 +1,7 @@
 <div class="attendance-main-container">
 
   <div class="course_title_show">
-    <h1><%= @course.name %></h1>
+    <h1><%= link_to "#{@course.name}", course_path(@course) %></h1>
     <p><%= @student.full_name %></p>
   </div>
 
