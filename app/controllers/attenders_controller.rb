@@ -20,7 +20,7 @@ class AttendersController < ApplicationController
 
     @student = Student.find(params[:student_id])
 
-    @class_dates = @course.past_classes.order(:date)
+    @class_dates = @course.past_classes.order(date: :desc)
     @attendances = []
     @class_dates.each do |class_date|
       attendance = @student.attenders.exists?(:class_date_id => class_date.id) ? true : false

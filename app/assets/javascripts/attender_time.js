@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
   $attendance.each(function(i, attn){
     var timeString = $(attn).attr('data-datetime');
     var timeArr = timeString.split(',');
-    var time = new Date(timeArr[0], timeArr[1], timeArr[2], timeArr[3], timeArr[4], 0, 0);
+    var time = new Date(timeArr[0], parseInt(timeArr[1]) - 1, timeArr[2], timeArr[3], timeArr[4], 0, 0);
     var serverTimeDif = timeArr[5].substring(1,6).split(':');
     serverTimeDif = serverTimeDif[1] + serverTimeDif[0] * 60;
     console.log(serverTimeDif);

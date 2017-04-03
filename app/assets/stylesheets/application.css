@@ -529,6 +529,28 @@ display: flex;
   width: 120px;
   font-family: 'Crimson Text', serif;
 }
+
+
+.modal-content input{
+  border-radius: .5rem;
+  border: 1px solid #222;
+}
+.modal-content input[type="submit"]{
+  border: 0px solid transparent;
+}
+
+input[type="date"], input[type="time"]{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #222;
+}
+
+.modal-content input:focus{
+  outline: 1px solid #64a5ff;
+}
+
 .class-cal-container .date-buttons a{
   -ms-align-items: center;
   align-items: center;
@@ -542,6 +564,7 @@ display: flex;
   -ms-justify-content: center;
   -o-justify-content: center;
   justify-content: center;
+  color: white;
 }
 .modal-content form .input-group{
   cursor: pointer;
@@ -1683,8 +1706,17 @@ a.my-courses-heading{
 /* courses /new */
 
 .results-school{
-    position: relative;
+    position: absolute;
     display: inline-block;
+    width: 100%;
+}
+
+.results {
+  position: absolute;
+}
+
+.btn {
+  position: relative;
 }
 
 .option {
@@ -1694,7 +1726,6 @@ a.my-courses-heading{
     box-shadow: 0px 1em 1em 0px rgba(0,0,0,0.2);
     z-index: 1;
     padding: 10px 0;
-    /*position: absolute;*/
 }
 
 .results-school:hover .option {
@@ -1703,7 +1734,7 @@ a.my-courses-heading{
 
 .results-school div {
     color: black;
-    padding: 12px 16px;
+    text-indent: 15px;
     text-decoration: none;
     display: block;
 }
