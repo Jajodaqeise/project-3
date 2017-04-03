@@ -59,7 +59,7 @@ class ClassDatesController < ApplicationController
 
     time = params[:class_date][:time].split(":")
     @class_date.date = @class_date.date.change(hour: time[0], min: time[1])
-    serverOffset = @class_date.date.strftime('%:z')
+    serverOffset = Time.new.strftime('%:z')
     serverOffset[0] = ""
     serverOffset = serverOffset.split(":")
     serverOffset = (serverOffset[1].to_i + serverOffset[0].to_i * 60) * 60;
