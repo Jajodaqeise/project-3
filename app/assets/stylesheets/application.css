@@ -1502,6 +1502,10 @@ select:focus{
   text-align: center;
   font-size: 1.6em;
 }
+.teachers-course a{
+  font-weight: bold;
+  color: #3f6fb1;
+}
 .manage-course {
   display: flex;
   flex-direction: column;
@@ -1518,7 +1522,7 @@ select:focus{
 .enrolled-course a {
   font-size: 1.5em;
   font-weight: bold;
-  color: #000;
+  color: #3f6fb1;
 }
 
 /*Profile Page starts*/
@@ -1665,6 +1669,10 @@ select:focus{
     display: block;
 }
 
+/*font awesome x mark*/
+.fa-times{
+  color: indianred;
+}
 
 /*COURSE FORM FOR COURSES EDIT
 
@@ -1677,6 +1685,8 @@ select:focus{
 /*.profile {
   margin-top: 10%;
 
+
+
 /*attendances names n dates*/
 .attendances{
   font-size: 1.2em;
@@ -1685,6 +1695,7 @@ select:focus{
   font-size: 1.3em;
 
 }
+
 
 
 
