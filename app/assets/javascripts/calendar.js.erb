@@ -233,7 +233,9 @@ var calFactory = function(){
     deleteClass: function(classId){
       console.log('delete')
     }
+
   }
+
 
   function padNumber(number, length) {
     number = number.toString();
@@ -242,6 +244,7 @@ var calFactory = function(){
     }
     return number;
   }
+
   function isToday(datetime){
     return cal.today.getFullYear() === datetime.getFullYear() && cal.today.getMonth() === datetime.getMonth() && cal.today.getDate() === datetime.getDate() ? true :false;
   }
@@ -262,34 +265,32 @@ var calFactory = function(){
     })
     return matching;
   }
-  $(window).resize(function(e){
-    cal.resize();
-  });
 
 
-  $('.clockpicker').clockpicker({
-    donetext: "Done",
-    autoclose: true
-  });
-  return cal;
-}
+
+
+
+
+
+
 
 function showModalForm(){
   $('.hidden-form').hide();
+
+  var $classTime = $('#class_date_time');
+  var $classDate = $('#class_date_date');
+  changeTimeInput($classTime, $classDate);
+  $('#class_pattern_time').val($classTime.val());
+
+$('#timezone_offset').val(new Date().getTimezoneOffset())
   $("#class_date_repeat").change(function(){
     $('.pattern-container').toggle();
     console.log($('new_class_pattern').children());
     $('#pattern_timezone_offset').val(new Date().getTimezoneOffset())
+    $('#class_pattern_time').val($classTime.val());
+
   });
   $('.modal').fadeIn('fast');
-  var $classTime = $('#class_date_time');
-  var $classDate = $('#class_date_date');
-  var time = $classTime.val().split(':');
-  var date = $classDate.val().split('-');
-  var dateTime = new Date(date[0], date[1], date[2], time[0], time[1], 0, 0);
-  var offset = dateTime.getTimezoneOffset();
-  dateTime = dateTime.setMinutes(dateTime.getMinutes() - offset);
-  $time.val(dateTime.getHours() + ':' + dateTime.getMinutes());
   //http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
   if(!( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
     $('.clockpicker').clockpicker({
@@ -297,9 +298,29 @@ function showModalForm(){
       autoclose: true
     });
   }
-
-  $('#timezone_offset').val(new Date().getTimezoneOffset())
 }
+
+
+function changeTimeInput($time, $date) {
+    var time = $time.val().split(':');
+    var date = $date.val().split('-');
+    var dateTime = new Date(date[0], date[1], date[2], time[0], time[1], 0, 0);
+    dateTime.setMinutes(dateTime.getMinutes() - new Date().getTimezoneOffset())
+    console.log(dateTime);
+    var formatted = padNumber(dateTime.getUTCHours(), 2) + ':' + padNumber(dateTime.getMinutes(),2)
+    console.log(formatted);
+    $time.val(formatted);
+}
+$('.clockpicker').clockpicker({
+  donetext: "Done",
+  autoclose: true
+});
+$(window).resize(function(e){
+  cal.resize();
+});
+return cal;
+}
+
 
 $(document).on('turbolinks:load', function() {
   var cal;
