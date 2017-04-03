@@ -1371,6 +1371,7 @@ select:focus{
 .course-search form {
   width: 100%;
   font-size: 1.5em;
+  margin-top: 0.67em;
 }
 
 .user {
@@ -1418,12 +1419,13 @@ select:focus{
 
 /*courseFormTextField*/
 .register-course {
+  display: block;
+  width: 95%;
   background-color: #3f6fb1;
   color: #fff;
   padding: 4%;
   text-align: center;
   border-radius: 5px;
-  width: 100%;
 }
 
 #course {
