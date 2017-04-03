@@ -47,28 +47,32 @@ $(document).on('turbolinks:load', function() {
     console.log("courses", courses);
 
     $('.results').empty();
+    if (searchCourse.val().length){
+      courses.forEach(function(course){
+        if(!enrolledCourses.includes(course.id.toString())) {
+          var $results = $('.results');
+          var $option = $('<div>',{
+            class: 'option'
+            })
+            .appendTo($results)
+            .click(function(){
+              $('.btn').empty();
+              $results.empty();
+              $('#course').val(course.name);
+              var studentId = $('#student_id').val();
+              registerCourse(studentId, course.id);
+            });
 
-    courses.forEach(function(course){
-      if(!enrolledCourses.includes(course.id.toString())) {
-        var $results = $('.results');
-        var $option = $('<div>',{
-          class: 'option'
-          })
-          .appendTo($results)
-          .click(function(){
-            $('.btn').empty();
-            $results.empty();
-            $('#course').val(course.name);
-            var studentId = $('#student_id').val();
-            registerCourse(studentId, course.id);
-          });
+          var $name = $('<p>')
+            .text(course.name)
+            .appendTo($option);
+          }
 
-        var $name = $('<p>')
-          .text(course.name)
-          .appendTo($option);
-        }
+        })
 
-      })
+    }
+
+
 
     }
 

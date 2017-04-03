@@ -538,9 +538,10 @@ display: flex;
   border: 0px solid transparent;
 }
 
-.modal-content input[type="date"]{
+input[type="date"]{
   -webkit-appearance: none;
   -moz-appearance: none;
+  width: 100%;
 }
 
 .modal-content input:focus{

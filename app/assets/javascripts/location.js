@@ -52,6 +52,7 @@
   function findSchool(e, location){
     //empty result-school before doing a new school search
     $('.result-school').empty();
+
     console.log("find", location);
     var data = {
       "search" : $(e.target).val(),
@@ -73,6 +74,7 @@
       }
     })
   }
+
   if ($('.location-on')){
     console.log("location-on");
     getLocation();
@@ -81,32 +83,34 @@
 
   //new and edit course pages: top 5 options of the previous search
   var dropDownOptions = function(schools) {
-    if (schools.length > 5){
-      schools = schools.slice(0,5);
-    }
-    console.log("====================",schools);
+    $('.results-school').empty();
+    if ($('#course_school').val().length){
+      if (schools.length > 5){
+        schools = schools.slice(0,5);
+      }
+      console.log("====================",schools);
 
-    var $results = $('.results-school').empty();
+      var $results = $('.results-school').empty();
 
-    schools.forEach(function(school){
-      console.log("SCHOOL", school)
-      console.log('results', $results)
-      var $option = $('<div>',{
-        class: 'option'
+      schools.forEach(function(school){
+        console.log("SCHOOL", school)
+        console.log('results', $results)
+        var $option = $('<div>',{
+          class: 'option'
+        })
+        .appendTo($results)
+        .click(function(e){
+          $results.empty();
+          $('#course_school').val(school.name);
+          $('#course_lat').val(school.geometry.location.lat);
+          $('#course_lng').val(school.geometry.location.lng);
+        });
+        var $name = $('<p>')
+          .text(school.name)
+          .appendTo($option);
       })
-      .appendTo($results)
-      .click(function(e){
-        $results.empty();
-        $('#course_school').val(school.name);
-        $('#course_lat').val(school.geometry.location.lat);
-        $('#course_lng').val(school.geometry.location.lng);
-      });
-      var $name = $('<p>')
-        .text(school.name)
-        .appendTo($option);
-    })
 
-
+    }
 
   }
 
