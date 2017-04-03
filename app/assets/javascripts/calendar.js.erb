@@ -17,7 +17,7 @@ var calFactory = function(){
        courseId = $('#render-cal').attr('data-course-id');
       $.ajax({
         method: "GET",
-        url: `/api/class_dates/${courseId}`,
+        url: '/api/class_dates/' + courseId,
         success: function(data){
           cal.classes = data.classes;
           console.log(cal.classes);
@@ -151,7 +151,7 @@ var calFactory = function(){
             var dayDate = new Date(self.firstDay.getFullYear(), self.firstDay.getMonth(), day, 0,0,0,0);
             var classDates = findMatchingClasses(dayDate);
             var $td = $('<td>',{
-              class: `cal-cell cal-day${day && isToday(dayDate) ? " cal-today" : ""}${day && classDates.length > 0 ? " cal-class-day" : ""}`
+              class: 'cal-cell cal-day'+ day && isToday(dayDate) ? " cal-today" : "" + day && classDates.length > 0 ? " cal-class-day" : ""
             })
             .appendTo($tr)
             .text(day);
@@ -166,7 +166,7 @@ var calFactory = function(){
                   })
                   .appendTo($results)
                   .click(function(e){
-                    $('.modal-form').load(`/class_dates/${date.id}/edit`, function(){
+                    $('.modal-form').load('/class_dates/' + date.id '/edit', function(){
                       $('.selected-result').removeClass('selected-result');
                       if ($(e.target).hasClass('class-result')){
                         $(e.target).addClass('selected-result');
@@ -179,7 +179,7 @@ var calFactory = function(){
 
                   });
                   var hours = date.date.getHours();
-                  var formattedTime = `${date.date.toDateString()} ${hours % 12 == 0 ? 12 : hours % 12}:${padNumber(date.date.getMinutes(), 2)} ${hours>11 ? "PM" : "AM"}`;
+                  var formattedTime = date.date.toDateString() + " " + hours % 12 == 0 ? 12 : hours % 12 + ':' + padNumber(date.date.getMinutes(), 2) + ' ' + hours>11 ? "PM" : "AM";
                   var $resultTitle = $('<h4>',{
                     class: "class-result-title"
                   })
@@ -204,7 +204,7 @@ var calFactory = function(){
     editClass: function(classId, date, time){
       $.ajax({
         method: 'PATCH',
-        url: `/api/class_dates/${classId}`,
+        url: '/api/class_dates/' + classId,
         data:{
           date: date,
           time: time
@@ -296,7 +296,7 @@ $(document).on('turbolinks:load', function() {
   $('.modal').hide();
   $('.new-class-button').click(function(e){
 
-    $('.modal-form').load(`/courses/${courseId}/class_dates/new`, function(){
+    $('.modal-form').load('/courses/' + courseId + '/class_dates/new', function(){
       showModalForm();
       console.log("test");
     });
