@@ -7,7 +7,7 @@
     <%= f.label(:time) %>
     <%= hidden_field_tag(:timezone_offset) %>
     <div class="input-group clockpicker">
-      <%= f.time_field(:time, :value=>date.strftime("%H:%M")) %>
+      <%= f.text_field(:time, :value=>date.strftime("%H:%M"), :pattern=>"([01]?[0-9]|2[0-3]):[0-5][0-9])", :autocomplete=>"off") %>
     </div>
 
   <%= f.label(:repeat) %>
