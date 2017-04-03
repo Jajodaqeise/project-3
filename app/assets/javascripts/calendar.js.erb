@@ -176,12 +176,12 @@ var calFactory = function(){
                       } else {
                         $(e.target).parent().addClass('selected-result');
                       }
-
                       showModalForm();
                     });
 
                   });
-                  var hours = date.date.getHours();
+                   date.date.setMinutes(date.date.getMinutes() - new Date().getTimezoneOffset());
+                  var hours = date.date.getUTCHours();
                   var formattedTime = date.date.toDateString() + " ";
                   formattedTime += hours % 12 == 0 ? 12 : hours % 12;
                   formattedTime += ':';
@@ -278,6 +278,8 @@ function showModalForm(){
   $('.hidden-form').hide();
   $("#class_date_repeat").change(function(){
     $('.pattern-container').toggle();
+    console.log($('new_class_pattern').children());
+    $('#pattern_timezone_offset').val(new Date().getTimezoneOffset())
   });
   $('.modal').fadeIn('fast');
   $('.clockpicker').clockpicker({
