@@ -76,7 +76,7 @@ $(document).on('turbolinks:load', function() {
     $link = $('<div class="register-course" ><a>',{
       href: '/students/'+studentId+'/courses/'+coursesId+'/register'
     })
-    .text('Register')
+    .text('Register in this course')
     .appendTo($('.btn'));
   }
 
