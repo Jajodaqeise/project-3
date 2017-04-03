@@ -1607,7 +1607,6 @@ select:focus{
 }
 
 .course_title_show {
-  line-height: 0.5em;
   text-align: center;
   margin-top: 12%;
   font-size: 1.8em;
@@ -1617,12 +1616,13 @@ select:focus{
   font-size: 3em;
   padding-bottom: 1vh;
   color: #64a5ff;
+  margin: .8em 0 .4em;
 }
 
 .course_title_show p{
   font-size: 1.3em;
   padding-bottom: 1vh;
-  margin-top: 6vh;
+  margin: .5em 0;
 }
 
 .attenders_course {
