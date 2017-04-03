@@ -99,28 +99,6 @@
         .appendTo($option);
     })
 
-    // for (var i = 0; i< 5; i++) {
-    //
-    //   if (schools[i]){
-    //     schoolOptions[i] = $('<div class="option">');
-    //     schoolNames[i] = schools[i].name;
-    //     var name = $('<p>').text(schoolNames[i]);
-    //     schoolOptions[i].append(name);
-    //     schoolLocations[i] = schools[i].geometry.location;
-    //     $('.result-school').append(schoolOptions[i]);
-    //     console.log(schoolOptions);
-    //   }
-    //
-    // }
-    // schoolOptions.forEach(function(schoolOption){
-    //   var i = schoolOptions.indexOf(schoolOption);
-    //
-    //   schoolOption.click(function(){
-    //     $('.result-school').empty();
-    //     console.log("click");
-    //
-    //   })
-    // })
 
 
   }
