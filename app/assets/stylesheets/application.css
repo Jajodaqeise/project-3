@@ -519,7 +519,7 @@ display: flex;
 }
 
 
-.date-buttons input, .date-buttons a{
+.date-buttons input, .class-cal-container .date-buttons a{
   cursor: pointer;
   background-color: #3f6fb1;
   border-radius: .5rem;

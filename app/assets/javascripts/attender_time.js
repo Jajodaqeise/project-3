@@ -15,6 +15,7 @@ $(document).on('turbolinks:load', function() {
     console.log(totalTimeDif);
     // console.log(time.getUTCHours());
 
+    time.setMinutes(date.date.getMinutes() - new Date().getTimezoneOffset())
     var hours = time.getUTCHours();
     var formattedTime = time.toDateString() + " - ";
     formattedTime += hours % 12 == 0 ? 12 : hours % 12;
