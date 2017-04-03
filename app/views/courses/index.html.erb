@@ -38,11 +38,13 @@
     <%= hidden_field_tag(:student_id, current_student.id) %>
 
     <div class="course-search dropdown">
-      <%= form_tag ({:class => 'dropbtn'})do %>
+      <%= form_tag do %>
         <%= text_field_tag :course, '' , :placeholder => 'Search Course', autocomplete: 'off' %>
-<div class="btn"></div>
+
       <% end %>
-      <div class="results"></div>
+      <div class="btn">
+        <div class="results"></div>
+      </div>
 
     </div>
   </div>
