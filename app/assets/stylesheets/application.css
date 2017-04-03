@@ -1513,6 +1513,7 @@ select:focus{
 .teachers-course {
   width: 35%;
   text-align: center;
+  font-size: 1.6em;
 }
 .manage-course {
   display: flex;
@@ -1613,11 +1614,9 @@ select:focus{
   font-size: 1.8em;
   color: #64a5ff;
 }
-/*.course_title_show h1{
-  font-size: 3em;
-  padding-bottom: 1vh;
+.course_title_show h1 a {
   color: #64a5ff;
-}*/
+}
 
 /*.course_title_show p{
   font-size: 1.4em;
