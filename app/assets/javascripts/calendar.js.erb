@@ -150,8 +150,11 @@ var calFactory = function(){
           week.forEach(function(day){
             var dayDate = new Date(self.firstDay.getFullYear(), self.firstDay.getMonth(), day, 0,0,0,0);
             var classDates = findMatchingClasses(dayDate);
+            var tdClasses = 'cal-cell cal-day';
+            tdClasses += (day && isToday(dayDate)) ? " cal-today" : "";
+            tdClasses += (day && classDates.length > 0) ? " cal-class-day" : "";
             var $td = $('<td>',{
-              class: 'cal-cell cal-day'+ day && isToday(dayDate) ? " cal-today" : "" + day && classDates.length > 0 ? " cal-class-day" : ""
+              class: tdClasses
             })
             .appendTo($tr)
             .text(day);
@@ -179,7 +182,11 @@ var calFactory = function(){
 
                   });
                   var hours = date.date.getHours();
-                  var formattedTime = date.date.toDateString() + " " + hours % 12 == 0 ? 12 : hours % 12 + ':' + padNumber(date.date.getMinutes(), 2) + ' ' + hours>11 ? "PM" : "AM";
+                  var formattedTime = date.date.toDateString() + " ";
+                  formattedTime += hours % 12 == 0 ? 12 : hours % 12;
+                  formattedTime += ':';
+                  formattedTime += padNumber(date.date.getMinutes(), 2) + ' ';
+                  formattedTime += hours > 11 ? "PM" : "AM";
                   var $resultTitle = $('<h4>',{
                     class: "class-result-title"
                   })
@@ -193,11 +200,12 @@ var calFactory = function(){
             }
           })
         })
-        this.resize();
+        cal.resize();
 
       return this;
     },
     resize: function(){
+      console.log ($('td').width());
       $('.cal').width($('#render-cal').width()-30);
       $('td').height($('td').width());
     },

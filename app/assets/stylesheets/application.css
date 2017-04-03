@@ -158,6 +158,7 @@ body {
   min-width: 90%;
   text-decoration: none;
   color: white;
+  font-size: 1.29em;
   /*background-color: black;
   background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
   background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));*/
@@ -212,6 +213,9 @@ a {
 
 
 /*Site index Page*/
+#IndexbrandImg{
+  margin: 0 auto;
+}
 
 #siteBody {
   width: 100%;
@@ -423,6 +427,11 @@ display: flex;
 .cal-class-day{
   background-color: #888;
   color: white;
+}
+
+.modal-content label{
+  text-align: left;
+  font-size: 1.5em;
 }
 
 .cal-view-day{
@@ -776,9 +785,10 @@ caption select{
 .attendances a{
   color: black;
   cursor: pointer;
+  font-size: 1.4em;
 }
 .attendances a:hover {
-  background-color: #64a5ff;
+  background-color: #3f6fb1;
   color: white;
 }
 .attendance-bar{
@@ -1530,10 +1540,18 @@ select:focus{
 
 .course_title_show {
   line-height: 0.5em;
-  color: #3f6fb1;
   text-align: center;
   margin-top: 8%;
   font-size: 1.5em;
+}
+.course_title_show h1{
+  font-size: 3em;
+  padding-bottom: 1vh;
+  color: #64a5ff;
+}
+
+.course_title_show p{
+  font-size: 1.4em;
 }
 
 .attenders_course {
