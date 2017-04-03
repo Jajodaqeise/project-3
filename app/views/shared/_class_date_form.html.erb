@@ -1,0 +1,26 @@
+<h2><%= @class_date.course.name %></h2>
+<%= form_for(@class_date) do |f| %>
+  <%= f.hidden_field(:course_id) %>
+    <% date = @class_date[:date] ? @class_date[:date].localtime : DateTime.now.localtime %>
+      <%= f.label(:date) %>
+      <%= f.date_field(:date, :value => date.strftime("%F")) %>
+    <%= f.label(:time) %>
+    <%= hidden_field_tag(:timezone_offset) %>
+    <div class="input-group clockpicker">
+      <%= f.time_field(:time, :value=>date.strftime("%H:%M")) %>
+    </div>
+
+  <%= f.label(:repeat) %>
+  <%= f.check_box(:repeat) %>
+  <div class="date-buttons">
+    <%= f.submit(@class_date.id ? "Edit Class" : "Create Class") %>
+    <% if @class_date.id %>
+      <%= link_to "Delete Class", delete_class_date_path(:id => @class_date.id),  method: :delete %>
+    <% end %>
+  </div>
+
+<% end %>
+
+<div class="pattern-container<%= @class_date.repeat ? "" : " hidden-form" %>">
+    <%= render "shared/class_pattern_form", class_pattern: @class_pattern %>
+</div>

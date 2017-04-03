@@ -1,0 +1,54 @@
+<div id="signUpBody">
+
+    <div id="siteIndexContainer">
+
+        <div id="siteInnerContainer">
+            <img id="newSessionBrand" draggable="false" src="/assets/attender.svg"/>
+            <br/>
+            <br/>
+            <br/>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+            <div class="firstNameSignUpContainer" class="fieldsign">
+                <%# f.label :first_name %>
+                <%= f.text_field :first_name, placeholder: 'First Name', id: 'firstNameSignUp'%>
+            </div>
+            <div class="lastNameSignUpContainer" class="fieldsign">
+                <%# f.label :last_name %>
+                <%= f.text_field :last_name,placeholder: 'Last Name', id: 'lastNameSignUp'%>
+            </div>
+
+            <div class="emailSignUpContainer" class="fieldsign">
+                <%# f.label :email %>
+                <%= f.email_field :email, placeholder: 'Email',id: 'emailSignUp', autofocus: true %>
+            </div>
+
+            <div class="passwordSignUpContainer" class="fieldsign">
+                <%#f.label :password %>
+                <%# if @minimum_password_length %>
+                <%#= @minimum_password_length %>
+                <%# end %>
+                <%= f.password_field :password, placeholder: 'Password', id: 'passwordSignUp', autocomplete: "off" %>
+            </div>
+
+            <div class="password_confirmationSignUpContainer" class="fieldsign">
+                <%# f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation,placeholder: 'Confirm Password', id: 'password_confirmationSignUp', autocomplete: "off" %>
+            </div>
+            <br/>
+            <div class="SignUpSubmitContainer" class="actions">
+                <%= f.submit "Sign Up", id: 'signUpSubmit' %>
+            </div>
+            <% end %>
+
+            <%# render "devise/shared/links" %>
+            <div id="SignUpErrorMsg">
+                <%= devise_error_messages! %>
+            </div>
+            <%#siteInnerContainer %>
+        </div>
+        <%#siteIndexContainer %>
+    </div>
+
+    <%#signUpBody %>
+</div>

@@ -1,0 +1,38 @@
+<div id="newBody">
+    <div id="siteIndexContainer">
+
+        <div id="siteInnerContainer">
+            <img id="newSessionBrand" draggable="false" src="/assets/attender.svg"/>
+            <br/>
+            <br/>
+            <br/>
+            <center>
+
+                <span id="resetInstructions">We will email you instructions</span>
+
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+                <br/>
+                <div class="field">
+                    <%#= f.label :email %>
+                    <%= f.email_field :email,placeholder: 'Email', id: 'forgotEmailField', autofocus: true %>
+                </div>
+                <br/>
+                <div class="actions">
+                    <%= f.submit "Reset my password", id: 'forgotEmailSubmit' %>
+                </div>
+                <% end %>
+            </center>
+
+            <div id="forgotPasswordError">
+                <%= devise_error_messages! %>
+            </div>
+            <%#siteInnerContainer %>
+        </div>
+
+        <%#siteIndexContainer %>
+    </div>
+
+    <%# render "devise/shared/links" %>
+    <%#Take the Whole Body %>
+</div>

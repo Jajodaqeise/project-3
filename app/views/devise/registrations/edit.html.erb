@@ -1,0 +1,81 @@
+
+<input type="checkbox" id="menuToggle">
+
+<div id="topNav">
+    <label for="menuToggle" class="menu-icon">&#9776;</label>
+    <img  id="brandImg" draggable="false" src="/assets/attender.svg"/>
+</div>
+
+<nav class="menu">
+    <a href="/profile">
+        <i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
+    <a href="/courses">
+        <i class="fa fa-book" aria-hidden="true">&#160;</i>
+        Course</a>
+    <% if current_student %>
+    <%= link_to(destroy_student_session_path, :method => :delete) do %>
+
+    <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
+    <% end %>
+<% else %>
+    <%= link_to(destroy_teacher_session_path, :method => :delete) do %>
+
+    <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
+    <% end %>
+    <% end %>
+
+</nav>
+
+<div id="editRegistrationsContainer">
+
+
+<div class="yield-container"></div>
+
+  <div id="editRegistrationsInnerContainer">
+<center>
+    <span id="editPassWordSpan">Update Information</span>
+</center>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <br />
+  <div id="editPwFirstNameContainer"class="field">
+    <%= f.text_field :first_name, placeholder: 'First Name', id: 'editPwFirstName',  autofocus: true %>
+  </div>
+  <div id="editPwLastNameContainer"class="field">
+    <%= f.text_field :last_name, placeholder: 'Last Name', id: 'editPwLastName',  autofocus: true %>
+  </div>
+  <div id="editPwEmailContainer"class="field">
+    <%= f.email_field :email, placeholder: 'Email', id: 'editPwEmail',  autofocus: true %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div id="editPwCurrentPwContainer" class="field">
+    <%= f.password_field :current_password,id: 'editPwCurrentPw',placeholder: 'Current Password', autocomplete: "off" %>
+  </div>
+
+  <!-- <div id="editPwNewPwContainer" class="field"> -->
+    <%#= f.password_field :password,id: 'editPwNewPw', placeholder: 'New Password', autocomplete: "off" %>
+  <!-- </div> -->
+
+  <!-- <div id="editPwConfirmNewPwContainer" class="field"> -->
+    <%#= f.password_field :password_confirmation, id: 'editPwConfirmNewPw', placeholder: 'Confirm New Password', autocomplete: "off" %>
+  <!-- </div> -->
+
+  <br />
+  <div id="editPwSubmitContainer"class="actions">
+    <%= f.submit "Update", id: 'editPwSubmit' %>
+  </div>
+<% end %>
+
+
+<div id="deviseEditPw">
+  <%= devise_error_messages! %>
+</div>
+
+<%#siteInnerContainer %>
+  </div>
+</div>
+</div>

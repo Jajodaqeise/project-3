@@ -1,0 +1,303 @@
+let courseId;
+const config = {
+  startOnMonday: false
+}
+const calFactory = ()=>{
+  const monthDays = [31,28,31,30,31,30,31,31,30,31,30,31];
+  const cal = {
+    init: function(){
+      this.dateArr = [];
+      this.today = new Date();
+      this.getClasses();
+      return this;
+    },
+
+    getClasses: function(){
+       courseId = $('#render-cal').attr('data-course-id');
+      $.ajax({
+        method: "GET",
+        url: `/api/class_dates/${courseId}`,
+        success: (data)=>{
+          cal.classes = data.classes;
+          console.log(cal.classes);
+          cal.createMonth(this.today.getMonth(), this.today.getFullYear());
+        },
+        error: (err) =>{
+          console.log(err);
+        }
+      })
+    },
+
+    createMonth: function(month, year){
+      this.dateArr = [];
+      this.firstDay = new Date(year, month, 1, 0, 0, 0, 0);
+      let startDayOfWeek = this.firstDay.getDay();
+      if (config.startOnMonday){
+        startDayOfWeek = startDayOfWeek === 0 ? 7 : startDayOfWeek - 1;
+      }
+      for(let i = 0; i < startDayOfWeek ; i++){
+        this.dateArr.push("");
+      }
+      for (let i=1; i<=monthDays[this.firstDay.getMonth()]; i++){
+        this.dateArr.push(i);
+      }
+      //http://stackoverflow.com/questions/16353211/check-if-year-is-leap-year-in-javascript
+      if (this.firstDay.getMonth() == 1 && ((this.firstDay.getFullYear % 4 == 0) && (this.firstDay.getFullYear % 100 != 0)) || (this.firstDay.getFullYear % 400 == 0)){
+        this.dateArr.push(29);
+      }
+      this.dateArr = _.chunk(this.dateArr, 7);
+      while (this.dateArr[this.dateArr.length -1].length < 7){
+        this.dateArr[this.dateArr.length-1].push("");
+      }
+
+      this.renderCal();
+
+      return this;
+    },
+    renderCal: function(){
+        $('.class-results').empty()
+        const $calContainer = $('#render-cal').empty();
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        if (config.startOnMonday){
+          daysOfWeek.push(daysOfWeek.shift());
+        }
+        const $table = $('<table>',{
+            class: "cal"
+          })
+          .appendTo($calContainer);
+        const $caption = $('<caption>',{
+            class: "cal-month"
+          })
+          .appendTo($table);
+        const $prevMonth = $('<div>',{
+            class: "month-option"
+          })
+          .appendTo($caption)
+          .click((e)=>{
+            this.createMonth(this.firstDay.getUTCMonth() - 1, this.firstDay.getUTCFullYear());
+          });
+        const $prevIcon = $('<i>',{
+          class: 'fa fa-caret-left'
+        }).appendTo($prevMonth);
+        const $selectDiv = $("<div>").appendTo($caption);
+        const $monthSelect = $('<select>', {
+            class: "month-select",
+          })
+          .appendTo($selectDiv)
+          .change((e)=>{
+            this.createMonth($(e.target).val(), $(".year-select").val());
+          });
+        monthNames.forEach((monthName, m)=>{
+          const $month = $('<option>',{
+            class: "month-option",
+            value: m
+          })
+          .appendTo($monthSelect)
+          .text(monthName)
+          if (m == this.firstDay.getUTCMonth()){
+            $month.prop('selected', true);
+          }
+        })
+        const $yearSelect = $('<select>',{
+          class: "year-select"
+        })
+          .appendTo($selectDiv)
+          .change((e)=>{
+            this.createMonth($('.month-select').val(), $(e.target).val());
+          });
+        for (y = this.today.getUTCFullYear() - 4; y <= this.today.getUTCFullYear() + 4; y++){
+          const $yearOption = $('<option>', {
+            class: "year-option",
+            value: y
+          })
+          .appendTo($yearSelect)
+          .text(y)
+          if (y == this.firstDay.getUTCFullYear()){
+            $yearOption.prop('selected', true);
+          }
+        }
+
+        const $nextMonth = $('<div>',{
+          class: "month-option"
+        })
+          .appendTo($caption)
+          .click((e)=>{
+            this.createMonth(this.firstDay.getUTCMonth() + 1, this.firstDay.getUTCFullYear());
+          })
+        const $nextIcon = $('<i>',{
+            class: 'fa fa-caret-right'
+          }).appendTo($nextMonth);
+
+        const $tablehead = $('<tr>',{
+            class: "cal-day-of-week-row cal-row"
+          })
+          .appendTo($table);
+        daysOfWeek.forEach(day=>{
+          const $th = $('<th>',{
+            class: "cal-day-of-week cal-cell"
+          })
+          .appendTo($tablehead)
+          .text(day);
+        });
+        this.dateArr.forEach(week=>{
+          const $tr = $('<tr>', {
+            class: "cal-row cal-week-row"
+          })
+          .appendTo($table);
+          week.forEach(day=>{
+            const dayDate = new Date(this.firstDay.getFullYear(), this.firstDay.getMonth(), day, 0,0,0,0);
+            const classDates = findMatchingClasses(dayDate);
+            const $td = $('<td>',{
+              class: `cal-cell cal-day${day && isToday(dayDate) ? " cal-today" : ""}${day && classDates.length > 0 ? " cal-class-day" : ""}`
+            })
+            .appendTo($tr)
+            .text(day);
+            if (classDates.length > 0){
+              $td.click((e)=>{
+                $('.cal-view-day').removeClass('cal-view-day');
+                $(e.target).addClass('cal-view-day');
+                const $results = $('.class-results').empty()
+                classDates.forEach(date=>{
+                  const $resultContainer = $('<div>',{
+                    class: "class-result"
+                  })
+                  .appendTo($results)
+                  .click((e)=>{
+                    $('.modal-form').load(`/class_dates/${date.id}/edit`, ()=>{
+                      $('.selected-result').removeClass('selected-result');
+                      if ($(e.target).hasClass('class-result')){
+                        $(e.target).addClass('selected-result');
+                      } else {
+                        $(e.target).parent().addClass('selected-result');
+                      }
+
+                      showModalForm();
+                    });
+
+                  });
+                  let hours = date.date.getHours();
+                  const formattedTime = `${date.date.toDateString()} ${hours % 12 == 0 ? 12 : hours % 12}:${padNumber(date.date.getMinutes(), 2)} ${hours>11 ? "PM" : "AM"}`;
+                  const $resultTitle = $('<h4>',{
+                    class: "class-result-title"
+                  })
+                  .appendTo($resultContainer)
+                  .text(formattedTime);
+
+                  const editButton = $
+                });
+
+              })
+            }
+          })
+        })
+        this.resize();
+
+      return this;
+    },
+    resize: function(){
+      $('.cal').width($('#render-cal').width()-30);
+      $('td').height($('td').width());
+    },
+    editClass: function(classId, date, time){
+      $.ajax({
+        method: 'PATCH',
+        url: `/api/class_dates/${classId}`,
+        data:{
+          date: date,
+          time: time
+        },
+        success: (data)=>{
+          console.log("EDITED", data)
+          date = date.split('-');
+          cal.classes = data.classes;
+          cal.dateArr = [];
+          cal.createMonth(date[1]-1, date[0]);
+        },
+        error:(err)=>{
+          console.log("ERROR", err);
+        }
+      })
+      console.log(classId, date, time);
+    },
+    deleteClass: function(classId){
+      console.log('delete')
+    }
+  }
+
+  function padNumber(number, length) {
+    number = number.toString();
+    while (number.length < length){
+      number = "0" + number;
+    }
+    return number;
+  }
+  function isToday(datetime){
+    return cal.today.getFullYear() === datetime.getFullYear() && cal.today.getMonth() === datetime.getMonth() && cal.today.getDate() === datetime.getDate() ? true :false;
+  }
+
+  function findMatchingClasses(datetime){
+    const matching = [];
+    cal.classes.forEach(class_day => {
+      console.log(class_day.date)
+      const classDate = new Date(class_day.date);
+      console.log(classDate);
+      const classId = class_day.id;
+      if(classDate.getFullYear() === datetime.getFullYear() && classDate.getMonth() === datetime.getMonth() && classDate.getDate() === datetime.getDate()){
+        matching.push({
+          date: classDate,
+          id: classId
+        });
+      }
+    })
+    return matching;
+  }
+  $(window).resize((e)=>{
+    cal.resize();
+  });
+
+
+  $('.clockpicker').clockpicker({
+    donetext: "Done",
+    autoclose: true
+  });
+  return cal;
+}
+
+function showModalForm(){
+  $('.hidden-form').hide();
+  $("#class_date_repeat").change(()=>{
+    $('.pattern-container').toggle();
+  });
+  $('.modal').fadeIn('fast');
+  $('.clockpicker').clockpicker({
+    donetext: "Done",
+    autoclose: true
+  });
+  $('#timezone_offset').val(new Date().getTimezoneOffset())
+}
+
+$(document).on('turbolinks:load', function() {
+  let cal;
+  if ($('#render-cal').length > 0){
+    cal = calFactory().init();
+  }
+
+
+
+  $('.close').click(()=>{
+    $('.modal').fadeOut('fast',()=>{
+      $('.modal-form').empty()
+    });
+  });
+
+  $('.modal').hide();
+  $('.new-class-button').click((e)=>{
+
+    $('.modal-form').load(`/courses/${courseId}/class_dates/new`, ()=>{
+      showModalForm();
+      console.log("test");
+    });
+  });
+
+})
