@@ -701,110 +701,6 @@ caption select{
   cursor: pointer;
 }
 
-.attendances{
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-.attendance{
-  -ms-align-items: center;
-  align-items: center;
-  border-bottom: 1px solid #bbb;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -ms-justify-content: space-between;
-  -o-justify-content: space-between;
-  justify-content: space-between;
-}
-
-.attendance-main-container h3{
-  margin-top: 0;
-  margin-bottom: 30px;
-}
-.attendance-main-container h2{
-  margin-bottom: 0;
-}
-
-.attendance p{
-  margin: 10px;
-}
-.attendance i{
-  margin: 0 10px;
-}
-.attendance:first-of-type{
-  border-top: 1px solid #bbb;
-}
-.attendances a{
-  color: black;
-  cursor: pointer;
-}
-.attendances a:hover {
-  background-color: #64a5ff;
-  color: white;
-}
-.attendance-bar{
-
-  height: 30px;
-}
-.attendance-bar-holder{
-  border-radius: .5em;
-  background-color: #ccc;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-.attendance-bar-container{
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  width: 45%;
-}
-
-.percent-title{
-  -ms-align-items: center;
-  align-items: center;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  font-size: 1.8em;
-  line-height: 1em;
-  margin: 20px auto;
-}
-
-.percent-title::after{
-  content: "%";
-  margin-left: 5px;
-}
-
-.attendance-bar-holder.small{
-  margin: 10px;
-  width: 80%;
-}
-.attendance-bar-holder.small .attendance-bar{
-  height: 100%;
-}
-
-
-.attendance-main-container{
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: 500px;
-  text-align: center;
-  font-size: 16px;
-}
-
-
-
 .check-in-form input[type="submit"]{
   font-family: 'Crimson Text', serif;
   background-color: transparent;
@@ -1303,24 +1199,17 @@ select:focus{
   font-size: 1.2em;
 }
 .indent {
-  text-indent: 1%;
+  text-indent: 2%;
 }
 #search_course{
   font-size: 1.6em;
 }
 .course-search form {
   text-indent: 5%;
-
-}
-.course-search form #course {
-  border: 1px solid black;
-  width: 100%;
-  display: block;
-  margin-left: 5%;
 }
 
 .user {
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 
 .user-info {
@@ -1330,36 +1219,17 @@ select:focus{
   justify-content: space-between;
 }
 
-.new_this_course {
+.button {
   cursor: pointer;
-  background-color: #8ec5ad;
-  padding: 3%;
-  border-radius: 5px;
+  background-color: #0751b7;
+  padding: 2%;
+  font-size: 1em;
+  border-radius: 10px;
   transition: all 0.5s;
   width: 25%;
   color: #fff;
-  text-align: center;
 }
 
-.edit_this_course {
-  background-color: #3f6fb1;
-  color: #fff;
-  padding: 10% 30%;
-  margin: 1%;
-  text-align: center;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.delete_course {
-  background-color: indianred;
-  color: #fff;
-  padding: 10% 30%;
-  text-align: center;
-  border-radius: 5px;
-  margin: 1%;
-  width: 100%;
-}
 
 .my-courses-heading {
   width: 100%;
@@ -1396,9 +1266,8 @@ select:focus{
 }
 
 .teachers-course {
-  width: 30%;
+  width: 35%;
   text-align: center;
-  font-size: 1.4em;
 }
 .manage-course {
   display: flex;
@@ -1417,7 +1286,6 @@ select:focus{
   font-weight: bold;
   color: #000;
 }
-
 
 /*Profile Page starts*/
 
@@ -1450,96 +1318,27 @@ select:focus{
   font-weight: bold;
   font-family: 'Crimson Text', serif;
 }
-
-/*Profile page ends*/
-
-/* course search */
-.dropbtn {
-  background-color: #4CAF50;
+#ProfilePic{
+  font-size: 5em;
+  padding: 0px 10px 10px;
   color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
+#ProfileBackground{
+  background-color: #e1e1e1;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+ border-radius: 100%;
 }
-
-.register-course {
-  background-color: #0751b7;
-  color: #fff;
-  padding: 5%;
-  margin: 1%;
-  text-align: center;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.btn a {
-  color: #fff;
-}
-
-.results {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 100%;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.results a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdown:hover .results {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-
-
+/*Profile page ends*/
 
 /*  /courses/:id  */
 
-.links_show_course_page {
-  display: flex;
-}
-
-.edit_show_course {
-  width: 50%;
-  background-color: #3f6fb1;
-  color: #fff;
-  margin: 5%;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.course_title_show {
-  line-height: 0.5em;
-  color: #3f6fb1;
-  text-align: center;
-  margin: 10%;
-}
-
-.description_course_show {
-
-
-}
-
-
+/*<<<<<<< HEAD*/
 /*COURSE FORM FOR COURSES/EDIT*/
 
 
@@ -1549,7 +1348,7 @@ select:focus{
 
 /*=======*/
 /*.profile {
-
+>>>>>>> 0d38a75d98403581398260ffdd0374b3777874c6
 
   margin-top: 10%;
 }
