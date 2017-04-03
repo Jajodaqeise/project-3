@@ -105,6 +105,10 @@ body {
 #brandImg {
   margin: 0 auto;
   height: 5rem;
+  height: 3rem;
+  position: relative;
+  left: -20px;
+  align-self: center;
 }
 
 
@@ -234,6 +238,7 @@ a {
   max-width: 900px;
   min-height: 100vh;
   align-items: center;
+  padding: 0px 10px 10px;
 }
 
 #siteBrand {
@@ -407,7 +412,8 @@ display: flex;
 #containerNewCheckForgot{
   display: flex;
   width: 90%;
-  margin-left: 2.20rem;
+  margin-left: 2rem;
+  padding: 0;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -1365,6 +1371,7 @@ select:focus{
 .course-search form {
   width: 100%;
   font-size: 1.5em;
+  margin-top: 0.67em;
 }
 
 .user {
@@ -1412,12 +1419,13 @@ select:focus{
 
 /*courseFormTextField*/
 .register-course {
+  display: block;
+  width: 95%;
   background-color: #3f6fb1;
   color: #fff;
   padding: 4%;
   text-align: center;
   border-radius: 5px;
-  width: 100%;
 }
 
 #course {
@@ -1496,6 +1504,10 @@ select:focus{
   text-align: center;
   font-size: 1.6em;
 }
+.teachers-course a{
+  font-weight: bold;
+  color: #3f6fb1;
+}
 .manage-course {
   display: flex;
   flex-direction: column;
@@ -1512,7 +1524,7 @@ select:focus{
 .enrolled-course a {
   font-size: 1.5em;
   font-weight: bold;
-  color: #000;
+  color: #3f6fb1;
 }
 
 /*Profile Page starts*/
@@ -1659,6 +1671,10 @@ select:focus{
     display: block;
 }
 
+/*font awesome x mark*/
+.fa-times{
+  color: indianred;
+}
 
 /*COURSE FORM FOR COURSES EDIT
 
@@ -1671,6 +1687,8 @@ select:focus{
 /*.profile {
   margin-top: 10%;
 
+
+
 /*attendances names n dates*/
 .attendances{
   font-size: 1.2em;
@@ -1679,6 +1697,7 @@ select:focus{
   font-size: 1.3em;
 
 }
+
 
 
 
