@@ -6,16 +6,16 @@ $(document).on('turbolinks:load', function() {
     var timeArr = timeString.split(',');
     var time = new Date(timeArr[0], timeArr[1], timeArr[2], timeArr[3], timeArr[4], 0, 0);
     var serverTimeDif = timeArr[5].substring(1,6).split(':');
-    serverTimeDif = serverTimeDif[0] + serverTimeDif[1]/60;
+    serverTimeDif = serverTimeDif[1] + serverTimeDif[0] * 60;
     console.log(serverTimeDif);
-    var clientTimeDif = new Date().getTimezoneOffset() / 60;
+    var clientTimeDif = new Date().getTimezoneOffset();
 
     console.log(new Date().getTimezoneOffset());
     var totalTimeDif = clientTimeDif - serverTimeDif;
     console.log(totalTimeDif);
     // console.log(time.getUTCHours());
 
-    time.setMinutes(date.date.getMinutes() - new Date().getTimezoneOffset())
+    time.setMinutes(time.getMinutes() - new Date().getTimezoneOffset())
     var hours = time.getUTCHours();
     var formattedTime = time.toDateString() + " - ";
     formattedTime += hours % 12 == 0 ? 12 : hours % 12;
