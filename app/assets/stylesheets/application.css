@@ -158,9 +158,8 @@ body {
   text-decoration: none;
   color: white;
   font-size: 1.29em;
-  /*background-color: black;
-  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));*/
+  justify-content: space-around;
+
 }
 
 .menu a:hover {
@@ -692,7 +691,7 @@ caption select{
   margin: 0 auto;
   text-align: center;
 }
-.class-cal-container h2, .class-cal-container h3{
+.class-cal-container h1, .class-cal-container h3{
   text-align: center;
   font-size: 2em;
   font-family: 'Crimson Text', serif;
@@ -1557,7 +1556,7 @@ select:focus{
   border-radius: .5rem;
   background: #3f6fb1;
   outline: none;
-  width: 80%;
+  width: 60%;
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: bold;
@@ -1596,14 +1595,15 @@ select:focus{
 }
 
 .edit_show_course {
-  width: 50%;
+  width: 60%;
   background-color: #3f6fb1;
   color: #fff;
-  margin: 5%;
-  padding: 2%;
+  margin: 1%;
+  margin-bottom: 3vh;
+  padding: 1.31%;
+  font-size: 1.6em;
   text-align: center;
   border-radius: 5px;
-  /*vertical-align: middle;*/
 }
 
 .course_title_show {
@@ -1611,17 +1611,19 @@ select:focus{
   text-align: center;
   margin-top: 12%;
   font-size: 1.8em;
-  color: #64a5ff;
+
 }
-/*.course_title_show h1{
+.course_title_show h1{
   font-size: 3em;
   padding-bottom: 1vh;
   color: #64a5ff;
-}*/
+}
 
-/*.course_title_show p{
-  font-size: 1.4em;
-}*/
+.course_title_show p{
+  font-size: 1.3em;
+  padding-bottom: 1vh;
+  margin-top: 6vh;
+}
 
 .attenders_course {
   /*width: 100%;*/
@@ -1634,22 +1636,18 @@ select:focus{
 }
 
 .description_course_show {
-  margin-top: 10%;
+  padding-bottom: 1vh;
+  font-size: 1.4em;
+  text-align: center;
 }
 
-/*COURSE FORM FOR COURSES EDIT*/
-
-
-
-/*COURSE FORM FOR COURSES/EDIT END*/
-
-
-/*=======*/
-/*.profile {
-  margin-top: 10%;
+/*attendances names n dates*/
+.attendances{
+  font-size: 1.2em;
 }
-*/
-
+.attendance-date{
+  font-size: 1.3em;
+}
 
 
 
