@@ -1,0 +1,49 @@
+<div id="newBody">
+    <div id="siteIndexContainer">
+
+        <div id="siteInnerContainer">
+
+            <img id="newSessionBrand" draggable="false" src="/assets/attender.svg"/>
+            <br/>
+            <br/>
+            <br/>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="newEmailContainer" class="field">
+                <%= f.email_field :email, placeholder: 'Email', id: 'newEmail', autofocus: true %>
+            </div>
+
+            <div class="newPasswordContainer" class="field">
+                <%= f.password_field :password, placeholder: 'Password', id: 'newPassword', autocomplete: "off" %>
+            </div>
+              <br />
+            <div id="containerNewCheckForgot">
+                <% if devise_mapping.rememberable? -%>
+                <div id="checkAndRemember" class="field">
+                    <%= f.check_box :remember_me, id: 'newCheck_box' %>
+                    <%= f.label :remember_me, id: 'newRemember_me'%>
+                </div>
+                <% end -%>
+
+                <div id="newForgotPw">
+                    <%= render "devise/shared/linkToSignUp"%>
+                </div>
+            </div>
+
+            <br/>
+            <div class="newSubmitContainer" class="action">
+                <%= f.submit "Log In", id: 'newSubmit' %>
+            </div>
+            <% end %>
+
+              <br />
+            <div class="newSharedLinks">
+                <%= render "devise/shared/links" %>
+            </div>
+            <%#siteInnerContainer %>
+        </div>
+
+        <%#siteIndexContainer %>
+    </div>
+
+    <%#Take the Whole Body %>
+</div>

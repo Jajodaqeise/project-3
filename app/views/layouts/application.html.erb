@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Attendance</title>
+        <%= csrf_meta_tags %>
+        <%= yield :head %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQUSL0UAV9fyO8bLBJ5Wdc02kZXm5zzio&libraries=geometry,places">
+
+        <link href="https://fonts.googleapis.com/css?family=Damion|Yellowtail" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+        <link rel="icon" href="/assets/attender_small.ico" type="image/x-icon">
+
+        <script src="https://use.fontawesome.com/2901339622.js"></script>
+        <script src="https://use.fontawesome.com/2901339622.js"></script>
+
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    </head>
+
+    <body>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+        <%= yield %>
+
+
+
+    </body>
+
+
+</html>
