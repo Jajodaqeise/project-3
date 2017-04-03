@@ -5,7 +5,7 @@ class ClassDatesController < ApplicationController
     @course = Course.find(params[:course_id])
     render layout: "nav"
   end
- 
+
   def new
     @course = Course.find(params[:course_id])
     @class_pattern = ClassPattern.new
@@ -35,7 +35,11 @@ class ClassDatesController < ApplicationController
     @class_date = ClassDate.new(class_date_params)
     time = params[:class_date][:time].split(":")
     @class_date.date = @class_date.date.change(hour: time[0], min: time[1])
-    @class_date.date += params[:timezone_offset].to_i * 60
+    serverOffset = @class_date.date.strftime('%:z')
+    serverOffset[0] = ""
+    serverOffset = serverOffset.split(":")
+    serverOffset = (serverOffset[1].to_i + serverOffset[0].to_i * 60) * 60;
+    @class_date.date -= (serverOffset - params[:timezone_offset].to_i * 60)
     @class_date.save
     redirect_to class_dates_path(course_id: params[:course_id])
   end
@@ -55,7 +59,11 @@ class ClassDatesController < ApplicationController
 
     time = params[:class_date][:time].split(":")
     @class_date.date = @class_date.date.change(hour: time[0], min: time[1])
-    @class_date.date += params[:timezone_offset].to_i * 60
+    serverOffset = @class_date.date.strftime('%:z')
+    serverOffset[0] = ""
+    serverOffset = serverOffset.split(":")
+    serverOffset = (serverOffset[1].to_i + serverOffset[0].to_i * 60) * 60;
+    @class_date.date -= (serverOffset - params[:timezone_offset].to_i * 60)
     @class_date.save
 
 
