@@ -17,7 +17,7 @@
 /*map - show course page*/
 #map {
   width: 100%;
-  height: 150px;
+  height: 300px;
   border: 0px solid transparent;
   max-width: 600px;
   margin: 0 auto;
@@ -158,9 +158,8 @@ body {
   text-decoration: none;
   color: white;
   font-size: 1.29em;
-  /*background-color: black;
-  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));*/
+  justify-content: space-around;
+
 }
 
 .menu a:hover {
@@ -692,7 +691,7 @@ caption select{
   margin: 0 auto;
   text-align: center;
 }
-.class-cal-container h2, .class-cal-container h3{
+.class-cal-container h1, .class-cal-container h3{
   text-align: center;
   font-size: 2em;
   font-family: 'Crimson Text', serif;
@@ -1445,6 +1444,16 @@ select:focus{
   text-align: center;
 }
 
+.new_this_course {
+  background-color: #3f6fb1;
+  color: #fff;
+  padding: 3%;
+  margin: 2%;
+  text-align: center;
+  border-radius: 5px;
+  width: 20%;
+}
+
 .edit_this_course {
   background-color: #3f6fb1;
   color: #fff;
@@ -1547,7 +1556,7 @@ select:focus{
   border-radius: .5rem;
   background: #3f6fb1;
   outline: none;
-  width: 80%;
+  width: 60%;
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: bold;
@@ -1559,17 +1568,6 @@ select:focus{
   color: white;
 
 }
-
-
-/*  /courses/:id  */
-
-.course_show_container {
-  width: 90%;
-  height: auto;
-  margin: 0 auto;
-}
-
-.links_show_course_page {}
 
 #ProfileBackground{
   background-color: #e1e1e1;
@@ -1583,31 +1581,48 @@ select:focus{
 /*Profile page ends*/
 
 
+
+/*  /courses/:id  */
+
+.course_show_container {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.links_show_course_page {
+  display: flex;
+}
+
 .edit_show_course {
-  width: 50%;
+  width: 60%;
   background-color: #3f6fb1;
   color: #fff;
-  margin: 5%;
-  padding: 2%;
+  margin: 1%;
+  margin-bottom: 3vh;
+  padding: 1.31%;
+  font-size: 1.6em;
   text-align: center;
   border-radius: 5px;
-  vertical-align: middle;
 }
 
 .course_title_show {
-  line-height: 0.5em;
   text-align: center;
-  margin-top: 8%;
-  font-size: 1.5em;
+  margin-top: 12%;
+  font-size: 1.8em;
+
 }
 .course_title_show h1{
   font-size: 3em;
   padding-bottom: 1vh;
   color: #64a5ff;
+  margin: .8em 0 .4em;
 }
 
 .course_title_show p{
-  font-size: 1.4em;
+  font-size: 1.3em;
+  padding-bottom: 1vh;
+  margin: .5em 0;
 }
 
 .attenders_course {
@@ -1621,22 +1636,18 @@ select:focus{
 }
 
 .description_course_show {
-  margin-top: 10%;
+  padding-bottom: 1vh;
+  font-size: 1.4em;
+  text-align: center;
 }
 
-/*COURSE FORM FOR COURSES EDIT*/
-
-
-
-/*COURSE FORM FOR COURSES/EDIT END*/
-
-
-/*=======*/
-/*.profile {
-  margin-top: 10%;
+/*attendances names n dates*/
+.attendances{
+  font-size: 1.2em;
 }
-*/
-
+.attendance-date{
+  font-size: 1.3em;
+}
 
 
 
