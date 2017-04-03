@@ -10,7 +10,7 @@ class Student < ApplicationRecord
   def course_attenders(course_id)
     course_attenders = []
     self.attenders.each do |attender|
-      if attender.class_date.course_id = course_id
+      if attender.class_date.course_id == course_id
         course_attenders.push(attender)
       end
     end
