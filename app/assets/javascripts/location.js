@@ -74,25 +74,55 @@
 
   //new and edit course pages: top 5 options of the previous search
   var dropDownOptions = function(schools) {
-    console.log("schools", schools);
-
-    $('.result-school').empty();
-
-    for (var i = 0; i< 5; i++) {
-      schoolOptions[i] = $('<div class="option">');
-      schoolNames[i] = schools[i].name;
-      var name = $('<p>').text(schoolNames[i]);
-      schoolOptions[i].append(name);
-      schoolLocations[i] = schools[i].geometry.location;
-      $('.result-school').append(schoolOptions[i]);
-      schoolOptions[i].click(function(){
-        $('.result-school').empty();
-        console.log("click");
-        $('#course_school').val(schoolNames[i]);
-        $('#course_lat').val(schoolLocations[i].lat);
-        $('#course_lng').val(schoolLocations[i].lng);
-      })
+    if (schools.length > 5){
+      schools = schools.slice(0,5);
     }
+    console.log("====================",schools);
+
+    var $results = $('.results-school').empty();
+
+    schools.forEach(function(school){
+      console.log("SCHOOL", school)
+      console.log('results', $results)
+      var $option = $('<div>',{
+        class: 'option'
+      })
+      .appendTo($results)
+      .click(function(e){
+        $results.empty();
+        $('#course_school').val(school.name);
+        $('#course_lat').val(school.geometry.location.lat);
+        $('#course_lng').val(school.geometry.location.lng);
+      });
+      var $name = $('<p>')
+        .text(school.name)
+        .appendTo($option);
+    })
+
+    // for (var i = 0; i< 5; i++) {
+    //
+    //   if (schools[i]){
+    //     schoolOptions[i] = $('<div class="option">');
+    //     schoolNames[i] = schools[i].name;
+    //     var name = $('<p>').text(schoolNames[i]);
+    //     schoolOptions[i].append(name);
+    //     schoolLocations[i] = schools[i].geometry.location;
+    //     $('.result-school').append(schoolOptions[i]);
+    //     console.log(schoolOptions);
+    //   }
+    //
+    // }
+    // schoolOptions.forEach(function(schoolOption){
+    //   var i = schoolOptions.indexOf(schoolOption);
+    //
+    //   schoolOption.click(function(){
+    //     $('.result-school').empty();
+    //     console.log("click");
+    //
+    //   })
+    // })
+
+
   }
 
   //show course page
@@ -131,7 +161,7 @@
   var $checkInForm = $('.check-in-form').remove();
 
   function validateStudentLocation(location) {
-    if ($checkInForm.length){
+    if ($checkInForm && $checkInForm.length){
       console.log(location);
       // console.log("student location", location);
       var $checkClass = $('.check-class');
