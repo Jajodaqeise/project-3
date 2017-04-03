@@ -1,39 +1,35 @@
-<% if (current_student || current_teacher) && !@no_nav %>
-<input type="checkbox" id="menuToggle">
+<div id="profileContainer">
 
-<div id="topNav">
-  <label for="menuToggle" class="menu-icon">&#9776;</label>
-  <img id="brandImg" draggable="false" src="/assets/whiteLogo.png"/ />
-</div>
 
-<nav class="menu">
-      <a href="/profile"><i class="fa fa-user" aria-hidden="true">&#160;</i>Profile</a>
-      <a href="/"><i class="fa fa-book" aria-hidden="true">&#160;</i> Course</a>
-      <% if current_student %>
-      <%= link_to(destroy_student_session_path, :method => :delete) do %>
 
-      <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
-      <% end %>
-      <% else %>
-      <%= link_to(destroy_teacher_session_path, :method => :delete) do %>
-
-      <i class="fa fa-sign-out" aria-hidden="true">&#160;</i>Log Out
-      <% end %>
-      <% end %>
-
-</nav>
-<% end %>
-
+<% if current_student.present? %>
 <div class="profile">
-<% if current_student %>
-  <%= link_to "Edit Profile", edit_student_registration_path(current_student) %>
-  <h2> Name: <%= current_student.first_name %> <%= current_student.last_name %> </h2>
+  <h2> <%= current_student.first_name %> <%= current_student.last_name %> </h2>
+    <div id="ProfileBackground">
+      <span id="ProfilePic"><i class="fa fa-user" aria-hidden="true"></i></span>
+    </div>
   <p> E-mail: <%= current_student.email %></p>
+  </div>
+  <center>
+    <%= link_to (edit_student_registration_path(current_student)) do %>
+      <button class="editProfileButton">Edit Profile</button>
+    <% end %>
+  </center>
 <% end %>
 
-<% if current_teacher %>
-  <%= link_to "Edit Profile", edit_teacher_registration_path(current_teacher) %>
-  <h2> Name: <%= current_teacher.first_name %> <%= current_teacher.last_name %> </h2>
+
+<% if current_teacher.present? %>
+<div class="profile">
+  <h2> <%= current_teacher.first_name %> <%= current_teacher.last_name %> </h2>
+    <div id="ProfileBackground">
+      <span id="ProfilePic"><i class="fa fa-user" aria-hidden="true"></i></span>
+    </div>
   <p> E-mail: <%= current_teacher.email %></p>
-<% end %>
+  </div>
+  <center>
+  <%= link_to (edit_teacher_registration_path(current_teacher)) do %>
+    <button class="editProfileButton">Edit Profile</button>
+    <% end %>
+    </center>
+  <% end %>
 </div>

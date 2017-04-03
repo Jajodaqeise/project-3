@@ -40,27 +40,25 @@ class CoursesController < ApplicationController
     @students = @course.students
 
     if current_student
-      lat = session[:geo_location][:lat]
-      lng = session[:geo_location][:lng]
+
 
       classes = @course.class_dates
       current_class = false
       classes.each do |class_date|
         now = DateTime.now
-        if class_date.date - (5 * 60) < now && now < class_date.date + (10 * 60)
+        if class_date.date - (5 * 60) <= now && now < class_date.date + (10 * 60)
           current_class = class_date
         end
       end
       if current_class
-        @current_class = current_class
-
-        if lat && lng
-          distance = Haversine.distance(lat, lng, @course.lat, @course.lng)
-          meters = distance.to_meters
-
+        if !Attender.exists?(:student_id=>current_student.id, :class_date_id=>current_class.id)
+          @current_class = current_class
           @attender = Attender.new()
           @attender.student_id = current_student.id
           @attender.class_date_id = current_class
+          
+        else
+          @checked_in = true
         end
       end
 

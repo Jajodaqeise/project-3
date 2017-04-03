@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   # We can have the landing page be on a different root to redirect
   #   users that not logged in to -- configured in the application_controller.rb file
   get "/welcome", to: "site#index", as: :landing
-  get "/welcome/student", to: "site#student", as: :student_landing
-  get "/welcome/teacher", to: "site#teacher", as: :teacher_landing
+  # get "/welcome/student", to: "site#student", as: :student_landing
+  # get "/welcome/teacher", to: "site#teacher", as: :teacher_landing
 
   get "/profile", to: "students#show", as: :student_profile
 
@@ -38,8 +38,9 @@ Rails.application.routes.draw do
   patch "/class_pattern/:id", to: "class_patterns#update", as: :update_class_pattern
   delete "/class_patterns/:id", to: "class_patterns#destroy", as: :delete_class_pattern
 
-  get "/attenders", to: "attenders#index"
-  post "/attenders", to: "attenders#create"
+  get "/courses/:course_id/attenders", to: "attenders#index", as: :attenders
+  get "/courses/:course_id/students/:student_id/attenders", to: "attenders#show", as: :attender
+  post "/attenders", to: "attenders#create", as: :create_attender
 
   get "/courses/:id/students", to: "students#index", as: :students
   get "/student/:id", to: "student#show", as: :student
@@ -56,6 +57,7 @@ Rails.application.routes.draw do
     resources :class_dates
     resources :class_patterns
     resources :find_courses
+    post "/attenders/check", to: "attenders#check"
   end
 
 end

@@ -15,18 +15,27 @@
 
   function getLocation() {
     navigator.geolocation.getCurrentPosition(initSearch);
-    // toggleModal();
+    navigator.geolocation.getCurrentPosition(
+     validateStudentLocation,
+     // Optional settings below
+     geolocationError,
+     {
+         enableHighAccuracy: true,
+     }
+   );
+  }
 
-    // check in button to check in at a class
-    $('#checkin').click(() => {
-      toggleModal();
-      navigator.geolocation.getCurrentPosition(validateStudentLocation);
-    });
+  function geolocationError(err){
+    console.log(err);
   }
 
   function initSearch(location){
+
+    // validateStudentLocation(location);
+
     console.log("init", location);
     // toggleModal();
+
     $('#course_school').keyup((e)=>{
       console.log("keyup");
       findSchool(e, location);
@@ -34,8 +43,8 @@
   }
 
   function findSchool(e, location){
-    //empty results before doing a new school search
-    $('.results').empty();
+    //empty result-school before doing a new school search
+    $('.result-school').empty();
     console.log("find", location);
     const data = {
       "search" : $(e.target).val(),
@@ -54,11 +63,11 @@
       },
       error: err =>{
         console.log(err);
-
       }
     })
   }
-  if ($('.location-on').length > 0){
+  if ($('.location-on')){
+    console.log("location-on");
     getLocation();
   }
 
@@ -67,7 +76,7 @@
   const dropDownOptions = (schools) => {
     console.log("schools", schools);
 
-    $('.results').empty();
+    $('.result-school').empty();
 
     for (let i = 0; i< 5; i++) {
       schoolOptions[i] = $('<div class="option">');
@@ -75,8 +84,9 @@
       const name = $('<p>').text(schoolNames[i]);
       schoolOptions[i].append(name);
       schoolLocations[i] = schools[i].geometry.location;
-      $('.results').append(schoolOptions[i]);
+      $('.result-school').append(schoolOptions[i]);
       schoolOptions[i].click(() => {
+        $('.result-school').empty();
         console.log("click");
         $('#course_school').val(schoolNames[i]);
         $('#course_lat').val(schoolLocations[i].lat);
@@ -115,48 +125,66 @@
   // toggleModal();
 
   //checkin
-  const checkInButton = $('#message');
+
+  const studentId = parseInt($('#student_id').val());
+  const classId = parseInt($('#class_date_id').val());
+  const $checkInForm = $('.check-in-form').remove();
 
   function validateStudentLocation(location) {
-    // console.log("student location", location);
-    const $checkClass = $('.check-class');
-    const studentId = parseInt($checkClass.attr('data-student-id'));
-    const classId = parseInt($checkClass.attr('data-class-id'));
-    const studentLat = location.coords.latitude;
-      console.log("student lat", studentLat);
-      console.log("course lat", latitude);
-    const studentLng = location.coords.longitude;
-      console.log("student lng", studentLng);
-      console.log("course lng", longitude);
-      // console.log("clicked");
-      // if( studentLat.toFixed(4) === latitude.toFixed(4) && studentLng.toFixed(4) === longitude.toFixed(4)) {
-      //   // console.log("hello");
-      //   toggleModal();
-      //   checkInButton.text("You are in class");
-      //   // ajax call
-      //   const student = $('#student_id').val();
-      //   // console.log("student_id", student);
-      //   //class date goes here to make a post ajax request
-        const data = {
-           student_id: studentId,
-           class_id: classId,
-           student_lat: studentLat,
-           studentLng: studentLng
-        }
-        // $.ajax({
-        //   method: "POST",
-        //   data: data,
-        //   url: "/attenders",
-        //   success: (data)=>{
-        //     console.log("attender", data);
-        //   },
-        //   error: err =>{
-        //     console.log(err);
-        //   }
-        // })
+    if ($checkInForm.length){
+      console.log(location);
+      // console.log("student location", location);
+      const $checkClass = $('.check-class');
 
-        // })
+      const studentLat = location.coords.latitude;
+      $('#student_lat').val(studentLat)
+        console.log("student lat", studentLat);
+        console.log("course lat", latitude);
+      const studentLng = location.coords.longitude;
+        $('#student_lng').val(studentLng)
+        console.log("student lng", studentLng);
+        console.log("course lng", longitude);
+        // console.log("clicked");
+        // if( studentLat.toFixed(4) === latitude.toFixed(4) && studentLng.toFixed(4) === longitude.toFixed(4)) {
+        //   // console.log("hello");
+        //   toggleModal();
+        //   checkInButton.text("You are in class");
+        //   // ajax call
+        //   const student = $('#student_id').val();
+        //   // console.log("student_id", student);
+        //   //class date goes here to make a post ajax request
+          const data = {
+             student_id: studentId,
+             class_id: classId,
+             student_lat: studentLat,
+             student_lng: studentLng
+          }
+          $.ajax({
+            method: "POST",
+            data: data,
+            url: "/api/attenders/check",
+            success: (data)=>{
+              if (data.status){
+                $('.check-in-container').append($checkInForm);
+                $('#student_lat').val(studentLat);
+                $('#student_lng').val(studentLng);
+                $('.checked-in').remove();
+                console.log("attender", data);
+              } else {
+                $('.check-in-icon').removeClass('fa-spinner').addClass('fa-exclamation');
+                $('.checked-in>p').text('You are too far to check in');
+              }
+            },
+            error: err =>{
+              console.log(err);
+            }
+          })
+
+
+      }
+
     }
+
       // else {
       //   checkInButton.text("You are not in class");
       //   toggleModal();

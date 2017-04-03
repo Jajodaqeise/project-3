@@ -18,10 +18,10 @@
 /*map - show course page*/
 #map {
   width: 100%;
-  height: 300px;
+  height: 150px;
   border: 0px solid transparent;
   max-width: 600px;
-  margin: 2% 0;
+  margin: 0 auto;
 }
 
 /* "loading" animated modal, while the geolocation hasn't been retrieved*/
@@ -120,7 +120,7 @@ body {
 }
 
 .menu-icon:hover {
-  color: #00007f;
+  color: #3f6fb1;
 }
 
 
@@ -164,7 +164,7 @@ body {
 }
 
 .menu a:hover {
-  color: #00007f;
+  color: #3f6fb1;
   padding: 12px;
   transition: 0.5s;
 }
@@ -174,7 +174,9 @@ body {
 }
 
 .yield-container{
-  padding-top: 54px;
+  max-width: 500px;
+  padding: 54px 10px 10px;
+  margin: 0 auto;
 }
 
 /*end of slide content*/
@@ -188,7 +190,7 @@ li {
 }
 
 #menuToggle:checked~.menu {
-  position: absolute;
+  position: fixed;
   left: 0;
 }
 
@@ -238,9 +240,6 @@ a {
 }
 
 #siteInnerContainer {
-  /*min-width: 300px;
-  max-width: 300px;
-  margin-top: 18%;*/
   margin: 100px auto;
   width: 100%;
   max-width: 500px;
@@ -290,12 +289,12 @@ a {
 
 #siteIndexTeacher:hover {
   /*background-color: #FFA500;*/
-  background-color: #00007f;
+  background-color: #3f6fb1;
 }
 
 #siteIndexStudent:hover {
   /*background-color: #FFA500;*/
-  background-color: #00007f;
+  background-color: #3f6fb1;
 }
 
 
@@ -367,7 +366,7 @@ a {
 }
 
 #newSubmit:hover{
-  background-color: #00007f;
+  background-color: #3f6fb1;
   cursor: pointer;
 }
 
@@ -382,7 +381,7 @@ a {
 }
 
 .newForgotPw a{
-  color: #00007f;
+  color: #3f6fb1;
 }
 .newSignUp{
   display: flex;
@@ -392,7 +391,7 @@ a {
 .newSignUp a{
   display: flex;
   font-size: 1.6em;
-  color: #00007f;
+  color: #3f6fb1;
 }
 
 #memberYet{
@@ -406,7 +405,7 @@ display: flex;
 #containerNewCheckForgot{
   display: flex;
   width: 90%;
-  margin-left: 2.14rem;
+  margin-left: 2.20rem;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -506,9 +505,10 @@ display: flex;
   font-family: 'Crimson Text', serif;
 }
 
-.date-buttons input{
+
+.date-buttons input, .date-buttons a{
   cursor: pointer;
-  background-color: #00007f;
+  background-color: #3f6fb1;
   border-radius: .5rem;
   border: 0px solid transparent;
   color: white;
@@ -517,6 +517,20 @@ display: flex;
   padding: 5px;
   width: 120px;
   font-family: 'Crimson Text', serif;
+}
+.date-buttons a{
+  -ms-align-items: center;
+  align-items: center;
+  background-color: indianred;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  font-size: 1.5em;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
 }
 .modal-content form .input-group{
   cursor: pointer;
@@ -644,7 +658,7 @@ caption select{
 .new-class-button{
   -ms-align-items: center;
   align-items: center;
-  background-color: #00007f;
+  background-color: #3f6fb1;
   border-radius: .5rem;
   color: white;
   display: -webkit-flex;
@@ -661,8 +675,192 @@ caption select{
   justify-content: center;
   max-width: 500px;
   margin: 30px auto;
-  width: 72%;
+  width: 90%;
 }
+
+
+.class-cal-container{
+  max-width: 502px;
+  margin: 0 auto;
+  text-align: center;
+}
+.class-cal-container h2, .class-cal-container h3{
+  text-align: center;
+  font-size: 2em;
+  font-family: 'Crimson Text', serif;
+}
+.class-cal-container h2{
+  font-size: 2.2em;
+  margin-bottom: 5px;
+  font-family: 'Crimson Text', serif;
+}
+.class-cal-container a{
+  color: #3f6fb1;
+}
+
+.butn-link{
+  font-size: 2em;
+  color: white;
+  background-color: #3f6fb1;
+  padding: 2px 10px;
+  border-radius: .5rem;
+  font-weight: bold;
+  margin: 0 auto;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.checked-in, .check-in-form{
+  background-color: indianred;
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  color: White;
+  padding: 5px 10px;
+  border-radius: .5em;
+  margin: 0 auto;
+  max-width: 400px;
+}
+.check-in-form{
+  background-color: #3f6fb1;
+  cursor: pointer;
+}
+
+
+.attendances{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.attendance{
+  -ms-align-items: center;
+  align-items: center;
+  border-bottom: 1px solid #bbb;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.attendance-main-container h3{
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+.attendance-main-container h2{
+  margin-bottom: 0;
+}
+
+.attendance p{
+  margin: 10px;
+}
+.attendance i{
+  margin: 0 10px;
+}
+.attendance:first-of-type{
+  border-top: 1px solid #bbb;
+}
+.attendances a{
+  color: black;
+  cursor: pointer;
+}
+.attendances a:hover {
+  background-color: #64a5ff;
+  color: white;
+}
+.attendance-bar{
+
+  height: 30px;
+}
+.attendance-bar-holder{
+  border-radius: .5em;
+  background-color: #ccc;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.attendance-bar-container{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  width: 45%;
+}
+
+.percent-title{
+  -ms-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  font-size: 1.8em;
+  line-height: 1em;
+  margin: 20px auto;
+}
+
+
+
+.percent-title::after{
+  content: "%";
+  margin-left: 5px;
+}
+
+.attendance-bar-holder.small{
+  margin: 10px;
+  width: 80%;
+}
+.attendance-bar-holder.small .attendance-bar{
+  height: 100%;
+}
+
+
+.attendance-main-container{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+
+
+
+.check-in-form input[type="submit"]{
+  font-family: 'Crimson Text', serif;
+  background-color: transparent;
+  color: white;
+  border: 0px solid transparent;
+  font-size: 2.5em;
+}
+.checked-in p{
+  font-size: 2.1em;
+  margin: 0;
+  margin-bottom: 4px;
+
+}
+.checked-in i, .check-in-form i{
+  font-size: 2em;
+  padding: 9px;
+}
+.checked-in.green{
+  background-color: seagreen;
+}
+
 
 /*SIGN UP FOR BOTH TEACHER & STUDENT DEVISE*/
 #signUpBody{
@@ -782,7 +980,7 @@ font-family: 'Crimson Text', serif;
 }
 
 #signUpSubmit:hover{
-  background-color: #00007f;
+  background-color: #3f6fb1;
   cursor: pointer;
 }
 
@@ -839,7 +1037,7 @@ font-family: 'Crimson Text', serif;
   font-family: 'Crimson Text', serif;
 }
 #forgotEmailSubmit:hover {
-background-color: #00007f;
+background-color: #3f6fb1;
 cursor: pointer;
 }
 
@@ -887,6 +1085,42 @@ margin: 30px auto;
 width: 100%;
 max-width: 500px;
 }
+#editPwFirstNameContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPwFirstName{
+  display: flex;
+  border-top-right-radius: .5rem;
+  border-top-left-radius: .5rem;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+#editPwLastNameContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPwLastName{
+  display: flex;
+  width: 90%;
+  height: 5vh;
+  outline: none;
+  font-size: 2em;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
 #editPwEmailContainer{
   display: flex;
   flex-direction: column;
@@ -897,8 +1131,6 @@ max-width: 500px;
   display: flex;
   width: 90%;
   height: 5vh;
-  border-top-right-radius: .5rem;
-  border-top-left-radius: .5rem;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -916,6 +1148,8 @@ max-width: 500px;
   display: flex;
   width: 90%;
   height: 5vh;
+  border-bottom-right-radius: .5rem;
+  border-bottom-left-radius: .5rem;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -971,7 +1205,7 @@ max-width: 500px;
   font-size: 2em;
   color: white;
   border-radius: .5rem;
-  background: #00007f;
+  background: #3f6fb1;
   outline: none;
   width: 80%;
   text-align: center;
@@ -1007,14 +1241,20 @@ max-width: 500px;
   width: 100%;
 }
 .class-result{
-  background-color:#888;
-  border-bottom: 1px solid white;
-  color: white;
+  border-bottom: 1px solid #3f6fb1;
+  color: #3f6fb1;
   font-size: 2em;
   padding: .01rem 10px;
 }
+.class-result:first-of-type{
+  border-top: 1px solid #3f6fb1;
+}
+.class-result-title{
+  margin: 10px;
+}
 .selected-result{
   background-color: #64a5ff;
+  color: white;
 }
 
 caption i.fa{
@@ -1059,13 +1299,13 @@ select:focus{
   border-radius: .5rem;
 }
 /*just incase */
-#courseFormDescription{
+/*#courseFormDescription{
   font-size: 1.2em;
   height: 20vh;
   outline: none;
   border: .1vw solid #e1e1e1;
   border-bottom-color: #e1e1e1;
-}
+}*/
 
 .courseFormTextField{
   border-radius: .5rem;
@@ -1074,14 +1314,24 @@ select:focus{
   outline: none;
   border: .1vw solid #e1e1e1;
   border-bottom-color: #e1e1e1;
+  font-family: 'Crimson Text', serif;
+}
+
+.descriptionField {
+ font-size: 1.2em;
+  height: 20vh;
+  outline: none;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
 }
 
 .course-form input[type="submit"]{
-  background-color: #00007f;
+  background-color: #3f6fb1;
+  font-family: 'Crimson Text', serif;
   border: .1vw solid white;
   cursor: pointer;
   color: white;
-  font-size: 1.34em;
+  font-size: 1.28em;
   font-weight: bold;
   width: 80%;
   margin: 0 auto;
@@ -1091,29 +1341,62 @@ select:focus{
 
 
 /*  /courses   */
-
 .course{
   font-size: 1.2em;
 }
-.student-name {
+.indent {
   text-indent: 2%;
+}
+#search_course{
+  font-size: 1.6em;
 }
 .course-search form {
   text-indent: 5%;
 }
 
-#course_name {
-  width: 80%;
-  outline: none;
-  border-radius: .5rem;
-  font-size: 1.6em;
-  border: .1vw solid #e1e1e1;
-  border-bottom-color: #e1e1e1;
-  font-family: 'Crimson Text', serif;
-  width: 200px;
+.user {
+  font-size: 1.5em;
 }
-.my-courses {
+
+.user-info {
+  display: flex;
+  margin: 5%;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.button {
+  cursor: pointer;
+
+  background-color: #3f6fb1;
+  padding: 4%;
+  border-radius: 5px;
+  transition: all 0.5s;
+  width: 25%;
+  color: #fff;
+  text-align: center;
+}
+
+.edit_this_course {
+  background-color: #3f6fb1;
+  color: #fff;
+  padding: 10% 30%;
+  margin: 2%;
+  text-align: center;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.delete_course {
+  background-color: indianred;
+  color: #fff;
+  padding: 10% 30%;
+  text-align: center;
+  border-radius: 5px;
+  margin: 2%;
+  width: 100%;
+}
+
 
 .my-courses-heading {
   width: 100%;
@@ -1125,13 +1408,37 @@ select:focus{
   text-align: center;
 }
 
-.enrolled-courses {
+.courses-list {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   margin: 5% 0;
   font-size: 1.2em;
+  box-shadow: 0 0 40px rgba(0, 0, 0, .1);
+  padding: 3%;
+  margin: .5%;
+}
+
+.courses-list input{
+  font-size: 1.2em;
+  border-radius: .5rem;
+  outline: none;
+  border: .1vw solid #e1e1e1;
+  border-bottom-color: #e1e1e1;
+}
+
+.courses-list label{
+  font-size: 1.3em;
+}
+
+.teachers-course {
+  width: 35%;
+  text-align: center;
+}
+.manage-course {
+  display: flex;
+  flex-direction: column;
 }
 
 .enrolled-course {
@@ -1139,7 +1446,6 @@ select:focus{
   text-align: center;
   box-shadow: 0 0 40px rgba(0, 0, 0, .1);
   padding: 3%;
-
 }
 
 .enrolled-course a {
@@ -1148,7 +1454,101 @@ select:focus{
   color: #000;
 }
 
+/*Profile Page starts*/
+
+#profileContainer {
+  margin: 30px auto;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+  font-family: 'Crimson Text', serif;
+}
+.editProfileButton{
+  cursor: pointer;
+  border: .1vw solid white;
+  font-size: 1.66em;
+  color: white;
+  border-radius: .5rem;
+  background: #3f6fb1;
+  outline: none;
+  width: 80%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-family: 'Crimson Text', serif;
+}
+#ProfilePic{
+  font-size: 5em;
+  padding: 0px 10px 10px;
+  color: white;
+
+}
+
+
+
+
 /*  /courses/:id  */
+
+.course_show_container {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.links_show_course_page {}
+
+#ProfileBackground{
+  background-color: #e1e1e1;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+ border-radius: 100%;
+}
+/*Profile page ends*/
+
+
+.edit_show_course {
+  width: 50%;
+  background-color: #3f6fb1;
+  color: #fff;
+  margin: 5%;
+  padding: 2%;
+  text-align: center;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+
+.course_title_show {
+  line-height: 0.5em;
+  color: #3f6fb1;
+  text-align: center;
+  margin-top: 8%;
+  font-size: 1.5em;
+}
+
+.attenders_course {
+  /*width: 100%;*/
+  background-color: #3f6fb1;
+  color: #fff;
+  margin-top: 15%;
+  text-align: center;
+  border-radius: 5px;
+  padding: 3%;
+}
+
+.description_course_show {
+  margin-top: 10%;
+}
 
 /*COURSE FORM FOR COURSES/EDIT*/
 
@@ -1157,17 +1557,24 @@ select:focus{
 /*COURSE FORM FOR COURSES/EDIT END*/
 
 
+/*=======*/
+/*.profile {
+
+
+  margin-top: 10%;
+}
+*/
+
+
+
+
 
 
 
 /*Media Q section*/
-
-
-
-
 /* Ipad 1 Portrait */
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+/*@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
   #siteBrand {
     width: 60vw;
     height: 12vh;
@@ -1189,15 +1596,15 @@ select:focus{
     top: 4vh;
   }
   /*ipad ends*/
-}
+/*}*/
 
 
 /*ipad pro*/
 
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
+/*@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
 
   /* ipad pro ends */
-}
+/*}*/
 
 
 /*Regular Screen*/
