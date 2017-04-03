@@ -1514,7 +1514,7 @@ select:focus{
 /*  /courses/:id  */
 
 .course_show_container {
-  width: 80%;
+  width: 90%;
   height: auto;
   margin: 0 auto;
 }
@@ -1528,7 +1528,7 @@ select:focus{
   background-color: #3f6fb1;
   color: #fff;
   margin: 5%;
-  padding: 5%;
+  padding: 2%;
   text-align: center;
   border-radius: 5px;
   vertical-align: middle;
@@ -1538,7 +1538,7 @@ select:focus{
   line-height: 0.5em;
   color: #3f6fb1;
   text-align: center;
-  margin: 10%;
+  margin-top: 8%;
   font-size: 1.5em;
 }
 
@@ -1552,6 +1552,9 @@ select:focus{
   padding: 3%;
 }
 
+.description_course_show {
+  margin-top: 10%;
+}
 /*COURSE FORM FOR COURSES/EDIT*/
 
 
