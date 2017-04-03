@@ -542,6 +542,8 @@ input[type="date"]{
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 100%;
+  background-color: white;
+  border: 1px solid #222;
 }
 
 .modal-content input:focus{
