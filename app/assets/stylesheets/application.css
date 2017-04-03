@@ -118,7 +118,7 @@ body {
   padding: 0px 20px;
   background-color: #64a5ff;
   color: white;
-  margin-top: 2px;
+  margin-top: 2.9px;
   cursor: pointer;
   font-size: 3.6rem;
 }
@@ -132,7 +132,7 @@ body {
 
 .menu {
   margin: 0 auto;
-  font-size: 2em;
+  font-size: 1.6em;
   font-weight: bold;
   min-width: 200px;
   height: 100%;
@@ -243,7 +243,6 @@ a {
 }
 
 #siteBrand {
-  /*height: 10vh;*/
   width: 100%;
 }
 
@@ -410,7 +409,8 @@ display: flex;
 #containerNewCheckForgot{
   display: flex;
   width: 90%;
-  margin-left: 2rem;
+  margin-left: 1.8rem;
+  font-size: .9em;
   padding: 0;
   flex-direction: row;
   justify-content: space-between;
@@ -529,24 +529,6 @@ display: flex;
   width: 120px;
   font-family: 'Crimson Text', serif;
 }
-
-.modal-content input{
-  border-radius: .5rem;
-  border: 1px solid #222;
-}
-.modal-content input[type="submit"]{
-  border: 0px solid transparent;
-}
-
-.modal-content input[type="date"]{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.modal-content input:focus{
-  outline: 1px solid #64a5ff;
-}
-
 .class-cal-container .date-buttons a{
   -ms-align-items: center;
   align-items: center;
@@ -1242,7 +1224,8 @@ max-width: 500px;
 #editPwSubmit{
   cursor: pointer;
   border: .1vw solid white;
-  font-size: 2em;
+  font-size: 1.66em;
+  line-height: 23px;
   color: white;
   border-radius: .5rem;
   background: #3f6fb1;
@@ -1350,7 +1333,7 @@ select:focus{
 
 .courseFormTextField{
   border-radius: .5rem;
-  height: 4vh;
+  height: 25.6px;
   font-size: 1.2em;
   outline: none;
   border: .1vw solid #e1e1e1;
@@ -1360,7 +1343,7 @@ select:focus{
 
 .descriptionField {
  font-size: 1.2em;
-  height: 20vh;
+  height: 128px;
   outline: none;
   border: .1vw solid #e1e1e1;
   border-bottom-color: #e1e1e1;
@@ -1375,8 +1358,8 @@ select:focus{
   font-weight: bold;
   width: 80%;
   margin: 0 auto;
-  font-size: 1.4em;
-  line-height: 3.7vh;
+  font-size: 1.1em;
+  line-height: 23px;
   border-radius: .5rem;
 }
 /*jackies stuff ends*/
@@ -1489,42 +1472,42 @@ a.my-courses-heading{
   color: #fff;
   padding: 1.31%;
   margin: 2%;
-  font-size: 2em;
+  font-size: 1.66em;
   text-align: center;
   border-radius: .5rem;
   width: 80%;
-  line-height: 2.62vh;
+  line-height: 23px;
 }
 
 .edit_this_course {
   background-color: #3f6fb1;
   color: #fff;
-  padding: 10% 30%;
+  padding: 10px 32px;
   margin: 2%;
   text-align: center;
   border-radius: 5px;
-  width: 80%;
+  width: 60%;
   font-size: 1.4em;
-  line-height: 1.3vh;
+  line-height: 9px;
 }
 
 .delete_course {
   background-color: indianred;
   color: #fff;
-  padding: 10% 30%;
+  padding: 10px 32px;
   text-align: center;
   border-radius: 5px;
   margin: 2%;
-  width: 80%;
+  width: 60%;
   font-size: 1.4em;
-  line-height: 1.3vh;
+  line-height: 9px;
 }
 
 
 .my-courses-heading {
   width: 100%;
   background-color: #f7f7f7;
-  color: #4F8CFD;
+  color: #3f6fb1;
   font-weight: bold;
   text-indent: 5%;
   font-size: 1.5em;
@@ -1800,7 +1783,7 @@ a.my-courses-heading{
   #siteBrand {
     position: relative;
     left: -10vw;
-    
+
     width: 40vw;
   }
   #siteIndexTeacher {
