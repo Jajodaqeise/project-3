@@ -787,9 +787,9 @@ caption select{
 }
 .attendance i{
   margin: 0 10px;
-  font-size: 1.3em;
+  font-size: 2em;
 }
-.attendence.yes{
+.attendance.yes i{
   color: #64a5ff;
 }
 .attendance:first-of-type{
@@ -881,7 +881,7 @@ caption select{
   padding: 9px;
 }
 .checked-in.green{
-  background-color: seagreen;
+  background-color: #64a5ff;
 }
 
 
@@ -1393,6 +1393,7 @@ a.my-courses-heading{
   text-align: center;
   background-color: transparent;
   margin-left: -8px;
+  margin-bottom: 15px;
 }
 
 .user-info {
