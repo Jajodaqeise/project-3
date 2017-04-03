@@ -689,6 +689,7 @@ caption select{
   max-width: 500px;
   margin: 30px auto;
   width: 90%;
+  line-height: 4.2vh;
 }
 
 
@@ -703,8 +704,12 @@ caption select{
   font-family: 'Crimson Text', serif;
 }
 .class-cal-container h2{
-  font-size: 2.2em;
-  margin-bottom: 5px;
+  font-size: 4em;
+  font-family: 'Crimson Text', serif;
+}
+.class-cal-container h3{
+  font-size: 2.5em;
+  margin-top: -20px;
   font-family: 'Crimson Text', serif;
 }
 .class-cal-container a{
@@ -1305,7 +1310,7 @@ select:focus{
   flex-direction: column;
   margin: 15px auto;
   max-width: 500px;
-  font-size: 1.3em;
+  font-size: 1.6em;
   width: 90%;
   position: absolute;
 }
@@ -1346,10 +1351,11 @@ select:focus{
   border: .1vw solid white;
   cursor: pointer;
   color: white;
-  font-size: 1.28em;
   font-weight: bold;
   width: 80%;
   margin: 0 auto;
+  font-size: 1.4em;
+  line-height: 3.7vh;
   border-radius: .5rem;
 }
 /*jackies stuff ends*/
@@ -1438,7 +1444,7 @@ select:focus{
 
 #course {
   border-radius: .5rem;
-  border: 1px solid #222;
+  border: 1px solid #e1e1e1;
   font-size: 1.2em;
   width: 100%;
 }
@@ -1446,11 +1452,13 @@ select:focus{
 .new_this_course {
   background-color: #3f6fb1;
   color: #fff;
-  padding: 3%;
+  padding: 1.31%;
   margin: 2%;
+  font-size: 2em;
   text-align: center;
-  border-radius: 5px;
-  width: 20%;
+  border-radius: .5rem;
+  width: 80%;
+  line-height: 2.62vh;
 }
 
 .edit_this_course {
@@ -1460,7 +1468,9 @@ select:focus{
   margin: 2%;
   text-align: center;
   border-radius: 5px;
-  width: 100%;
+  width: 80%;
+  font-size: 1.4em;
+  line-height: 1.3vh;
 }
 
 .delete_course {
@@ -1470,7 +1480,9 @@ select:focus{
   text-align: center;
   border-radius: 5px;
   margin: 2%;
-  width: 100%;
+  width: 80%;
+  font-size: 1.4em;
+  line-height: 1.3vh;
 }
 
 
