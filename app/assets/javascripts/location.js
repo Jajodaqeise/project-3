@@ -1,6 +1,12 @@
 
   $(document).on('turbolinks:load', function() {
 
+    $logout = $('#log_them_out');
+    console.log("Log them out");
+    if($logout && $logout.length){
+      $logout.click();
+    }
+
   var schoolLocations = [];
   var schoolNames = [];
   var schoolOptions = [];
@@ -99,28 +105,6 @@
         .appendTo($option);
     })
 
-    // for (var i = 0; i< 5; i++) {
-    //
-    //   if (schools[i]){
-    //     schoolOptions[i] = $('<div class="option">');
-    //     schoolNames[i] = schools[i].name;
-    //     var name = $('<p>').text(schoolNames[i]);
-    //     schoolOptions[i].append(name);
-    //     schoolLocations[i] = schools[i].geometry.location;
-    //     $('.result-school').append(schoolOptions[i]);
-    //     console.log(schoolOptions);
-    //   }
-    //
-    // }
-    // schoolOptions.forEach(function(schoolOption){
-    //   var i = schoolOptions.indexOf(schoolOption);
-    //
-    //   schoolOption.click(function(){
-    //     $('.result-school').empty();
-    //     console.log("click");
-    //
-    //   })
-    // })
 
 
   }

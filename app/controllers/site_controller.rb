@@ -9,4 +9,5 @@ class SiteController < ApplicationController
   def teacher
 
   end
+  
 end

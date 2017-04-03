@@ -118,6 +118,7 @@ body {
   padding: 0px 20px;
   background-color: #64a5ff;
   color: white;
+  margin-top: 2px;
   cursor: pointer;
   font-size: 3.6rem;
 }
@@ -269,7 +270,6 @@ a {
   border-radius: .5rem;
   background: none;
   outline: none;
-  /*height: 5vh;*/
   width: 80%;
   text-align: center;
   margin-bottom: 1rem;
@@ -287,7 +287,6 @@ a {
   border-radius: .5rem;
   background: none;
   outline: none;
-  /*height: 5vh;*/
   width: 80%;
   text-align: center;
   font-weight: bold;
@@ -323,7 +322,7 @@ a {
 #newEmail {
   border-top-right-radius: .5rem;
   border-top-left-radius: .5rem;
-  height: 5vh;
+  height: 32px;
   width: 90%;
   outline: none;
   font-size: 2em;
@@ -338,7 +337,7 @@ a {
 #newPassword{
     border-bottom-right-radius: .5rem;
     border-bottom-left-radius: .5rem;
-    height: 5vh;
+    height: 32px;
     width: 90%;
     outline: none;
     font-size: 2em;
@@ -363,7 +362,6 @@ a {
   border-radius: .5rem;
   background: none;
   outline: none;
-  /*height: 5vh;*/
   width: 80%;
   text-align: center;
   margin-top: 1rem;
@@ -519,7 +517,7 @@ display: flex;
 }
 
 
-.date-buttons input, .date-buttons a{
+.date-buttons input, .class-cal-container .date-buttons a{
   cursor: pointer;
   background-color: #3f6fb1;
   border-radius: .5rem;
@@ -531,7 +529,7 @@ display: flex;
   width: 120px;
   font-family: 'Crimson Text', serif;
 }
-.date-buttons a{
+.class-cal-container .date-buttons a{
   -ms-align-items: center;
   align-items: center;
   background-color: indianred;
@@ -787,9 +785,9 @@ caption select{
 }
 .attendance i{
   margin: 0 10px;
-  font-size: 1.3em;
+  font-size: 2em;
 }
-.attendence.yes{
+.attendance.yes i{
   color: #64a5ff;
 }
 .attendance:first-of-type{
@@ -881,7 +879,7 @@ caption select{
   padding: 9px;
 }
 .checked-in.green{
-  background-color: seagreen;
+  background-color: #64a5ff;
 }
 
 
@@ -901,7 +899,7 @@ caption select{
 #firstNameSignUp{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   border-top-right-radius: .5rem;
   border-top-left-radius: .5rem;
   outline: none;
@@ -921,7 +919,7 @@ caption select{
 #lastNameSignUp{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid white;
@@ -938,7 +936,7 @@ caption select{
 #emailSignUp{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid white;
@@ -953,7 +951,7 @@ caption select{
 }
 
 #passwordSignUp{
-  height: 5vh;
+  height: 32px;
   width: 90%;
   outline: none;
   font-size: 2em;
@@ -971,7 +969,8 @@ caption select{
 #password_confirmationSignUp{
   display: flex;
   width: 90%;
-  height: 5vh;border-bottom-right-radius: .5rem;
+  height: 32px;
+  border-bottom-right-radius: .5rem;
   border-bottom-left-radius: .5rem;
   outline: none;
   font-size: 2em;
@@ -1027,14 +1026,14 @@ font-family: 'Crimson Text', serif;
   position: relative;
   width: 100%;
   left: 0px;
-  height: 5vh;
+  height: 32px;
 }
 /*REGISTRATION PAGE END*/
 
 /*FORGOT PW STARTS HERE*/
 
 #forgotEmailField{
-  height: 5vh;
+  height: 32px;
   width: 90%;
   outline: none;
   border-radius: .5rem;
@@ -1119,7 +1118,7 @@ max-width: 500px;
   border-top-right-radius: .5rem;
   border-top-left-radius: .5rem;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1136,7 +1135,7 @@ max-width: 500px;
 #editPwLastName{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1153,7 +1152,7 @@ max-width: 500px;
 #editPwEmail{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1170,7 +1169,7 @@ max-width: 500px;
 #editPwCurrentPw{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   border-bottom-right-radius: .5rem;
   border-bottom-left-radius: .5rem;
   outline: none;
@@ -1189,7 +1188,7 @@ max-width: 500px;
 #editPwNewPw{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   outline: none;
   font-size: 2em;
   border: .1vw solid #e1e1e1;
@@ -1206,7 +1205,7 @@ max-width: 500px;
 #editPwConfirmNewPw{
   display: flex;
   width: 90%;
-  height: 5vh;
+  height: 32px;
   border-bottom-right-radius: .5rem;
   border-bottom-left-radius: .5rem;
   outline: none;
@@ -1388,6 +1387,14 @@ select:focus{
   font-size: 1.3em;
 }
 
+a.my-courses-heading{
+  display: block;
+  text-align: center;
+  background-color: transparent;
+  margin-left: -8px;
+  margin-bottom: 15px;
+}
+
 .user-info {
   display: -webkit-flex;
   display: -ms-flex;
@@ -1407,6 +1414,12 @@ select:focus{
   margin: 0 20px 20px ;
   text-align: center;
 }
+
+#log_them_out{
+  height: 0px;
+  opacity: 0;
+}
+
 .results{
   width: 100%;
   position: relative;
@@ -1769,7 +1782,7 @@ select:focus{
   #siteBrand {
     position: relative;
     left: -10vw;
-    top: -5vh;
+    
     width: 40vw;
   }
   #siteIndexTeacher {
