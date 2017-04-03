@@ -48,32 +48,34 @@ $(document).on('turbolinks:load', function() {
 
     $('.results').empty();
 
-    for (var i = 0; i< courses.length; i++) {
-      console.log(courses[i].id);
-      if(!enrolledCourses.includes(courses[i].id.toString())) {
-        // console.log("hey");
-        courseOptions[i] = $('<div class="option">');
-        // console.log("option1", courseOptions[i]);
-        coursesNames[i] = courses[i].name;
-        var name = $('<a>').text(coursesNames[i]);
-        courseOptions[i].append(name);
-        coursesId[i] = courses[i].id;
-        $('.results').append(courseOptions[i]);
-        courseOptions[i].click(function() {
-          $('.btn').empty();
-          console.log("click");
-          $('.results').empty();
-          var courseSelected = $('#course').val(coursesNames[i]);
-          console.log("course selected", courseSelected);
-          var studentId = $('#student_id').val();
-          registerCourse(studentId, coursesId[i]);
-        });
-      }
+    courses.forEach(function(course){
+      if(!enrolledCourses.includes(course.id.toString())) {
+        var $results = $('.results');
+        var $option = $('<div>',{
+          class: 'option'
+          })
+          .appendTo($results)
+          .click(function(){
+            $('.btn').empty();
+            $results.empty();
+            $('#course').val(course.name);
+            var studentId = $('#student_id').val();
+            registerCourse(studentId, course.id);
+          });
+
+        var $name = $('<p>')
+          .text(course.name)
+          .appendTo($option);
+        }
+
+      })
+
     }
-  }
 
   var registerCourse = function(studentId, coursesId) {
-    $link = $('<div class="register-course" ><a>',{
+    console.log(coursesId);
+    $link = $('<a>',{
+      class: "register-course",
       href: '/students/'+studentId+'/courses/'+coursesId+'/register'
     })
     .text('Register in this course')
