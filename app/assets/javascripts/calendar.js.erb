@@ -237,13 +237,7 @@ var calFactory = function(){
   }
 
 
-  function padNumber(number, length) {
-    number = number.toString();
-    while (number.length < length){
-      number = "0" + number;
-    }
-    return number;
-  }
+
 
   function isToday(datetime){
     return cal.today.getFullYear() === datetime.getFullYear() && cal.today.getMonth() === datetime.getMonth() && cal.today.getDate() === datetime.getDate() ? true :false;
@@ -270,8 +264,22 @@ var calFactory = function(){
 
 
 
-
-
+  $('.clockpicker').clockpicker({
+    donetext: "Done",
+    autoclose: true
+  });
+  $(window).resize(function(e){
+    cal.resize();
+  });
+  return cal;
+  }
+  function padNumber(number, length) {
+    number = number.toString();
+    while (number.length < length){
+      number = "0" + number;
+    }
+    return number;
+  }
 
 
 function showModalForm(){
@@ -311,15 +319,7 @@ function changeTimeInput($time, $date) {
     console.log(formatted);
     $time.val(formatted);
 }
-$('.clockpicker').clockpicker({
-  donetext: "Done",
-  autoclose: true
-});
-$(window).resize(function(e){
-  cal.resize();
-});
-return cal;
-}
+
 
 
 $(document).on('turbolinks:load', function() {
