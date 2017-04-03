@@ -166,7 +166,7 @@ var calFactory = function(){
                   })
                   .appendTo($results)
                   .click(function(e){
-                    $('.modal-form').load('/class_dates/' + date.id '/edit', function(){
+                    $('.modal-form').load('/class_dates/' + date.id + '/edit', function(){
                       $('.selected-result').removeClass('selected-result');
                       if ($(e.target).hasClass('class-result')){
                         $(e.target).addClass('selected-result');
