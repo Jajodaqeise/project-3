@@ -1,10 +1,11 @@
 <% if current_teacher.present? %>
   <div class="indent user-info">
-    <%= link_to content_tag(:span, "New Course"), new_course_path, class: "new_this_course" %>
+
     <h1 class="indent user">
       Hello,
       <%= current_teacher.first_name %>
       <%= current_teacher.last_name %></h1>
+      <%= link_to content_tag(:span, "New Course"), new_course_path, class: "new_this_course" %>
   </div>
 
   <div class="my-courses-heading">
@@ -38,11 +39,11 @@
 
     <div class="course-search dropdown">
       <%= form_tag ({:class => 'dropbtn'})do %>
-        <%= label_tag :search_course %>
-        <%= text_field_tag :course, '', autocomplete: 'off' %>
-        <div class="results"></div>
-        <div class="btn"></div>
+        <%= text_field_tag :course, '' , :placeholder => 'Search course', autocomplete: 'off' %>
+<div class="btn"></div>
       <% end %>
+      <div class="results"></div>
+
     </div>
   </div>
 
