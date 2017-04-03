@@ -1388,6 +1388,13 @@ select:focus{
   font-size: 1.3em;
 }
 
+a.my-courses-heading{
+  display: block;
+  text-align: center;
+  background-color: transparent;
+  margin-left: -8px;
+}
+
 .user-info {
   display: -webkit-flex;
   display: -ms-flex;
