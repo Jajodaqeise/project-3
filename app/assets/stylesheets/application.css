@@ -1537,7 +1537,7 @@ a.my-courses-heading{
 .my-courses-heading {
   width: 100%;
   background-color: #f7f7f7;
-  color: #64a5ff;
+  color: #3f6fb1;
   font-weight: bold;
   text-indent: 5%;
   font-size: 1.5em;
@@ -1783,7 +1783,7 @@ a.my-courses-heading{
   and (-webkit-device-pixel-ratio: 3)
   and (orientation: portrait) {
     #containerNewCheckForgot{
-    width: 80%;
+        font-size: .5em;
     }
 }
 
