@@ -1,10 +1,10 @@
-let courseId;
-const config = {
+var courseId;
+var config = {
   startOnMonday: false
 }
-const calFactory = ()=>{
-  const monthDays = [31,28,31,30,31,30,31,31,30,31,30,31];
-  const cal = {
+var calFactory = function(){
+  var monthDays = [31,28,31,30,31,30,31,31,30,31,30,31];
+  var cal = {
     init: function(){
       this.dateArr = [];
       this.today = new Date();
@@ -13,16 +13,17 @@ const calFactory = ()=>{
     },
 
     getClasses: function(){
+      var self = this;
        courseId = $('#render-cal').attr('data-course-id');
       $.ajax({
         method: "GET",
         url: `/api/class_dates/${courseId}`,
-        success: (data)=>{
+        success: function(data){
           cal.classes = data.classes;
           console.log(cal.classes);
-          cal.createMonth(this.today.getMonth(), this.today.getFullYear());
+          cal.createMonth(self.today.getMonth(), self.today.getFullYear());
         },
-        error: (err) =>{
+        error: function(err){
           console.log(err);
         }
       })
@@ -31,14 +32,14 @@ const calFactory = ()=>{
     createMonth: function(month, year){
       this.dateArr = [];
       this.firstDay = new Date(year, month, 1, 0, 0, 0, 0);
-      let startDayOfWeek = this.firstDay.getDay();
+      var startDayOfWeek = this.firstDay.getDay();
       if (config.startOnMonday){
         startDayOfWeek = startDayOfWeek === 0 ? 7 : startDayOfWeek - 1;
       }
-      for(let i = 0; i < startDayOfWeek ; i++){
+      for(var i = 0; i < startDayOfWeek ; i++){
         this.dateArr.push("");
       }
-      for (let i=1; i<=monthDays[this.firstDay.getMonth()]; i++){
+      for (var i=1; i<=monthDays[this.firstDay.getMonth()]; i++){
         this.dateArr.push(i);
       }
       //http://stackoverflow.com/questions/16353211/check-if-year-is-leap-year-in-javascript
@@ -55,116 +56,117 @@ const calFactory = ()=>{
       return this;
     },
     renderCal: function(){
+        var self = this;
         $('.class-results').empty()
-        const $calContainer = $('#render-cal').empty();
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        var $calContainer = $('#render-cal').empty();
+        var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         if (config.startOnMonday){
           daysOfWeek.push(daysOfWeek.shift());
         }
-        const $table = $('<table>',{
+        var $table = $('<table>',{
             class: "cal"
           })
           .appendTo($calContainer);
-        const $caption = $('<caption>',{
+        var $caption = $('<caption>',{
             class: "cal-month"
           })
           .appendTo($table);
-        const $prevMonth = $('<div>',{
+        var $prevMonth = $('<div>',{
             class: "month-option"
           })
           .appendTo($caption)
-          .click((e)=>{
-            this.createMonth(this.firstDay.getUTCMonth() - 1, this.firstDay.getUTCFullYear());
+          .click(function(e){
+            self.createMonth(self.firstDay.getUTCMonth() - 1, self.firstDay.getUTCFullYear());
           });
-        const $prevIcon = $('<i>',{
+        var $prevIcon = $('<i>',{
           class: 'fa fa-caret-left'
         }).appendTo($prevMonth);
-        const $selectDiv = $("<div>").appendTo($caption);
-        const $monthSelect = $('<select>', {
+        var $selectDiv = $("<div>").appendTo($caption);
+        var $monthSelect = $('<select>', {
             class: "month-select",
           })
           .appendTo($selectDiv)
-          .change((e)=>{
-            this.createMonth($(e.target).val(), $(".year-select").val());
+          .change(function(e){
+            self.createMonth($(e.target).val(), $(".year-select").val());
           });
-        monthNames.forEach((monthName, m)=>{
-          const $month = $('<option>',{
+        monthNames.forEach(function(monthName, m){
+          var $month = $('<option>',{
             class: "month-option",
             value: m
           })
           .appendTo($monthSelect)
           .text(monthName)
-          if (m == this.firstDay.getUTCMonth()){
+          if (m == self.firstDay.getUTCMonth()){
             $month.prop('selected', true);
           }
         })
-        const $yearSelect = $('<select>',{
+        var $yearSelect = $('<select>',{
           class: "year-select"
         })
           .appendTo($selectDiv)
-          .change((e)=>{
-            this.createMonth($('.month-select').val(), $(e.target).val());
+          .change(function(e){
+            self.createMonth($('.month-select').val(), $(e.target).val());
           });
-        for (y = this.today.getUTCFullYear() - 4; y <= this.today.getUTCFullYear() + 4; y++){
-          const $yearOption = $('<option>', {
+        for (y = self.today.getUTCFullYear() - 4; y <= self.today.getUTCFullYear() + 4; y++){
+          var $yearOption = $('<option>', {
             class: "year-option",
             value: y
           })
           .appendTo($yearSelect)
           .text(y)
-          if (y == this.firstDay.getUTCFullYear()){
+          if (y == self.firstDay.getUTCFullYear()){
             $yearOption.prop('selected', true);
           }
         }
 
-        const $nextMonth = $('<div>',{
+        var $nextMonth = $('<div>',{
           class: "month-option"
         })
           .appendTo($caption)
-          .click((e)=>{
-            this.createMonth(this.firstDay.getUTCMonth() + 1, this.firstDay.getUTCFullYear());
+          .click(function(e){
+            self.createMonth(self.firstDay.getUTCMonth() + 1, self.firstDay.getUTCFullYear());
           })
-        const $nextIcon = $('<i>',{
+        var $nextIcon = $('<i>',{
             class: 'fa fa-caret-right'
           }).appendTo($nextMonth);
 
-        const $tablehead = $('<tr>',{
+        var $tablehead = $('<tr>',{
             class: "cal-day-of-week-row cal-row"
           })
           .appendTo($table);
-        daysOfWeek.forEach(day=>{
-          const $th = $('<th>',{
+        daysOfWeek.forEach(function(day){
+          var $th = $('<th>',{
             class: "cal-day-of-week cal-cell"
           })
           .appendTo($tablehead)
           .text(day);
         });
-        this.dateArr.forEach(week=>{
-          const $tr = $('<tr>', {
+        self.dateArr.forEach(function(week){
+          var $tr = $('<tr>', {
             class: "cal-row cal-week-row"
           })
           .appendTo($table);
-          week.forEach(day=>{
-            const dayDate = new Date(this.firstDay.getFullYear(), this.firstDay.getMonth(), day, 0,0,0,0);
-            const classDates = findMatchingClasses(dayDate);
-            const $td = $('<td>',{
+          week.forEach(function(day){
+            var dayDate = new Date(self.firstDay.getFullYear(), self.firstDay.getMonth(), day, 0,0,0,0);
+            var classDates = findMatchingClasses(dayDate);
+            var $td = $('<td>',{
               class: `cal-cell cal-day${day && isToday(dayDate) ? " cal-today" : ""}${day && classDates.length > 0 ? " cal-class-day" : ""}`
             })
             .appendTo($tr)
             .text(day);
             if (classDates.length > 0){
-              $td.click((e)=>{
+              $td.click(function(e){
                 $('.cal-view-day').removeClass('cal-view-day');
                 $(e.target).addClass('cal-view-day');
-                const $results = $('.class-results').empty()
-                classDates.forEach(date=>{
-                  const $resultContainer = $('<div>',{
+                var $results = $('.class-results').empty()
+                classDates.forEach(function(date){
+                  var $resultContainer = $('<div>',{
                     class: "class-result"
                   })
                   .appendTo($results)
-                  .click((e)=>{
-                    $('.modal-form').load(`/class_dates/${date.id}/edit`, ()=>{
+                  .click(function(e){
+                    $('.modal-form').load(`/class_dates/${date.id}/edit`, function(){
                       $('.selected-result').removeClass('selected-result');
                       if ($(e.target).hasClass('class-result')){
                         $(e.target).addClass('selected-result');
@@ -176,15 +178,15 @@ const calFactory = ()=>{
                     });
 
                   });
-                  let hours = date.date.getHours();
-                  const formattedTime = `${date.date.toDateString()} ${hours % 12 == 0 ? 12 : hours % 12}:${padNumber(date.date.getMinutes(), 2)} ${hours>11 ? "PM" : "AM"}`;
-                  const $resultTitle = $('<h4>',{
+                  var hours = date.date.getHours();
+                  var formattedTime = `${date.date.toDateString()} ${hours % 12 == 0 ? 12 : hours % 12}:${padNumber(date.date.getMinutes(), 2)} ${hours>11 ? "PM" : "AM"}`;
+                  var $resultTitle = $('<h4>',{
                     class: "class-result-title"
                   })
                   .appendTo($resultContainer)
                   .text(formattedTime);
 
-                  const editButton = $
+                  var editButton = $
                 });
 
               })
@@ -207,14 +209,14 @@ const calFactory = ()=>{
           date: date,
           time: time
         },
-        success: (data)=>{
+        success: function(data){
           console.log("EDITED", data)
           date = date.split('-');
           cal.classes = data.classes;
           cal.dateArr = [];
           cal.createMonth(date[1]-1, date[0]);
         },
-        error:(err)=>{
+        error: function(err){
           console.log("ERROR", err);
         }
       })
@@ -237,12 +239,12 @@ const calFactory = ()=>{
   }
 
   function findMatchingClasses(datetime){
-    const matching = [];
-    cal.classes.forEach(class_day => {
+    var matching = [];
+    cal.classes.forEach(function(class_day){
       console.log(class_day.date)
-      const classDate = new Date(class_day.date);
+      var classDate = new Date(class_day.date);
       console.log(classDate);
-      const classId = class_day.id;
+      var classId = class_day.id;
       if(classDate.getFullYear() === datetime.getFullYear() && classDate.getMonth() === datetime.getMonth() && classDate.getDate() === datetime.getDate()){
         matching.push({
           date: classDate,
@@ -252,7 +254,7 @@ const calFactory = ()=>{
     })
     return matching;
   }
-  $(window).resize((e)=>{
+  $(window).resize(function(e){
     cal.resize();
   });
 
@@ -266,7 +268,7 @@ const calFactory = ()=>{
 
 function showModalForm(){
   $('.hidden-form').hide();
-  $("#class_date_repeat").change(()=>{
+  $("#class_date_repeat").change(function(){
     $('.pattern-container').toggle();
   });
   $('.modal').fadeIn('fast');
@@ -278,23 +280,23 @@ function showModalForm(){
 }
 
 $(document).on('turbolinks:load', function() {
-  let cal;
+  var cal;
   if ($('#render-cal').length > 0){
     cal = calFactory().init();
   }
 
 
 
-  $('.close').click(()=>{
-    $('.modal').fadeOut('fast',()=>{
+  $('.close').click(function(){
+    $('.modal').fadeOut('fast',function(){
       $('.modal-form').empty()
     });
   });
 
   $('.modal').hide();
-  $('.new-class-button').click((e)=>{
+  $('.new-class-button').click(function(e){
 
-    $('.modal-form').load(`/courses/${courseId}/class_dates/new`, ()=>{
+    $('.modal-form').load(`/courses/${courseId}/class_dates/new`, function(){
       showModalForm();
       console.log("test");
     });

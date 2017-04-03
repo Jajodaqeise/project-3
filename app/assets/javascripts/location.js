@@ -1,15 +1,15 @@
-// $(()=>{
+
   $(document).on('turbolinks:load', function() {
 
-  const schoolLocations = [];
-  const schoolNames = [];
-  const schoolOptions = [];
+  var schoolLocations = [];
+  var schoolNames = [];
+  var schoolOptions = [];
 
   // modal
-  const modal = $('#modal');
-  const modalMessage = $('#modal p');
+  var modal = $('#modal');
+  var modalMessage = $('#modal p');
 
-  const toggleModal = function(){
+  var toggleModal = function(){
     modal.fadeToggle('fast');
   }
 
@@ -36,7 +36,7 @@
     console.log("init", location);
     // toggleModal();
 
-    $('#course_school').keyup((e)=>{
+    $('#course_school').keyup(function(e){
       console.log("keyup");
       findSchool(e, location);
     })
@@ -46,7 +46,7 @@
     //empty result-school before doing a new school search
     $('.result-school').empty();
     console.log("find", location);
-    const data = {
+    var data = {
       "search" : $(e.target).val(),
       "lat" : location.coords.latitude,
       "lng" : location.coords.longitude
@@ -57,11 +57,11 @@
       method: "POST",
       data: data,
       url: "/api/find_schools",
-      success: (schools)=>{
+      success: function(schools){
         console.log(schools);
         dropDownOptions(schools)
       },
-      error: err =>{
+      error: function(err){
         console.log(err);
       }
     })
@@ -73,19 +73,19 @@
 
 
   //new and edit course pages: top 5 options of the previous search
-  const dropDownOptions = (schools) => {
+  var dropDownOptions = function(schools) {
     console.log("schools", schools);
 
     $('.result-school').empty();
 
-    for (let i = 0; i< 5; i++) {
+    for (var i = 0; i< 5; i++) {
       schoolOptions[i] = $('<div class="option">');
       schoolNames[i] = schools[i].name;
-      const name = $('<p>').text(schoolNames[i]);
+      var name = $('<p>').text(schoolNames[i]);
       schoolOptions[i].append(name);
       schoolLocations[i] = schools[i].geometry.location;
       $('.result-school').append(schoolOptions[i]);
-      schoolOptions[i].click(() => {
+      schoolOptions[i].click(function(){
         $('.result-school').empty();
         console.log("click");
         $('#course_school').val(schoolNames[i]);
@@ -97,14 +97,14 @@
 
   //show course page
   // toggleModal();
-  const latitude = parseFloat($('#lat').val());
-  const longitude = parseFloat($('#lng').val());
-  const LatLng = {lat: latitude, lng: longitude};
+  var latitude = parseFloat($('#lat').val());
+  var longitude = parseFloat($('#lng').val());
+  var LatLng = {lat: latitude, lng: longitude};
   // console.log(latitude);
   // console.log(longitude);
 
   //grab this code from google maps documentation
-  const mapOptions = {
+  var mapOptions = {
     zoom: 12,
     center: new google.maps.LatLng (latitude, longitude),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -118,7 +118,7 @@
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
   //add marker
-  const marker = new google.maps.Marker({
+  var marker = new google.maps.Marker({
     position: LatLng,
     map: map
   });
@@ -126,21 +126,21 @@
 
   //checkin
 
-  const studentId = parseInt($('#student_id').val());
-  const classId = parseInt($('#class_date_id').val());
-  const $checkInForm = $('.check-in-form').remove();
+  var studentId = parseInt($('#student_id').val());
+  var classId = parseInt($('#class_date_id').val());
+  var $checkInForm = $('.check-in-form').remove();
 
   function validateStudentLocation(location) {
     if ($checkInForm.length){
       console.log(location);
       // console.log("student location", location);
-      const $checkClass = $('.check-class');
+      var $checkClass = $('.check-class');
 
-      const studentLat = location.coords.latitude;
+      var studentLat = location.coords.latitude;
       $('#student_lat').val(studentLat)
         console.log("student lat", studentLat);
         console.log("course lat", latitude);
-      const studentLng = location.coords.longitude;
+      var studentLng = location.coords.longitude;
         $('#student_lng').val(studentLng)
         console.log("student lng", studentLng);
         console.log("course lng", longitude);
@@ -150,10 +150,10 @@
         //   toggleModal();
         //   checkInButton.text("You are in class");
         //   // ajax call
-        //   const student = $('#student_id').val();
+        //   var student = $('#student_id').val();
         //   // console.log("student_id", student);
         //   //class date goes here to make a post ajax request
-          const data = {
+          var data = {
              student_id: studentId,
              class_id: classId,
              student_lat: studentLat,
@@ -163,7 +163,7 @@
             method: "POST",
             data: data,
             url: "/api/attenders/check",
-            success: (data)=>{
+            success: function(data){
               if (data.status){
                 $('.check-in-container').append($checkInForm);
                 $('#student_lat').val(studentLat);
@@ -175,7 +175,7 @@
                 $('.checked-in>p').text('You are too far to check in');
               }
             },
-            error: err =>{
+            error: function(err){
               console.log(err);
             }
           })
