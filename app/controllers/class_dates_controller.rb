@@ -5,7 +5,7 @@ class ClassDatesController < ApplicationController
     @course = Course.find(params[:course_id])
     render layout: "nav"
   end
-
+ 
   def new
     @course = Course.find(params[:course_id])
     @class_pattern = ClassPattern.new
