@@ -533,7 +533,7 @@ display: flex;
 
 .modal-content input{
   border-radius: .5rem;
-  border: 1px solid #222;
+  border: .1vw solid #e1e1e1;
 }
 .modal-content input[type="submit"]{
   border: 0px solid transparent;
@@ -544,7 +544,7 @@ input[type="date"], input[type="time"]{
   -moz-appearance: none;
   width: 100%;
   background-color: white;
-  border: 1px solid #222;
+  border: .1vw solid #e1e1e1;
 }
 
 .modal-content input:focus{
