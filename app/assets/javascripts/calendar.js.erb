@@ -287,7 +287,7 @@ function showModalForm(){
   var time = $classTime.val().split(':');
   var date = $classDate.val().split('-');
   var dateTime = new Date(date[0], date[1], date[2], time[0], time[1], 0, 0);
-  var offset dateTime.getTimezoneOffset();
+  var offset = dateTime.getTimezoneOffset();
   dateTime = dateTime.setMinutes(offset.getMinutes() - offset);
   $time.val(dateTime.getHours() + ':' + dateTime.getMinutes());
   //http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
