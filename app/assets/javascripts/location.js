@@ -45,6 +45,7 @@
     $('#course_school').keyup(function(e){
       console.log("keyup");
       findSchool(e, location);
+
     })
   }
 
