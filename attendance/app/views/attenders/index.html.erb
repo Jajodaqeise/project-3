@@ -1,6 +1,8 @@
 <div class="attendance-main-container">
-  <h2><%= @course.name %></h2>
-  <h3>Student Attendance</h3>
+  <div class="course_title_show">
+    <h1><%= @course.name %></h1>
+    <p>Student Attendance</p>
+  </div>
   <div class="attendances">
     <% @students.each do |student| %>
       <%  percent = student.attender_percent(@course.id) %>
@@ -18,7 +20,6 @@
 
        </div>
        <% end %>
-
     <% end %>
   </div>
 
