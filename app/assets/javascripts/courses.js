@@ -82,7 +82,7 @@ $(document).on('turbolinks:load', function() {
       class: "register-course",
       href: '/students/'+studentId+'/courses/'+coursesId+'/register'
     })
-    .text('Register in this course')
+    .text('Register')
     .appendTo($('.btn'));
   }
 
