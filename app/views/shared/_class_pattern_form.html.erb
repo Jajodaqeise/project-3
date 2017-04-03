@@ -9,7 +9,7 @@
   <%= hidden_field_tag(:pattern_timezone_offset) %>
   <div class="input-group clockpicker">
     <% time = class_pattern[:time] ? class_pattern[:time].localtime.strftime("%H:%M") : DateTime.now.strftime("%H:%M") %>
-    <%= f.time_field(:time, :value => time) %>
+    <%= f.text_field(:time, :value => time, :pattern=>"([01]?[0-9]|2[0-3]):[0-5][0-9])", :autocomplete=>"off") %>
   </div>
   <div class="check-boxes-container">
     <% [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday].each do |day| %>
