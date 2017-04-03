@@ -1,15 +1,15 @@
-$(()=>{
+$(document).on('turbolinks:load', function() {
 
-  const courseOptions = [];
-  const coursesNames = [];
-  const courses = [];
-  const coursesId = [];
-  const enrolledCourses = [];
+  var courseOptions = [];
+  var coursesNames = [];
+  var courses = [];
+  var coursesId = [];
+  var enrolledCourses = [];
 
-  const searchCourse = $('#course');
+  var searchCourse = $('#course');
 
-  searchCourse.keyup((e) => {
-      const search = searchCourse.val();
+  searchCourse.keyup(function(e) {
+      var search = searchCourse.val();
       // console.log("keyup");
       findCourse(e, search);
     })
@@ -19,7 +19,7 @@ $(()=>{
     $('.results').empty();
     // console.log("find", e);
     // console.log("search", search);
-    const data = {
+    var data = {
       data: search
     }
     //ajax
@@ -27,52 +27,52 @@ $(()=>{
       method: "POST",
       data: data,
       url: "/api/find_courses",
-      success: (courses)=>{
+      success: function(courses){
         // console.log(courses);
         dropDownOptions(courses);
       },
-      error: err =>{
+      error: function(err){
         console.log(err);
       }
     });
   }
 
-  $('.enrolled-course').each((i, course) => {
+  $('.enrolled-course').each(function(i, course) {
     enrolledCourses.push($(course).attr('data-course-id'));
   });
 
   console.log(enrolledCourses);
 
-  const dropDownOptions = (courses) => {
+  var dropDownOptions = function(courses) {
     console.log("courses", courses);
 
     $('.results').empty();
 
-    for (let i = 0; i< courses.length; i++) {
+    for (var i = 0; i< courses.length; i++) {
       console.log(courses[i].id);
       if(!enrolledCourses.includes(courses[i].id.toString())) {
         // console.log("hey");
         courseOptions[i] = $('<div class="option">');
         // console.log("option1", courseOptions[i]);
         coursesNames[i] = courses[i].name;
-        const name = $('<a>').text(coursesNames[i]);
+        var name = $('<a>').text(coursesNames[i]);
         courseOptions[i].append(name);
         coursesId[i] = courses[i].id;
         $('.results').append(courseOptions[i]);
-        courseOptions[i].click(() => {
+        courseOptions[i].click(function() {
           $('.btn').empty();
           console.log("click");
           $('.results').empty();
-          const courseSelected = $('#course').val(coursesNames[i]);
+          var courseSelected = $('#course').val(coursesNames[i]);
           console.log("course selected", courseSelected);
-          const studentId = $('#student_id').val();
+          var studentId = $('#student_id').val();
           registerCourse(studentId, coursesId[i]);
         });
       }
     }
   }
 
-  const registerCourse = (studentId, coursesId) => {
+  var registerCourse = function(studentId, coursesId) {
     $link = $('<div class="register-course" ><a>',{
       href: '/students/'+studentId+'/courses/'+coursesId+'/register'
     })
