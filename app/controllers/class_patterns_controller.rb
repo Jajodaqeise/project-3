@@ -4,7 +4,10 @@ class ClassPatternsController < ApplicationController
   before_action :set_days, only: [:create, :update]
   def create
     @class_pattern = ClassPattern.new(class_pattern_params)
-    @class_pattern.time += params[:timezone_offset].to_i * 60
+    @class_pattern.time += params[:pattern_timezone_offset].to_i * 60
+    puts "==================================="
+    puts @class_pattern.time
+    puts params[:timezone_offset]
     @class_pattern.save
     @class_pattern.add_class_date_range(@days, @class_pattern.time, @class_pattern.start_date, @class_pattern.end_date)
     puts @class_pattern.course_id
@@ -13,7 +16,7 @@ class ClassPatternsController < ApplicationController
   def update
     @class_pattern = ClassPattern.find(params[:id])
     @new_pattern = ClassPattern.new(class_pattern_params)
-    @new_pattern.time += params[:timezone_offset].to_i * 60
+    @new_pattern.time += params[:pattern_timezone_offset].to_i * 60
     @class_pattern.update_class_dates(@days, @new_pattern)
     @class_pattern.update(class_pattern_params)
     redirect_to class_dates_path(:course_id => @class_pattern.course_id)

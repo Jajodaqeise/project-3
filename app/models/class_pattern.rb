@@ -8,19 +8,21 @@ class ClassPattern < ApplicationRecord
   has_many :class_dates
 
   def add_class_date_range(days, time, start_date, end_date)
-    seconds_per_day = 24*60*60
-    end_day = end_date.change(hour: time.strftime("%H").to_i, min: time.strftime("%M").to_i).to_i
-    tracked_day = start_date.change(hour: time.strftime("%H").to_i, min: time.strftime("%M").to_i).to_i
+
+    end_day = end_date.change(hour: time.strftime("%H").to_i, min: time.strftime("%M").to_i)
+    tracked_day = start_date.change(hour: time.strftime("%H").to_i, min: time.strftime("%M").to_i)
 
       while tracked_day <= end_day do
-        date = DateTime.strptime(tracked_day.to_s,'%s')
-        day_of_week = date.strftime("%A")
 
-        if days[day_of_week.downcase.to_sym] == "1" && !self.class_dates.exists?(:date => date)
-          class_date = ClassDate.new(:course_id => self.course_id, :date => date, :repeat => true, :class_pattern_id => self.id)
+        day_of_week = tracked_day.strftime("%A")
+
+        if days[day_of_week.downcase.to_sym] == "1" && !self.class_dates.exists?(:date => tracked_day.change(hour: time.strftime("%H").to_i, min: time.strftime("%M")))
+          class_date = ClassDate.new(:course_id => self.course_id, :date => tracked_day.change(hour: time.strftime("%H").to_i, min: time.strftime("%M")), :repeat => true, :class_pattern_id => self.id)
+          puts "-------------------------"
+          puts tracked_day.change(hour: time.strftime("%H").to_i, min: time.strftime("%M"))
           class_date.save
         end
-        tracked_day = tracked_day + seconds_per_day
+        tracked_day = tracked_day + 1.days
       end
   end
 
