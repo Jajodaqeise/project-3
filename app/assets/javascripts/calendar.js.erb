@@ -282,10 +282,14 @@ function showModalForm(){
     $('#pattern_timezone_offset').val(new Date().getTimezoneOffset())
   });
   $('.modal').fadeIn('fast');
-  $('.clockpicker').clockpicker({
-    donetext: "Done",
-    autoclose: true
-  });
+  //http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
+  if(!( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+    $('.clockpicker').clockpicker({
+      donetext: "Done",
+      autoclose: true
+    });
+  }
+
   $('#timezone_offset').val(new Date().getTimezoneOffset())
 }
 
