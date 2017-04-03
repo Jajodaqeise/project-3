@@ -1354,16 +1354,15 @@ select:focus{
   font-size: 1.2em;
 }
 
-.indent {
+/*.indent {
   text-indent: 2%;
-}
+}*/
 
 #search_course{
   font-size: 1.3em;
 }
 
 .course-search form {
-  text-indent: 5%;
   width: 100%;
   font-size: 1.5em;
 }
@@ -1373,14 +1372,21 @@ select:focus{
 }
 
 .user-info {
+  display: -webkit-flex;
+  display: -ms-flex;
   display: flex;
   margin: 5%;
-  align-items: center;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
   justify-content: space-between;
 }
 .results{
-    position: relative;
-    display: inline-block;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  height: 0px;
 }
 
 .register-course a {
@@ -1417,6 +1423,7 @@ select:focus{
 #course {
   border: 1px solid #000;
   font-size: 1.2em;
+  width: 100%;
 }
 
 .new_this_course {
@@ -1634,9 +1641,10 @@ select:focus{
 .option {
     display: block;
     background-color: #f9f9f9;
-    width: 90%;
+    width: 100%;
     box-shadow: 0px 1em 1em 0px rgba(0,0,0,0.2);
     z-index: 1;
+    padding: 10px 0;
     /*position: absolute;*/
 }
 
